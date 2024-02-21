@@ -9,11 +9,12 @@
     <lastBuildDate>Wed, 21 Feb 2024 17:20:12 -0500</lastBuildDate>
     <atom:link href="https://dfoudeh.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>My First Post</title>
-      <link>https://dfoudeh.github.io/posts/my-first-post/</link>
+      <title>LA CTF 2024 - pwn/aplet123</title>
+      <link>https://dfoudeh.github.io/posts/la-ctf-2024-pwn-aplet123/</link>
       <pubDate>Wed, 21 Feb 2024 17:20:12 -0500</pubDate>
-      <guid>https://dfoudeh.github.io/posts/my-first-post/</guid>
-      <description>Just a test!!!!</description>
+      <guid>https://dfoudeh.github.io/posts/la-ctf-2024-pwn-aplet123/</guid>
+      <description>We are given a binary and source code. Taking a look at the source code:
+#include &amp;lt;stdio.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt; #include &amp;lt;string.h&amp;gt; #include &amp;lt;time.h&amp;gt; #include &amp;lt;unistd.h&amp;gt; void print_flag(void) { char flag[256]; FILE *flag_file = fopen(&amp;#34;flag.txt&amp;#34;, &amp;#34;r&amp;#34;); fgets(flag, sizeof flag, flag_file); puts(flag); } const char *const responses[] = {&amp;#34;L&amp;#34;, &amp;#34;amongus&amp;#34;, &amp;#34;true&amp;#34;, &amp;#34;pickle&amp;#34;, &amp;#34;GINKOID&amp;#34;, &amp;#34;L bozo&amp;#34;, &amp;#34;wtf&amp;#34;, &amp;#34;not with that attitude&amp;#34;, &amp;#34;increble&amp;#34;, &amp;#34;based&amp;#34;, &amp;#34;so true&amp;#34;, &amp;#34;monka&amp;#34;, &amp;#34;wat&amp;#34;, &amp;#34;monkaS&amp;#34;, &amp;#34;banned&amp;#34;, &amp;#34;holy based&amp;#34;, &amp;#34;daz crazy&amp;#34;, &amp;#34;smh&amp;#34;, &amp;#34;bruh&amp;#34;, &amp;#34;lol&amp;#34;, &amp;#34;mfw&amp;#34;, &amp;#34;skissue&amp;#34;, &amp;#34;so relatable&amp;#34;, &amp;#34;copium&amp;#34;, &amp;#34;untrue!</description>
     </item>
   </channel>
 </rss>
