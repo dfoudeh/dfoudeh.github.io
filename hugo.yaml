@@ -1,0 +1,17 @@
+baseURL: https://dfoudeh.github.io
+languageCode: en-us
+title: CTF Writeups
+
+theme: "PaperMod"
+
+params:
+  homeInfoParams:
+    Title: Daniel Foudeh
+    Content: I am a software engineer with a strong interest in cybersecurity. I enjoy participating in CTF's, and am currently looking for a team to compete with. Feel free to reach out about anything cyber related!
+
+
+  socialIcons: # optional
+    - name: "email"
+      url: "mailto:d.foudeh@gmail.com"
+    - name: "github"
+      url: "https://github.com/dfoudeh"
