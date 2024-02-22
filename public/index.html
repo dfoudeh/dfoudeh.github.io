@@ -160,6 +160,19 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">LA CTF 2024 - pwn/52-card-monty
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Again we are given c code along with a binary and a Dockerfile.
+#include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; #include &lt;string.h&gt; #include &lt;time.h&gt; #define DECK_SIZE 0x52 #define QUEEN 1111111111 void setup() { setbuf(stdin, NULL); setbuf(stdout, NULL); setbuf(stderr, NULL); srand(time(NULL)); } void win() { char flag[256]; FILE *flagfile = fopen(&#34;flag.txt&#34;, &#34;r&#34;); if (flagfile == NULL) { puts(&#34;Cannot read flag.txt.&#34;); } else { fgets(flag, 256, flagfile); flag[strcspn(flag, &#34;\n&#34;)] = &#39;\0&#39;; puts(flag); } } long lrand() { long higher, lower; higher = (((long)rand()) &lt;&lt; 32); lower = (long)rand(); return higher &#43; lower; } void game() { int index; long leak; long cards[52] = {0}; char name[20]; for (int i = 0; i &lt; 52; &#43;&#43;i) { cards[i] = lrand(); } index = rand() % 52; cards[index] = QUEEN; printf(&#34;==============================\n&#34;); printf(&#34;index of your first peek?...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-02-21 20:20:50 -0500 EST'>February 21, 2024</span></footer>
+  <a class="entry-link" aria-label="post link to LA CTF 2024 - pwn/52-card-monty" href="https://dfoudeh.github.io/posts/la-ctf-2024-pwn-52-card-monty/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">LA CTF 2024 - pwn/aplet123
     </h2>
   </header>
