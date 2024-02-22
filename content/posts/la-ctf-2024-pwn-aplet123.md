@@ -138,3 +138,7 @@ target.sendline('bye')
 
 target.interactive()
 ```
+
+```
+lactf{so_untrue_ei2p1wfwh9np2gg6}
+```
