@@ -204,7 +204,7 @@ gef➤
 0x7fffffffdc80: 0x5049933c3c3399bc      0x2d2c06c91180ab90
 ```
 
-Looking here we can see where the random card values start. Counting up 3 addresses we see the address we set the breakpoint on, which examianing with x/i which gives us the address as an instruction, we see tahat cards[-3] will give us game+222. We have our leak and can use this to calculate the address of win function.
+Looking here we can see where the random card values start. Counting up 3 addresses we see the address we set the breakpoint on, which examianing with x/i which gives us the address as an instruction, we see that cards[-3] will give us game+222. We have our leak and can use this to calculate the address of win function.
 
 ```
 0x7fffffffdba0: 0x00007fffffffdbb0      0xe15d5cb66eeba700

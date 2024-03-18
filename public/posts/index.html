@@ -136,6 +136,20 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">WolvCTF 2024 - pwn/shelleater
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>This was a fun challenge involving shellcode. I solved it the hard way by writing my own shellcode, but I saw two simpler ways to solve it after the CTF were over so I will briefly discuss those at the end.
+We are given a file and a netcat port. Taking a look at the file, all protections are off.
+checksec --file=shelleater [*] &#39;/home/df00/Desktop/shelleater&#39; Arch: amd64-64-little RELRO: No RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x400000) RWX: Has RWX segments Looking at the dissambly, the binary will exectute your shellcode, but not if it contains 0x80 or 0x050f....</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-03-18 15:34:02 -0400 EDT'>March 18, 2024</span></footer>
+  <a class="entry-link" aria-label="post link to WolvCTF 2024 - pwn/shelleater" href="https://dfoudeh.github.io/posts/wolv-ctf-2024-shelleater/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">LA CTF 2024 - pwn/52-card-monty
     </h2>
   </header>

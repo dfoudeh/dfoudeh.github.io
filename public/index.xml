@@ -6,8 +6,17 @@
     <description>Recent content on CTF Writeups</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 21 Feb 2024 20:20:50 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 18 Mar 2024 15:34:02 -0400</lastBuildDate>
     <atom:link href="https://dfoudeh.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>WolvCTF 2024 - pwn/shelleater</title>
+      <link>https://dfoudeh.github.io/posts/wolv-ctf-2024-shelleater/</link>
+      <pubDate>Mon, 18 Mar 2024 15:34:02 -0400</pubDate>
+      <guid>https://dfoudeh.github.io/posts/wolv-ctf-2024-shelleater/</guid>
+      <description>This was a fun challenge involving shellcode. I solved it the hard way by writing my own shellcode, but I saw two simpler ways to solve it after the CTF were over so I will briefly discuss those at the end.
+We are given a file and a netcat port. Taking a look at the file, all protections are off.
+checksec --file=shelleater [*] &amp;#39;/home/df00/Desktop/shelleater&amp;#39; Arch: amd64-64-little RELRO: No RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x400000) RWX: Has RWX segments Looking at the dissambly, the binary will exectute your shellcode, but not if it contains 0x80 or 0x050f.</description>
+    </item>
     <item>
       <title>LA CTF 2024 - pwn/52-card-monty</title>
       <link>https://dfoudeh.github.io/posts/la-ctf-2024-pwn-52-card-monty/</link>
