@@ -4,7 +4,7 @@ date = 2024-03-24T18:51:51-04:00
 draft = false
 +++
 
-We are given an executable and a netcat port. The name of the challenge suggests that this is a ROP challnege. Looking at the binary, all protections are off and the stack is executable, so we can inject shellcode.
+We are given an executable and a netcat port. The name of the challenge suggests that this is a ROP challenge. Looking at the binary, all protections are off and the stack is executable, so we can inject shellcode.
 
 ```sh
 checksec --file RunningOnPrayers

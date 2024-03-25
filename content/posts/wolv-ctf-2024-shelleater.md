@@ -8,7 +8,7 @@ This was a fun challenge involving shellcode. I solved it the hard way by writin
 
 We are given a file and a netcat port. Taking a look at the file, all protections are off.
 
-```
+```sh
 checksec --file=shelleater
 [*] '/home/df00/Desktop/shelleater'
     Arch:     amd64-64-little
@@ -21,7 +21,7 @@ checksec --file=shelleater
 
 Looking at the dissambly, the binary will exectute your shellcode, but not if it contains 0x80 or 0x050f.
 
-```
+```c
 void entry(void)
 
 {
@@ -56,7 +56,7 @@ read_bytes.fail:
 
 `int 0x80` is used for syscalls, and 0x050f is the assembly for syscall. Let's take a look at really simple shellcode:
 
-```
+```sh
 .global _start
 _start:
 .intel_syntax noprefix
@@ -74,7 +74,7 @@ binsh:
 
 We want to call `execve("/bin/sh", 0, 0)`. Looking at syscall table `https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/`, we need 59 in rax and "/bin/sh" in rdi. rsi and rdx are both zero. When we assemble this, we can that our syscal in assembly is 0x0f05 which we cannot use.
 
-```
+```sh
 objdump -M intel -d shellcode-elf
 
 shellcode-elf:     file format elf64-x86-64
@@ -101,7 +101,7 @@ Disassembly of section .text:
 
 We can make the code modify itself before execution. We can do many different ways for example using add or sub, but I used xor.
 
-```
+```sh
 .global _start
 _start:
 .intel_syntax noprefix
@@ -124,7 +124,7 @@ At label sys, we write 2 bytes. If we had written 0x0f05, at runtime this would 
 
 The final solve script:
 
-```
+```python
 from pwn import *
 
 target = remote('shelleater.wolvctf.io', 1337)

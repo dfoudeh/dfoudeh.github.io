@@ -79,7 +79,7 @@ int main(void) {
 }
 ```
 
-```
+```sh
 checksec --file=aplet123 
 RELRO           STACK CANARY      NX            PIE             RPATH      RUNPATH      Symbols         FORTIFY Fortified       Fortifiable     FILE
 Partial RELRO   Canary found      NX enabled    No PIE          No RPATH   No RUNPATH   49 Symbols        No    0               3               aplet123
@@ -112,7 +112,7 @@ Now that we have the canary,  we need to use the buffer overflow to overwrite th
 
 Complete solve script:
 
-```python3 
+```python
 from pwn import *
 context.log_level = "DEBUG"
 
@@ -139,6 +139,6 @@ target.sendline('bye')
 target.interactive()
 ```
 
-```
+```sh
 lactf{so_untrue_ei2p1wfwh9np2gg6}
 ```
