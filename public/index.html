@@ -2,25 +2,25 @@
 <html lang="en" dir="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.123.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.123.0"><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>CTF Writeups</title>
 
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/">
+<link rel="canonical" href="https://dfoudeh.github.io/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="icon" href="https://dfoudeh.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://dfoudeh.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://dfoudeh.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://dfoudeh.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://dfoudeh.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/index.xml">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/">
+<link rel="alternate" type="application/rss+xml" href="https://dfoudeh.github.io/index.xml">
+<link rel="alternate" hreflang="en" href="https://dfoudeh.github.io/">
 <noscript>
     <style>
         #theme-toggle,
@@ -57,7 +57,28 @@
         }
 
     </style>
-</noscript>
+</noscript><meta property="og:title" content="CTF Writeups" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://dfoudeh.github.io/" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="CTF Writeups"/>
+<meta name="twitter:description" content=""/>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "CTF Writeups",
+  "url": "https://dfoudeh.github.io/",
+  "description": "",
+  "thumbnailUrl": "https://dfoudeh.github.io/favicon.ico",
+  "sameAs": [
+      "mailto:d.foudeh@gmail.com", "https://github.com/dfoudeh"
+  ]
+}
+</script>
 </head>
 
 <body class="list" id="top">
@@ -75,7 +96,7 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="CTF Writeups (Alt + H)">CTF Writeups</a>
+            <a href="https://dfoudeh.github.io/" accesskey="h" title="CTF Writeups (Alt + H)">CTF Writeups</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -147,7 +168,7 @@
 undefined8 vuln(void) { char local_28 [32]; printf(&#34;Cramped...&#34;); fgets(local_28,0x40,stdin); return 0; } Again we can use jmp rsp, but this time we will use somthing like sub rsp, 0x20 jmp rsp after rsp....</p>
   </div>
   <footer class="entry-footer"><span title='2024-03-24 18:52:00 -0400 EDT'>March 24, 2024</span></footer>
-  <a class="entry-link" aria-label="post link to JerseyCTF 2024 - pwn/stage-left" href="http://localhost:1313/posts/jersey-ctf-2024-stage-left/"></a>
+  <a class="entry-link" aria-label="post link to JerseyCTF 2024 - pwn/stage-left" href="https://dfoudeh.github.io/posts/jersey-ctf-2024-stage-left/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -160,7 +181,7 @@ undefined8 vuln(void) { char local_28 [32]; printf(&#34;Cramped...&#34;); fgets(
 checksec --file RunningOnPrayers [*] &#39;/home/df00/Desktop/RunningOnPrayers&#39; Arch: amd64-64-little RELRO: Partial RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x400000) RWX: Has RWX segments The binary itself is very minimal, There is a main function that calls a vuln function....</p>
   </div>
   <footer class="entry-footer"><span title='2024-03-24 18:51:51 -0400 EDT'>March 24, 2024</span></footer>
-  <a class="entry-link" aria-label="post link to JerseyCTF 2024 - pwn/running-on-prayers" href="http://localhost:1313/posts/jersey-ctf-2024-running-on-prayers/"></a>
+  <a class="entry-link" aria-label="post link to JerseyCTF 2024 - pwn/running-on-prayers" href="https://dfoudeh.github.io/posts/jersey-ctf-2024-running-on-prayers/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -174,7 +195,7 @@ We are given a file and a netcat port. Taking a look at the file, all protection
 checksec --file=shelleater [*] &#39;/home/df00/Desktop/shelleater&#39; Arch: amd64-64-little RELRO: No RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x400000) RWX: Has RWX segments Looking at the dissambly, the binary will exectute your shellcode, but not if it contains 0x80 or 0x050f....</p>
   </div>
   <footer class="entry-footer"><span title='2024-03-18 15:34:02 -0400 EDT'>March 18, 2024</span></footer>
-  <a class="entry-link" aria-label="post link to WolvCTF 2024 - pwn/shelleater" href="http://localhost:1313/posts/wolv-ctf-2024-shelleater/"></a>
+  <a class="entry-link" aria-label="post link to WolvCTF 2024 - pwn/shelleater" href="https://dfoudeh.github.io/posts/wolv-ctf-2024-shelleater/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -187,7 +208,7 @@ checksec --file=shelleater [*] &#39;/home/df00/Desktop/shelleater&#39; Arch: amd
 #include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; #include &lt;string.h&gt; #include &lt;time.h&gt; #define DECK_SIZE 0x52 #define QUEEN 1111111111 void setup() { setbuf(stdin, NULL); setbuf(stdout, NULL); setbuf(stderr, NULL); srand(time(NULL)); } void win() { char flag[256]; FILE *flagfile = fopen(&#34;flag.txt&#34;, &#34;r&#34;); if (flagfile == NULL) { puts(&#34;Cannot read flag.txt.&#34;); } else { fgets(flag, 256, flagfile); flag[strcspn(flag, &#34;\n&#34;)] = &#39;\0&#39;; puts(flag); } } long lrand() { long higher, lower; higher = (((long)rand()) &lt;&lt; 32); lower = (long)rand(); return higher &#43; lower; } void game() { int index; long leak; long cards[52] = {0}; char name[20]; for (int i = 0; i &lt; 52; &#43;&#43;i) { cards[i] = lrand(); } index = rand() % 52; cards[index] = QUEEN; printf(&#34;==============================\n&#34;); printf(&#34;index of your first peek?...</p>
   </div>
   <footer class="entry-footer"><span title='2024-02-21 20:20:50 -0500 EST'>February 21, 2024</span></footer>
-  <a class="entry-link" aria-label="post link to LA CTF 2024 - pwn/52-card-monty" href="http://localhost:1313/posts/la-ctf-2024-pwn-52-card-monty/"></a>
+  <a class="entry-link" aria-label="post link to LA CTF 2024 - pwn/52-card-monty" href="https://dfoudeh.github.io/posts/la-ctf-2024-pwn-52-card-monty/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -200,12 +221,12 @@ checksec --file=shelleater [*] &#39;/home/df00/Desktop/shelleater&#39; Arch: amd
 #include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; #include &lt;string.h&gt; #include &lt;time.h&gt; #include &lt;unistd.h&gt; void print_flag(void) { char flag[256]; FILE *flag_file = fopen(&#34;flag.txt&#34;, &#34;r&#34;); fgets(flag, sizeof flag, flag_file); puts(flag); } const char *const responses[] = {&#34;L&#34;, &#34;amongus&#34;, &#34;true&#34;, &#34;pickle&#34;, &#34;GINKOID&#34;, &#34;L bozo&#34;, &#34;wtf&#34;, &#34;not with that attitude&#34;, &#34;increble&#34;, &#34;based&#34;, &#34;so true&#34;, &#34;monka&#34;, &#34;wat&#34;, &#34;monkaS&#34;, &#34;banned&#34;, &#34;holy based&#34;, &#34;daz crazy&#34;, &#34;smh&#34;, &#34;bruh&#34;, &#34;lol&#34;, &#34;mfw&#34;, &#34;skissue&#34;, &#34;so relatable&#34;, &#34;copium&#34;, &#34;untrue!...</p>
   </div>
   <footer class="entry-footer"><span title='2024-02-21 17:20:12 -0500 EST'>February 21, 2024</span></footer>
-  <a class="entry-link" aria-label="post link to LA CTF 2024 - pwn/aplet123" href="http://localhost:1313/posts/la-ctf-2024-pwn-aplet123/"></a>
+  <a class="entry-link" aria-label="post link to LA CTF 2024 - pwn/aplet123" href="https://dfoudeh.github.io/posts/la-ctf-2024-pwn-aplet123/"></a>
 </article>
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="http://localhost:1313/">CTF Writeups</a></span>
+    <span>&copy; 2024 <a href="https://dfoudeh.github.io/">CTF Writeups</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
