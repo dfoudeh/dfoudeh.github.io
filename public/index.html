@@ -139,6 +139,19 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">DownUnderCTF 2024 - pwn/yawa
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>We are given a binary with all protections turned on, and c source code..
+[d@d-20tk001gus yaw]$ pwn checksec --file=yawa [*] &#39;/home/d/Downloads/DUCTF24/yaw/yawa&#39; Arch: amd64-64-little RELRO: Full RELRO Stack: Canary found NX: NX enabled PIE: PIE enabled RUNPATH: b&#39;.&#39; #include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; #include &lt;unistd.h&gt; void init() { setvbuf(stdin, 0, 2, 0); setvbuf(stdout, 0, 2, 0); } int menu() { int choice; puts(&#34;1. Tell me your name&#34;); puts(&#34;2. Get a personalised greeting&#34;); printf(&#34;&gt; &#34;); scanf(&#34;%d&#34;, &amp;choice); return choice; } int main() { init(); char name[88]; int choice; while(1) { choice = menu(); if(choice == 1) { read(0, name, 0x88); } else if(choice == 2) { printf(&#34;Hello, %s\n&#34;, name); } else { break; } } } First, we need to leak out the canary....</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-07-07 10:47:36 -0400 EDT'>July 7, 2024</span></footer>
+  <a class="entry-link" aria-label="post link to DownUnderCTF 2024 - pwn/yawa" href="http://localhost:1313/posts/du-ctf-2024-yawa/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">UIUCTF 2024 - pwn/syscalls
     </h2>
   </header>

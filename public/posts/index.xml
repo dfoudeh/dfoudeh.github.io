@@ -6,8 +6,16 @@
     <description>Recent content in Posts on CTF Writeups</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 02 Jul 2024 01:07:17 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 07 Jul 2024 10:47:36 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DownUnderCTF 2024 - pwn/yawa</title>
+      <link>http://localhost:1313/posts/du-ctf-2024-yawa/</link>
+      <pubDate>Sun, 07 Jul 2024 10:47:36 -0400</pubDate>
+      <guid>http://localhost:1313/posts/du-ctf-2024-yawa/</guid>
+      <description>We are given a binary with all protections turned on, and c source code..
+[d@d-20tk001gus yaw]$ pwn checksec --file=yawa [*] &amp;#39;/home/d/Downloads/DUCTF24/yaw/yawa&amp;#39; Arch: amd64-64-little RELRO: Full RELRO Stack: Canary found NX: NX enabled PIE: PIE enabled RUNPATH: b&amp;#39;.&amp;#39; #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt; #include &amp;lt;unistd.h&amp;gt; void init() { setvbuf(stdin, 0, 2, 0); setvbuf(stdout, 0, 2, 0); } int menu() { int choice; puts(&amp;#34;1. Tell me your name&amp;#34;); puts(&amp;#34;2. Get a personalised greeting&amp;#34;); printf(&amp;#34;&amp;gt; &amp;#34;); scanf(&amp;#34;%d&amp;#34;, &amp;amp;choice); return choice; } int main() { init(); char name[88]; int choice; while(1) { choice = menu(); if(choice == 1) { read(0, name, 0x88); } else if(choice == 2) { printf(&amp;#34;Hello, %s\n&amp;#34;, name); } else { break; } } } First, we need to leak out the canary.</description>
+    </item>
     <item>
       <title>UIUCTF 2024 - pwn/syscalls</title>
       <link>http://localhost:1313/posts/uiuc-ctf-2024-syscalls/</link>
