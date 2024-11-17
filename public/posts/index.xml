@@ -2,67 +2,67 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on CTF Writeups</title>
-    <link>http://localhost:1313/posts/</link>
+    <link>https://dfoudeh.github.io/posts/</link>
     <description>Recent content in Posts on CTF Writeups</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 07 Jul 2024 10:47:36 -0400</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://dfoudeh.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>DownUnderCTF 2024 - pwn/yawa</title>
-      <link>http://localhost:1313/posts/du-ctf-2024-yawa/</link>
+      <link>https://dfoudeh.github.io/posts/du-ctf-2024-yawa/</link>
       <pubDate>Sun, 07 Jul 2024 10:47:36 -0400</pubDate>
-      <guid>http://localhost:1313/posts/du-ctf-2024-yawa/</guid>
+      <guid>https://dfoudeh.github.io/posts/du-ctf-2024-yawa/</guid>
       <description>We are given a binary with all protections turned on, and c source code..
 [d@d-20tk001gus yaw]$ pwn checksec --file=yawa [*] &amp;#39;/home/d/Downloads/DUCTF24/yaw/yawa&amp;#39; Arch: amd64-64-little RELRO: Full RELRO Stack: Canary found NX: NX enabled PIE: PIE enabled RUNPATH: b&amp;#39;.&amp;#39; #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt; #include &amp;lt;unistd.h&amp;gt; void init() { setvbuf(stdin, 0, 2, 0); setvbuf(stdout, 0, 2, 0); } int menu() { int choice; puts(&amp;#34;1. Tell me your name&amp;#34;); puts(&amp;#34;2. Get a personalised greeting&amp;#34;); printf(&amp;#34;&amp;gt; &amp;#34;); scanf(&amp;#34;%d&amp;#34;, &amp;amp;choice); return choice; } int main() { init(); char name[88]; int choice; while(1) { choice = menu(); if(choice == 1) { read(0, name, 0x88); } else if(choice == 2) { printf(&amp;#34;Hello, %s\n&amp;#34;, name); } else { break; } } } First, we need to leak out the canary.</description>
     </item>
     <item>
       <title>UIUCTF 2024 - pwn/syscalls</title>
-      <link>http://localhost:1313/posts/uiuc-ctf-2024-syscalls/</link>
+      <link>https://dfoudeh.github.io/posts/uiuc-ctf-2024-syscalls/</link>
       <pubDate>Tue, 02 Jul 2024 01:07:17 -0400</pubDate>
-      <guid>http://localhost:1313/posts/uiuc-ctf-2024-syscalls/</guid>
+      <guid>https://dfoudeh.github.io/posts/uiuc-ctf-2024-syscalls/</guid>
       <description>&amp;lsquo;syscalls&amp;rsquo; was a very neat shellcode with seccomp challenge.
 Initial Analysis We are given a binary &amp;lsquo;syscalls&amp;rsquo; and a Dockerfile. First, we take a look at the binary with the file command, and see that it is a stripped 64 bit ELF.
 [d@d-20tk001gus syscall]$ file syscalls syscalls: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=19b78a52059d384f1b4def02d5838b625773369d, for GNU/Linux 3.2.0, stripped Next we use checksec to see what protections are on.</description>
     </item>
     <item>
       <title>JerseyCTF 2024 - pwn/stage-left</title>
-      <link>http://localhost:1313/posts/jersey-ctf-2024-stage-left/</link>
+      <link>https://dfoudeh.github.io/posts/jersey-ctf-2024-stage-left/</link>
       <pubDate>Sun, 24 Mar 2024 18:52:00 -0400</pubDate>
-      <guid>http://localhost:1313/posts/jersey-ctf-2024-stage-left/</guid>
+      <guid>https://dfoudeh.github.io/posts/jersey-ctf-2024-stage-left/</guid>
       <description>This challenge is very similar to the last challenge Running on Prayers, except instead of an unbounded gets into a buffer, we read in 0x40 bytes using fgets. Because space is limited, we have to inject our shellcode in stages, as the name suggets.
 undefined8 vuln(void) { char local_28 [32]; printf(&amp;#34;Cramped...&amp;#34;); fgets(local_28,0x40,stdin); return 0; } Again we can use jmp rsp, but this time we will use somthing like sub rsp, 0x20 jmp rsp after rsp.</description>
     </item>
     <item>
       <title>JerseyCTF 2024 - pwn/running-on-prayers</title>
-      <link>http://localhost:1313/posts/jersey-ctf-2024-running-on-prayers/</link>
+      <link>https://dfoudeh.github.io/posts/jersey-ctf-2024-running-on-prayers/</link>
       <pubDate>Sun, 24 Mar 2024 18:51:51 -0400</pubDate>
-      <guid>http://localhost:1313/posts/jersey-ctf-2024-running-on-prayers/</guid>
+      <guid>https://dfoudeh.github.io/posts/jersey-ctf-2024-running-on-prayers/</guid>
       <description>We are given an executable and a netcat port. The name of the challenge suggests that this is a ROP challenge. Looking at the binary, all protections are off and the stack is executable, so we can inject shellcode.
 checksec --file RunningOnPrayers [*] &amp;#39;/home/df00/Desktop/RunningOnPrayers&amp;#39; Arch: amd64-64-little RELRO: Partial RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x400000) RWX: Has RWX segments The binary itself is very minimal, There is a main function that calls a vuln function.</description>
     </item>
     <item>
       <title>WolvCTF 2024 - pwn/shelleater</title>
-      <link>http://localhost:1313/posts/wolv-ctf-2024-shelleater/</link>
+      <link>https://dfoudeh.github.io/posts/wolv-ctf-2024-shelleater/</link>
       <pubDate>Mon, 18 Mar 2024 15:34:02 -0400</pubDate>
-      <guid>http://localhost:1313/posts/wolv-ctf-2024-shelleater/</guid>
+      <guid>https://dfoudeh.github.io/posts/wolv-ctf-2024-shelleater/</guid>
       <description>This was a fun challenge involving shellcode. I solved it the hard way by writing my own shellcode, but I saw two simpler ways to solve it after the CTF were over so I will briefly discuss those at the end.
 We are given a file and a netcat port. Taking a look at the file, all protections are off.
 checksec --file=shelleater [*] &amp;#39;/home/df00/Desktop/shelleater&amp;#39; Arch: amd64-64-little RELRO: No RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x400000) RWX: Has RWX segments Looking at the dissambly, the binary will exectute your shellcode, but not if it contains 0x80 or 0x050f.</description>
     </item>
     <item>
       <title>LA CTF 2024 - pwn/52-card-monty</title>
-      <link>http://localhost:1313/posts/la-ctf-2024-pwn-52-card-monty/</link>
+      <link>https://dfoudeh.github.io/posts/la-ctf-2024-pwn-52-card-monty/</link>
       <pubDate>Wed, 21 Feb 2024 20:20:50 -0500</pubDate>
-      <guid>http://localhost:1313/posts/la-ctf-2024-pwn-52-card-monty/</guid>
+      <guid>https://dfoudeh.github.io/posts/la-ctf-2024-pwn-52-card-monty/</guid>
       <description>Again we are given c code along with a binary and a Dockerfile.
 #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt; #include &amp;lt;string.h&amp;gt; #include &amp;lt;time.h&amp;gt; #define DECK_SIZE 0x52 #define QUEEN 1111111111 void setup() { setbuf(stdin, NULL); setbuf(stdout, NULL); setbuf(stderr, NULL); srand(time(NULL)); } void win() { char flag[256]; FILE *flagfile = fopen(&amp;#34;flag.txt&amp;#34;, &amp;#34;r&amp;#34;); if (flagfile == NULL) { puts(&amp;#34;Cannot read flag.txt.&amp;#34;); } else { fgets(flag, 256, flagfile); flag[strcspn(flag, &amp;#34;\n&amp;#34;)] = &amp;#39;\0&amp;#39;; puts(flag); } } long lrand() { long higher, lower; higher = (((long)rand()) &amp;lt;&amp;lt; 32); lower = (long)rand(); return higher + lower; } void game() { int index; long leak; long cards[52] = {0}; char name[20]; for (int i = 0; i &amp;lt; 52; ++i) { cards[i] = lrand(); } index = rand() % 52; cards[index] = QUEEN; printf(&amp;#34;==============================\n&amp;#34;); printf(&amp;#34;index of your first peek?</description>
     </item>
     <item>
       <title>LA CTF 2024 - pwn/aplet123</title>
-      <link>http://localhost:1313/posts/la-ctf-2024-pwn-aplet123/</link>
+      <link>https://dfoudeh.github.io/posts/la-ctf-2024-pwn-aplet123/</link>
       <pubDate>Wed, 21 Feb 2024 17:20:12 -0500</pubDate>
-      <guid>http://localhost:1313/posts/la-ctf-2024-pwn-aplet123/</guid>
+      <guid>https://dfoudeh.github.io/posts/la-ctf-2024-pwn-aplet123/</guid>
       <description>We are given a binary and source code. Taking a look at the source code:
 #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt; #include &amp;lt;string.h&amp;gt; #include &amp;lt;time.h&amp;gt; #include &amp;lt;unistd.h&amp;gt; void print_flag(void) { char flag[256]; FILE *flag_file = fopen(&amp;#34;flag.txt&amp;#34;, &amp;#34;r&amp;#34;); fgets(flag, sizeof flag, flag_file); puts(flag); } const char *const responses[] = {&amp;#34;L&amp;#34;, &amp;#34;amongus&amp;#34;, &amp;#34;true&amp;#34;, &amp;#34;pickle&amp;#34;, &amp;#34;GINKOID&amp;#34;, &amp;#34;L bozo&amp;#34;, &amp;#34;wtf&amp;#34;, &amp;#34;not with that attitude&amp;#34;, &amp;#34;increble&amp;#34;, &amp;#34;based&amp;#34;, &amp;#34;so true&amp;#34;, &amp;#34;monka&amp;#34;, &amp;#34;wat&amp;#34;, &amp;#34;monkaS&amp;#34;, &amp;#34;banned&amp;#34;, &amp;#34;holy based&amp;#34;, &amp;#34;daz crazy&amp;#34;, &amp;#34;smh&amp;#34;, &amp;#34;bruh&amp;#34;, &amp;#34;lol&amp;#34;, &amp;#34;mfw&amp;#34;, &amp;#34;skissue&amp;#34;, &amp;#34;so relatable&amp;#34;, &amp;#34;copium&amp;#34;, &amp;#34;untrue!</description>
     </item>
