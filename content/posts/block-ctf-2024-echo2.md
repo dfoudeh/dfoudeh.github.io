@@ -1,6 +1,6 @@
 +++
 title = 'BlockCTF 2024 - pwn/echo2'
-date = 2024-11-17T22:52:37-05:00
+date = 2024-11-11T20:52:37-05:00
 draft = false
 +++
 
