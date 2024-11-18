@@ -6,8 +6,16 @@
     <description>Recent content on CTF Writeups</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 07 Jul 2024 10:47:36 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 17 Nov 2024 22:52:37 -0500</lastBuildDate>
     <atom:link href="https://dfoudeh.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>BlockCTF 2024 - pwn/echo2</title>
+      <link>https://dfoudeh.github.io/posts/block-ctf-2024-echo2/</link>
+      <pubDate>Sun, 17 Nov 2024 22:52:37 -0500</pubDate>
+      <guid>https://dfoudeh.github.io/posts/block-ctf-2024-echo2/</guid>
+      <description>We are given a binary with all protectoins turned on and c source code.
+#include &amp;lt;fcntl.h&amp;gt; #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;stdint.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt; #include &amp;lt;unistd.h&amp;gt; void print_flag() { uint8_t flag_buffer[256] = {0}; int fd = open(&amp;#34;flag.txt&amp;#34;, O_RDONLY); read(fd, flag_buffer, sizeof(flag_buffer)); puts(flag_buffer); close(fd); } void do_echo() { uint8_t echo_buffer[256] = {0}; gets(echo_buffer); printf(echo_buffer); fflush(stdout); } int main(void) { while(1) { do_echo(); } return 0; } There is a buffer overflow and printf vulnerability in do_echo().</description>
+    </item>
     <item>
       <title>DownUnderCTF 2024 - pwn/yawa</title>
       <link>https://dfoudeh.github.io/posts/du-ctf-2024-yawa/</link>
