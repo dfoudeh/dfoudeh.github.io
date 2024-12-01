@@ -6,8 +6,17 @@
     <description>Recent content on CTF Writeups</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 17 Nov 2024 23:00:52 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 01 Dec 2024 06:52:21 -0500</lastBuildDate>
     <atom:link href="https://dfoudeh.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>World Wide CTF 2024 - pwn/white-rabbit</title>
+      <link>https://dfoudeh.github.io/posts/ww-ctf-2024-pwn-whiterabbit/</link>
+      <pubDate>Sun, 01 Dec 2024 06:52:21 -0500</pubDate>
+      <guid>https://dfoudeh.github.io/posts/ww-ctf-2024-pwn-whiterabbit/</guid>
+      <description>White Rabbit is a shellcode challenge I created for WWCTF 2024. I will walk you through the intended solution and share an very clever approach discovered by my teammate @Nosimue.
+Overview We are given a binary (white_rabbit) and a remote netcat endpoint. The first step is to analyze the binary&amp;rsquo;s protections useing checksec
+[d@d-20tk001gus challs]$ checksec --file=white_rabbit RELRO STACK CANARY NX PIE RPATH RUNPATH	Symbols	FORTIFY	Fortified	Fortifiable	FILE Partial RELRO No canary found NX disabled PIE enabled No RPATH No RUNPATH 31 Symbols	No	0	2	white_rabbit NX Disabled: Allows execution of injected shellcode.</description>
+    </item>
     <item>
       <title>PwnSec CTF 2024 -  rev/tiny</title>
       <link>https://dfoudeh.github.io/posts/pwnsec-ctf-2024-tiny/</link>

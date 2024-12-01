@@ -136,6 +136,20 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">World Wide CTF 2024 - pwn/white-rabbit
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>White Rabbit is a shellcode challenge I created for WWCTF 2024. I will walk you through the intended solution and share an very clever approach discovered by my teammate @Nosimue.
+Overview We are given a binary (white_rabbit) and a remote netcat endpoint. The first step is to analyze the binary’s protections useing checksec
+[d@d-20tk001gus challs]$ checksec --file=white_rabbit RELRO STACK CANARY NX PIE RPATH RUNPATH	Symbols	FORTIFY	Fortified	Fortifiable	FILE Partial RELRO No canary found NX disabled PIE enabled No RPATH No RUNPATH 31 Symbols	No	0	2	white_rabbit NX Disabled: Allows execution of injected shellcode....</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-12-01 06:52:21 -0500 EST'>December 1, 2024</span></footer>
+  <a class="entry-link" aria-label="post link to World Wide CTF 2024 - pwn/white-rabbit" href="https://dfoudeh.github.io/posts/ww-ctf-2024-pwn-whiterabbit/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">PwnSec CTF 2024 -  rev/tiny
     </h2>
   </header>

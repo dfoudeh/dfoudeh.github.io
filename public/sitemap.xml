@@ -3,10 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://dfoudeh.github.io/</loc>
-    <lastmod>2024-11-17T23:00:52-05:00</lastmod>
+    <lastmod>2024-12-01T06:52:21-05:00</lastmod>
   </url><url>
     <loc>https://dfoudeh.github.io/posts/</loc>
-    <lastmod>2024-11-17T23:00:52-05:00</lastmod>
+    <lastmod>2024-12-01T06:52:21-05:00</lastmod>
+  </url><url>
+    <loc>https://dfoudeh.github.io/posts/ww-ctf-2024-pwn-whiterabbit/</loc>
+    <lastmod>2024-12-01T06:52:21-05:00</lastmod>
   </url><url>
     <loc>https://dfoudeh.github.io/posts/pwnsec-ctf-2024-tiny/</loc>
     <lastmod>2024-11-17T23:00:52-05:00</lastmod>
