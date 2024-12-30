@@ -1,7 +1,7 @@
 +++
 title = 'World Wide CTF 2024 - pwn/white-rabbit'
 date = 2024-12-01T06:52:21-05:00
-draft = true
+draft = false
 +++
 
 White Rabbit is a shellcode challenge I created for WWCTF 2024. I will walk you through the intended solution and share an very clever approach discovered by my teammate @Nosimue.
