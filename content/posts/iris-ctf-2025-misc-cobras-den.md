@@ -1,5 +1,5 @@
 +++
-title = 'Iris Ctf 2025 Misc Cobras Den'
+title = 'IrisCTF 2025 - misc/cobras-den'
 date = 2025-01-06T00:08:48-05:00
 draft = false
 +++
