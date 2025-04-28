@@ -6,8 +6,27 @@
     <description>Recent content in Posts on CTF Writeups</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Dec 2024 06:52:21 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 28 Apr 2025 12:42:38 -0400</lastBuildDate>
     <atom:link href="https://dfoudeh.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>UMDCTF 2025 - web/steve-le-poisson</title>
+      <link>https://dfoudeh.github.io/posts/umd-ctf-2025-web-steve-le-poisson/</link>
+      <pubDate>Mon, 28 Apr 2025 12:42:38 -0400</pubDate>
+      <guid>https://dfoudeh.github.io/posts/umd-ctf-2025-web-steve-le-poisson/</guid>
+      <description>Steve Le Poisson was a web challenge from UMD CTF 2025. The site plays a fun video of Steve:
+Once the video ends, we have a page with an input box:
+Lets take a look at the given source:
+// 📦 Importation des modules nécessaires pour faire tourner notre monde sous-marin numérique const express = require(&amp;#34;express&amp;#34;); // Express, le cadre web minimaliste mais puissant const sqlite3 = require(&amp;#34;sqlite3&amp;#34;); // SQLite version brute, pour les bases de données légères const sqlite = require(&amp;#34;sqlite&amp;#34;); // Une interface moderne (promesse-friendly) pour SQLite const cors = require(&amp;#34;cors&amp;#34;); // Pour permettre à d&amp;#39;autres domaines de parler à notre serveur — Steve est sociable, mais pas trop // 🐠 Création de l&amp;#39;application Express : c’est ici que commence l’aventure const app = express(); // 🧪 Fonction de validation des en-têtes HTTP // Steve, ce poisson à la sensibilité exacerbée, déteste les en-têtes trop longs, ambigus ou mystérieux function checkBadHeader(headerName, headerValue) { return headerName.</description>
+    </item>
+    <item>
+      <title>IrisCTF 2025 - misc/cobras-den</title>
+      <link>https://dfoudeh.github.io/posts/iris-ctf-2025-misc-cobras-den/</link>
+      <pubDate>Mon, 06 Jan 2025 00:08:48 -0500</pubDate>
+      <guid>https://dfoudeh.github.io/posts/iris-ctf-2025-misc-cobras-den/</guid>
+      <description>Cobra&amp;rsquo;s Den was a python jail escape challenge for IrisCTF 2025. What better way to start the new year than with a pyjail?
+Lets take a look at the code
+# flag stored at &amp;#39;flag&amp;#39; in current dir import builtins all_builtins = dir(builtins) filtered_builtins = {name: getattr(builtins, name) for name in all_builtins if len(name) &amp;lt;= 4} filtered_builtins.update({&amp;#39;print&amp;#39;: print}) whitelist = &amp;#34;&amp;lt;ph[(cobras.den)]+~&amp;#34; security_check = lambda s: any(c not in whitelist for c in s) or len(s) &amp;gt; 1115 or s.</description>
+    </item>
     <item>
       <title>World Wide CTF 2024 - pwn/white-rabbit</title>
       <link>https://dfoudeh.github.io/posts/ww-ctf-2024-pwn-whiterabbit/</link>

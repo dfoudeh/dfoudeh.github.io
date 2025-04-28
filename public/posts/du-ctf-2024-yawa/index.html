@@ -11,7 +11,7 @@
 [d@d-20tk001gus yaw]$ pwn checksec --file=yawa [*] &#39;/home/d/Downloads/DUCTF24/yaw/yawa&#39; Arch: amd64-64-little RELRO: Full RELRO Stack: Canary found NX: NX enabled PIE: PIE enabled RUNPATH: b&#39;.&#39; #include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; #include &lt;unistd.h&gt; void init() { setvbuf(stdin, 0, 2, 0); setvbuf(stdout, 0, 2, 0); } int menu() { int choice; puts(&#34;1. Tell me your name&#34;); puts(&#34;2. Get a personalised greeting&#34;); printf(&#34;&gt; &#34;); scanf(&#34;%d&#34;, &amp;choice); return choice; } int main() { init(); char name[88]; int choice; while(1) { choice = menu(); if(choice == 1) { read(0, name, 0x88); } else if(choice == 2) { printf(&#34;Hello, %s\n&#34;, name); } else { break; } } } First, we need to leak out the canary.">
 <meta name="author" content="">
 <link rel="canonical" href="https://dfoudeh.github.io/posts/du-ctf-2024-yawa/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.287d23ee212a39f1ca2dfc362a4cfcc63951b52b214116e1cb5663bb1883333a.css" integrity="sha256-KH0j7iEqOfHKLfw2Kkz8xjlRtSshQRbhy1ZjuxiDMzo=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://dfoudeh.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://dfoudeh.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://dfoudeh.github.io/favicon-32x32.png">
@@ -323,7 +323,7 @@
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="https://dfoudeh.github.io/">CTF Writeups</a></span>
+    <span>&copy; 2025 <a href="https://dfoudeh.github.io/">CTF Writeups</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

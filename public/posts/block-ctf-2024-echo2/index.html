@@ -11,7 +11,7 @@
 #include &lt;fcntl.h&gt; #include &lt;stdio.h&gt; #include &lt;stdint.h&gt; #include &lt;stdlib.h&gt; #include &lt;unistd.h&gt; void print_flag() { uint8_t flag_buffer[256] = {0}; int fd = open(&#34;flag.txt&#34;, O_RDONLY); read(fd, flag_buffer, sizeof(flag_buffer)); puts(flag_buffer); close(fd); } void do_echo() { uint8_t echo_buffer[256] = {0}; gets(echo_buffer); printf(echo_buffer); fflush(stdout); } int main(void) { while(1) { do_echo(); } return 0; } There is a buffer overflow and printf vulnerability in do_echo().">
 <meta name="author" content="">
 <link rel="canonical" href="https://dfoudeh.github.io/posts/block-ctf-2024-echo2/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.287d23ee212a39f1ca2dfc362a4cfcc63951b52b214116e1cb5663bb1883333a.css" integrity="sha256-KH0j7iEqOfHKLfw2Kkz8xjlRtSshQRbhy1ZjuxiDMzo=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://dfoudeh.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://dfoudeh.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://dfoudeh.github.io/favicon-32x32.png">
@@ -246,7 +246,7 @@
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="https://dfoudeh.github.io/">CTF Writeups</a></span>
+    <span>&copy; 2025 <a href="https://dfoudeh.github.io/">CTF Writeups</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
