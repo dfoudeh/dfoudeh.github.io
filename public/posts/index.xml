@@ -2,17 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on CTF Writeups</title>
-    <link>https://dfoudeh.github.io/posts/</link>
+    <link>http://localhost:1313/posts/</link>
     <description>Recent content in Posts on CTF Writeups</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 28 Apr 2025 12:42:38 -0400</lastBuildDate>
-    <atom:link href="https://dfoudeh.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 01 Jun 2025 19:02:16 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Grey Cat the Flag 2025 - misc/countle-training-centre</title>
+      <link>http://localhost:1313/posts/grey-cat-the-flag-2025-countle-training-centre/</link>
+      <pubDate>Sun, 01 Jun 2025 19:02:16 -0400</pubDate>
+      <guid>http://localhost:1313/posts/grey-cat-the-flag-2025-countle-training-centre/</guid>
+      <description>The challenge presents a math game where we have to solve expressions to reach target numbers 1,1,000,000.
+╔════════════════╗ ║ Puzzle #1 ║ ╚════════════════╝ Target: 234 Nums: 25 6 2 4 3 4 The actual challenge is escaping a python sandbox. Looking at the source:
+#!/usr/local/bin/python from re import match from sys import exit from time import sleep from countle_puzzle import generateSolvablePuzzle def format(s): return (s.replace(&amp;#39;~E&amp;#39;,&amp;#34;\033[0m&amp;#34;).replace(&amp;#39;~R&amp;#39;,&amp;#34;\033[0;1;31m&amp;#34;).replace(&amp;#39;~N&amp;#39;,&amp;#34;\033[0;1;7;31m&amp;#34;) .replace(&amp;#39;~w&amp;#39;,&amp;#34;\033[7;37m&amp;#34;).replace(&amp;#39;~u&amp;#39;,&amp;#34;\33[4;31m&amp;#34;).replace(&amp;#39;~Gr&amp;#39;,&amp;#34;\33[0;90m&amp;#34;).replace(&amp;#39;~r&amp;#39;,&amp;#34;\33[0;31m&amp;#34;) .replace(&amp;#39;~G&amp;#39;,&amp;#34;\033[0;1;32m&amp;#34;).replace(&amp;#39;~B&amp;#39;,&amp;#34;\033[1;34m&amp;#34;)).replace(&amp;#39;~W&amp;#39;,&amp;#34;\033[1;4;37m&amp;#34;) def banner(): return format(r&amp;#34;&amp;#34;&amp;#34; ~R( * ) ( )\ ` )\ /( )\ (((_) ( )(_))(((_) )\\~E___ ~R(~E_~R(~E_~R()) )\\~E___ ~R((~w/ __|~E ~w|_ _|~R((~w/ __|~E ~w| (~E__ ~w| |~E ~w| (~E ~w\___|~E ~w|_|~E ~w\___|~E ~RWelcome to the~E ~NCountle Training Centre!</description>
+    </item>
+    <item>
+      <title>HTB Global Cyber Skills Benchmark 2025 - blockchain-enlistment</title>
+      <link>http://localhost:1313/posts/htb-global-cyber-skills-benchmark-2025-enlistment/</link>
+      <pubDate>Tue, 27 May 2025 22:24:30 -0400</pubDate>
+      <guid>http://localhost:1313/posts/htb-global-cyber-skills-benchmark-2025-enlistment/</guid>
+      <description>Test, fill this out!</description>
+    </item>
+    <item>
+      <title>HTB Global Cyber Skills Benchmark 2025 - pwn/power-greed</title>
+      <link>http://localhost:1313/posts/htb-global-cyber-skills-benchmark-2025-power-greed/</link>
+      <pubDate>Tue, 27 May 2025 22:23:00 -0400</pubDate>
+      <guid>http://localhost:1313/posts/htb-global-cyber-skills-benchmark-2025-power-greed/</guid>
+      <description></description>
+    </item>
     <item>
       <title>UMDCTF 2025 - web/steve-le-poisson</title>
-      <link>https://dfoudeh.github.io/posts/umd-ctf-2025-web-steve-le-poisson/</link>
+      <link>http://localhost:1313/posts/umd-ctf-2025-web-steve-le-poisson/</link>
       <pubDate>Mon, 28 Apr 2025 12:42:38 -0400</pubDate>
-      <guid>https://dfoudeh.github.io/posts/umd-ctf-2025-web-steve-le-poisson/</guid>
+      <guid>http://localhost:1313/posts/umd-ctf-2025-web-steve-le-poisson/</guid>
       <description>Steve Le Poisson was a web challenge from UMD CTF 2025. The site plays a fun video of Steve:
 Once the video ends, we have a page with an input box:
 Lets take a look at the given source:
@@ -20,94 +43,94 @@ Lets take a look at the given source:
     </item>
     <item>
       <title>IrisCTF 2025 - misc/cobras-den</title>
-      <link>https://dfoudeh.github.io/posts/iris-ctf-2025-misc-cobras-den/</link>
+      <link>http://localhost:1313/posts/iris-ctf-2025-misc-cobras-den/</link>
       <pubDate>Mon, 06 Jan 2025 00:08:48 -0500</pubDate>
-      <guid>https://dfoudeh.github.io/posts/iris-ctf-2025-misc-cobras-den/</guid>
+      <guid>http://localhost:1313/posts/iris-ctf-2025-misc-cobras-den/</guid>
       <description>Cobra&amp;rsquo;s Den was a python jail escape challenge for IrisCTF 2025. What better way to start the new year than with a pyjail?
 Lets take a look at the code
 # flag stored at &amp;#39;flag&amp;#39; in current dir import builtins all_builtins = dir(builtins) filtered_builtins = {name: getattr(builtins, name) for name in all_builtins if len(name) &amp;lt;= 4} filtered_builtins.update({&amp;#39;print&amp;#39;: print}) whitelist = &amp;#34;&amp;lt;ph[(cobras.den)]+~&amp;#34; security_check = lambda s: any(c not in whitelist for c in s) or len(s) &amp;gt; 1115 or s.</description>
     </item>
     <item>
       <title>World Wide CTF 2024 - pwn/white-rabbit</title>
-      <link>https://dfoudeh.github.io/posts/ww-ctf-2024-pwn-whiterabbit/</link>
+      <link>http://localhost:1313/posts/ww-ctf-2024-pwn-whiterabbit/</link>
       <pubDate>Sun, 01 Dec 2024 06:52:21 -0500</pubDate>
-      <guid>https://dfoudeh.github.io/posts/ww-ctf-2024-pwn-whiterabbit/</guid>
+      <guid>http://localhost:1313/posts/ww-ctf-2024-pwn-whiterabbit/</guid>
       <description>White Rabbit is a shellcode challenge I created for WWCTF 2024. I will walk you through the intended solution and share an very clever approach discovered by my teammate @Nosimue.
 Overview We are given a binary (white_rabbit) and a remote netcat endpoint. The first step is to analyze the binary&amp;rsquo;s protections useing checksec
 [d@d-20tk001gus challs]$ checksec --file=white_rabbit RELRO STACK CANARY NX PIE RPATH RUNPATH	Symbols	FORTIFY	Fortified	Fortifiable	FILE Partial RELRO No canary found NX disabled PIE enabled No RPATH No RUNPATH 31 Symbols	No	0	2	white_rabbit NX Disabled: Allows execution of injected shellcode.</description>
     </item>
     <item>
       <title>PwnSec CTF 2024 -  rev/tiny</title>
-      <link>https://dfoudeh.github.io/posts/pwnsec-ctf-2024-tiny/</link>
+      <link>http://localhost:1313/posts/pwnsec-ctf-2024-tiny/</link>
       <pubDate>Sun, 17 Nov 2024 23:00:52 -0500</pubDate>
-      <guid>https://dfoudeh.github.io/posts/pwnsec-ctf-2024-tiny/</guid>
+      <guid>http://localhost:1313/posts/pwnsec-ctf-2024-tiny/</guid>
       <description>We are given a python file that contains the following:
 _ = lambda __ : __import__(&amp;#39;zlib&amp;#39;).decompress(__import__(&amp;#39;base64&amp;#39;).b64decode(__[::-1]));exec((_)(b&amp;#39;=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&amp;#39;)) Decompressing and decoding from base64, we see a similar string with decompress and b64decode instructions meaning it has been ecoded multiple times. I wrote a simple script to decode it:
 import base64 import zlib import re out = base64.b64decode(b&amp;#39;=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&amp;#39;[::-1]) out = zlib.decompress(out) while True: out = out[11:-3] #print(out) out = base64.b64decode(out[::-1]) out = zlib.decompress(out) print(out) And we get some python code:</description>
     </item>
     <item>
       <title>BlockCTF 2024 - pwn/echo2</title>
-      <link>https://dfoudeh.github.io/posts/block-ctf-2024-echo2/</link>
+      <link>http://localhost:1313/posts/block-ctf-2024-echo2/</link>
       <pubDate>Mon, 11 Nov 2024 20:52:37 -0500</pubDate>
-      <guid>https://dfoudeh.github.io/posts/block-ctf-2024-echo2/</guid>
+      <guid>http://localhost:1313/posts/block-ctf-2024-echo2/</guid>
       <description>We are given a binary with all protectoins turned on and c source code.
 #include &amp;lt;fcntl.h&amp;gt; #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;stdint.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt; #include &amp;lt;unistd.h&amp;gt; void print_flag() { uint8_t flag_buffer[256] = {0}; int fd = open(&amp;#34;flag.txt&amp;#34;, O_RDONLY); read(fd, flag_buffer, sizeof(flag_buffer)); puts(flag_buffer); close(fd); } void do_echo() { uint8_t echo_buffer[256] = {0}; gets(echo_buffer); printf(echo_buffer); fflush(stdout); } int main(void) { while(1) { do_echo(); } return 0; } There is a buffer overflow and printf vulnerability in do_echo().</description>
     </item>
     <item>
       <title>DownUnderCTF 2024 - pwn/yawa</title>
-      <link>https://dfoudeh.github.io/posts/du-ctf-2024-yawa/</link>
+      <link>http://localhost:1313/posts/du-ctf-2024-yawa/</link>
       <pubDate>Sun, 07 Jul 2024 10:47:36 -0400</pubDate>
-      <guid>https://dfoudeh.github.io/posts/du-ctf-2024-yawa/</guid>
+      <guid>http://localhost:1313/posts/du-ctf-2024-yawa/</guid>
       <description>We are given a binary with all protections turned on, and c source code..
 [d@d-20tk001gus yaw]$ pwn checksec --file=yawa [*] &amp;#39;/home/d/Downloads/DUCTF24/yaw/yawa&amp;#39; Arch: amd64-64-little RELRO: Full RELRO Stack: Canary found NX: NX enabled PIE: PIE enabled RUNPATH: b&amp;#39;.&amp;#39; #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt; #include &amp;lt;unistd.h&amp;gt; void init() { setvbuf(stdin, 0, 2, 0); setvbuf(stdout, 0, 2, 0); } int menu() { int choice; puts(&amp;#34;1. Tell me your name&amp;#34;); puts(&amp;#34;2. Get a personalised greeting&amp;#34;); printf(&amp;#34;&amp;gt; &amp;#34;); scanf(&amp;#34;%d&amp;#34;, &amp;amp;choice); return choice; } int main() { init(); char name[88]; int choice; while(1) { choice = menu(); if(choice == 1) { read(0, name, 0x88); } else if(choice == 2) { printf(&amp;#34;Hello, %s\n&amp;#34;, name); } else { break; } } } First, we need to leak out the canary.</description>
     </item>
     <item>
       <title>UIUCTF 2024 - pwn/syscalls</title>
-      <link>https://dfoudeh.github.io/posts/uiuc-ctf-2024-syscalls/</link>
+      <link>http://localhost:1313/posts/uiuc-ctf-2024-syscalls/</link>
       <pubDate>Tue, 02 Jul 2024 01:07:17 -0400</pubDate>
-      <guid>https://dfoudeh.github.io/posts/uiuc-ctf-2024-syscalls/</guid>
+      <guid>http://localhost:1313/posts/uiuc-ctf-2024-syscalls/</guid>
       <description>&amp;lsquo;syscalls&amp;rsquo; was a very neat shellcode with seccomp challenge.
 Initial Analysis We are given a binary &amp;lsquo;syscalls&amp;rsquo; and a Dockerfile. First, we take a look at the binary with the file command, and see that it is a stripped 64 bit ELF.
 [d@d-20tk001gus syscall]$ file syscalls syscalls: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=19b78a52059d384f1b4def02d5838b625773369d, for GNU/Linux 3.2.0, stripped Next we use checksec to see what protections are on.</description>
     </item>
     <item>
       <title>JerseyCTF 2024 - pwn/stage-left</title>
-      <link>https://dfoudeh.github.io/posts/jersey-ctf-2024-stage-left/</link>
+      <link>http://localhost:1313/posts/jersey-ctf-2024-stage-left/</link>
       <pubDate>Sun, 24 Mar 2024 18:52:00 -0400</pubDate>
-      <guid>https://dfoudeh.github.io/posts/jersey-ctf-2024-stage-left/</guid>
+      <guid>http://localhost:1313/posts/jersey-ctf-2024-stage-left/</guid>
       <description>This challenge is very similar to the last challenge Running on Prayers, except instead of an unbounded gets into a buffer, we read in 0x40 bytes using fgets. Because space is limited, we have to inject our shellcode in stages, as the name suggets.
 undefined8 vuln(void) { char local_28 [32]; printf(&amp;#34;Cramped...&amp;#34;); fgets(local_28,0x40,stdin); return 0; } Again we can use jmp rsp, but this time we will use somthing like sub rsp, 0x20 jmp rsp after rsp.</description>
     </item>
     <item>
       <title>JerseyCTF 2024 - pwn/running-on-prayers</title>
-      <link>https://dfoudeh.github.io/posts/jersey-ctf-2024-running-on-prayers/</link>
+      <link>http://localhost:1313/posts/jersey-ctf-2024-running-on-prayers/</link>
       <pubDate>Sun, 24 Mar 2024 18:51:51 -0400</pubDate>
-      <guid>https://dfoudeh.github.io/posts/jersey-ctf-2024-running-on-prayers/</guid>
+      <guid>http://localhost:1313/posts/jersey-ctf-2024-running-on-prayers/</guid>
       <description>We are given an executable and a netcat port. The name of the challenge suggests that this is a ROP challenge. Looking at the binary, all protections are off and the stack is executable, so we can inject shellcode.
 checksec --file RunningOnPrayers [*] &amp;#39;/home/df00/Desktop/RunningOnPrayers&amp;#39; Arch: amd64-64-little RELRO: Partial RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x400000) RWX: Has RWX segments The binary itself is very minimal, There is a main function that calls a vuln function.</description>
     </item>
     <item>
       <title>WolvCTF 2024 - pwn/shelleater</title>
-      <link>https://dfoudeh.github.io/posts/wolv-ctf-2024-shelleater/</link>
+      <link>http://localhost:1313/posts/wolv-ctf-2024-shelleater/</link>
       <pubDate>Mon, 18 Mar 2024 15:34:02 -0400</pubDate>
-      <guid>https://dfoudeh.github.io/posts/wolv-ctf-2024-shelleater/</guid>
+      <guid>http://localhost:1313/posts/wolv-ctf-2024-shelleater/</guid>
       <description>This was a fun challenge involving shellcode. I solved it the hard way by writing my own shellcode, but I saw two simpler ways to solve it after the CTF were over so I will briefly discuss those at the end.
 We are given a file and a netcat port. Taking a look at the file, all protections are off.
 checksec --file=shelleater [*] &amp;#39;/home/df00/Desktop/shelleater&amp;#39; Arch: amd64-64-little RELRO: No RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x400000) RWX: Has RWX segments Looking at the dissambly, the binary will exectute your shellcode, but not if it contains 0x80 or 0x050f.</description>
     </item>
     <item>
       <title>LA CTF 2024 - pwn/52-card-monty</title>
-      <link>https://dfoudeh.github.io/posts/la-ctf-2024-pwn-52-card-monty/</link>
+      <link>http://localhost:1313/posts/la-ctf-2024-pwn-52-card-monty/</link>
       <pubDate>Wed, 21 Feb 2024 20:20:50 -0500</pubDate>
-      <guid>https://dfoudeh.github.io/posts/la-ctf-2024-pwn-52-card-monty/</guid>
+      <guid>http://localhost:1313/posts/la-ctf-2024-pwn-52-card-monty/</guid>
       <description>Again we are given c code along with a binary and a Dockerfile.
 #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt; #include &amp;lt;string.h&amp;gt; #include &amp;lt;time.h&amp;gt; #define DECK_SIZE 0x52 #define QUEEN 1111111111 void setup() { setbuf(stdin, NULL); setbuf(stdout, NULL); setbuf(stderr, NULL); srand(time(NULL)); } void win() { char flag[256]; FILE *flagfile = fopen(&amp;#34;flag.txt&amp;#34;, &amp;#34;r&amp;#34;); if (flagfile == NULL) { puts(&amp;#34;Cannot read flag.txt.&amp;#34;); } else { fgets(flag, 256, flagfile); flag[strcspn(flag, &amp;#34;\n&amp;#34;)] = &amp;#39;\0&amp;#39;; puts(flag); } } long lrand() { long higher, lower; higher = (((long)rand()) &amp;lt;&amp;lt; 32); lower = (long)rand(); return higher + lower; } void game() { int index; long leak; long cards[52] = {0}; char name[20]; for (int i = 0; i &amp;lt; 52; ++i) { cards[i] = lrand(); } index = rand() % 52; cards[index] = QUEEN; printf(&amp;#34;==============================\n&amp;#34;); printf(&amp;#34;index of your first peek?</description>
     </item>
     <item>
       <title>LA CTF 2024 - pwn/aplet123</title>
-      <link>https://dfoudeh.github.io/posts/la-ctf-2024-pwn-aplet123/</link>
+      <link>http://localhost:1313/posts/la-ctf-2024-pwn-aplet123/</link>
       <pubDate>Wed, 21 Feb 2024 17:20:12 -0500</pubDate>
-      <guid>https://dfoudeh.github.io/posts/la-ctf-2024-pwn-aplet123/</guid>
+      <guid>http://localhost:1313/posts/la-ctf-2024-pwn-aplet123/</guid>
       <description>We are given a binary and source code. Taking a look at the source code:
 #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt; #include &amp;lt;string.h&amp;gt; #include &amp;lt;time.h&amp;gt; #include &amp;lt;unistd.h&amp;gt; void print_flag(void) { char flag[256]; FILE *flag_file = fopen(&amp;#34;flag.txt&amp;#34;, &amp;#34;r&amp;#34;); fgets(flag, sizeof flag, flag_file); puts(flag); } const char *const responses[] = {&amp;#34;L&amp;#34;, &amp;#34;amongus&amp;#34;, &amp;#34;true&amp;#34;, &amp;#34;pickle&amp;#34;, &amp;#34;GINKOID&amp;#34;, &amp;#34;L bozo&amp;#34;, &amp;#34;wtf&amp;#34;, &amp;#34;not with that attitude&amp;#34;, &amp;#34;increble&amp;#34;, &amp;#34;based&amp;#34;, &amp;#34;so true&amp;#34;, &amp;#34;monka&amp;#34;, &amp;#34;wat&amp;#34;, &amp;#34;monkaS&amp;#34;, &amp;#34;banned&amp;#34;, &amp;#34;holy based&amp;#34;, &amp;#34;daz crazy&amp;#34;, &amp;#34;smh&amp;#34;, &amp;#34;bruh&amp;#34;, &amp;#34;lol&amp;#34;, &amp;#34;mfw&amp;#34;, &amp;#34;skissue&amp;#34;, &amp;#34;so relatable&amp;#34;, &amp;#34;copium&amp;#34;, &amp;#34;untrue!</description>
     </item>

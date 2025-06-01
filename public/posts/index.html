@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, nofollow">
 <title>Posts | CTF Writeups</title>
 <meta name="keywords" content="">
 <meta name="description" content="Posts - CTF Writeups">
 <meta name="author" content="">
-<link rel="canonical" href="https://dfoudeh.github.io/posts/">
+<link rel="canonical" href="http://localhost:1313/posts/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.287d23ee212a39f1ca2dfc362a4cfcc63951b52b214116e1cb5663bb1883333a.css" integrity="sha256-KH0j7iEqOfHKLfw2Kkz8xjlRtSshQRbhy1ZjuxiDMzo=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://dfoudeh.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://dfoudeh.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://dfoudeh.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://dfoudeh.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://dfoudeh.github.io/safari-pinned-tab.svg">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://dfoudeh.github.io/posts/index.xml">
-<link rel="alternate" hreflang="en" href="https://dfoudeh.github.io/posts/">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/posts/index.xml">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/">
 <noscript>
     <style>
         #theme-toggle,
@@ -56,30 +56,7 @@
         }
 
     </style>
-</noscript><meta property="og:title" content="Posts" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://dfoudeh.github.io/posts/" />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Posts"/>
-<meta name="twitter:description" content=""/>
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://dfoudeh.github.io/posts/"
-    }
-  ]
-}
-</script>
+</noscript>
 </head>
 
 <body class="list" id="top">
@@ -97,7 +74,7 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://dfoudeh.github.io/" accesskey="h" title="CTF Writeups (Alt + H)">CTF Writeups</a>
+            <a href="http://localhost:1313/" accesskey="h" title="CTF Writeups (Alt + H)">CTF Writeups</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -119,8 +96,6 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                </ul>
             </div>
         </div>
         <ul id="menu">
@@ -136,6 +111,44 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Grey Cat the Flag 2025 - misc/countle-training-centre
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>The challenge presents a math game where we have to solve expressions to reach target numbers 1,1,000,000.
+╔════════════════╗ ║ Puzzle #1 ║ ╚════════════════╝ Target: 234 Nums: 25 6 2 4 3 4 The actual challenge is escaping a python sandbox. Looking at the source:
+#!/usr/local/bin/python from re import match from sys import exit from time import sleep from countle_puzzle import generateSolvablePuzzle def format(s): return (s.replace(&#39;~E&#39;,&#34;\033[0m&#34;).replace(&#39;~R&#39;,&#34;\033[0;1;31m&#34;).replace(&#39;~N&#39;,&#34;\033[0;1;7;31m&#34;) .replace(&#39;~w&#39;,&#34;\033[7;37m&#34;).replace(&#39;~u&#39;,&#34;\33[4;31m&#34;).replace(&#39;~Gr&#39;,&#34;\33[0;90m&#34;).replace(&#39;~r&#39;,&#34;\33[0;31m&#34;) .replace(&#39;~G&#39;,&#34;\033[0;1;32m&#34;).replace(&#39;~B&#39;,&#34;\033[1;34m&#34;)).replace(&#39;~W&#39;,&#34;\033[1;4;37m&#34;) def banner(): return format(r&#34;&#34;&#34; ~R( * ) ( )\ ` )\ /( )\ (((_) ( )(_))(((_) )\\~E___ ~R(~E_~R(~E_~R()) )\\~E___ ~R((~w/ __|~E ~w|_ _|~R((~w/ __|~E ~w| (~E__ ~w| |~E ~w| (~E ~w\___|~E ~w|_|~E ~w\___|~E ~RWelcome to the~E ~NCountle Training Centre!...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-06-01 19:02:16 -0400 EDT'>June 1, 2025</span></footer>
+  <a class="entry-link" aria-label="post link to Grey Cat the Flag 2025 - misc/countle-training-centre" href="http://localhost:1313/posts/grey-cat-the-flag-2025-countle-training-centre/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">HTB Global Cyber Skills Benchmark 2025 - blockchain-enlistment
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Test, fill this out!</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-05-27 22:24:30 -0400 EDT'>May 27, 2025</span></footer>
+  <a class="entry-link" aria-label="post link to HTB Global Cyber Skills Benchmark 2025 - blockchain-enlistment" href="http://localhost:1313/posts/htb-global-cyber-skills-benchmark-2025-enlistment/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">HTB Global Cyber Skills Benchmark 2025 - pwn/power-greed
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p></p>
+  </div>
+  <footer class="entry-footer"><span title='2025-05-27 22:23:00 -0400 EDT'>May 27, 2025</span></footer>
+  <a class="entry-link" aria-label="post link to HTB Global Cyber Skills Benchmark 2025 - pwn/power-greed" href="http://localhost:1313/posts/htb-global-cyber-skills-benchmark-2025-power-greed/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">UMDCTF 2025 - web/steve-le-poisson
     </h2>
   </header>
@@ -146,7 +159,7 @@ Lets take a look at the given source:
 // 📦 Importation des modules nécessaires pour faire tourner notre monde sous-marin numérique const express = require(&#34;express&#34;); // Express, le cadre web minimaliste mais puissant const sqlite3 = require(&#34;sqlite3&#34;); // SQLite version brute, pour les bases de données légères const sqlite = require(&#34;sqlite&#34;); // Une interface moderne (promesse-friendly) pour SQLite const cors = require(&#34;cors&#34;); // Pour permettre à d&#39;autres domaines de parler à notre serveur — Steve est sociable, mais pas trop // 🐠 Création de l&#39;application Express : c’est ici que commence l’aventure const app = express(); // 🧪 Fonction de validation des en-têtes HTTP // Steve, ce poisson à la sensibilité exacerbée, déteste les en-têtes trop longs, ambigus ou mystérieux function checkBadHeader(headerName, headerValue) { return headerName....</p>
   </div>
   <footer class="entry-footer"><span title='2025-04-28 12:42:38 -0400 EDT'>April 28, 2025</span></footer>
-  <a class="entry-link" aria-label="post link to UMDCTF 2025 - web/steve-le-poisson" href="https://dfoudeh.github.io/posts/umd-ctf-2025-web-steve-le-poisson/"></a>
+  <a class="entry-link" aria-label="post link to UMDCTF 2025 - web/steve-le-poisson" href="http://localhost:1313/posts/umd-ctf-2025-web-steve-le-poisson/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -160,7 +173,7 @@ Lets take a look at the code
 # flag stored at &#39;flag&#39; in current dir import builtins all_builtins = dir(builtins) filtered_builtins = {name: getattr(builtins, name) for name in all_builtins if len(name) &lt;= 4} filtered_builtins.update({&#39;print&#39;: print}) whitelist = &#34;&lt;ph[(cobras.den)]&#43;~&#34; security_check = lambda s: any(c not in whitelist for c in s) or len(s) &gt; 1115 or s....</p>
   </div>
   <footer class="entry-footer"><span title='2025-01-06 00:08:48 -0500 EST'>January 6, 2025</span></footer>
-  <a class="entry-link" aria-label="post link to IrisCTF 2025 - misc/cobras-den" href="https://dfoudeh.github.io/posts/iris-ctf-2025-misc-cobras-den/"></a>
+  <a class="entry-link" aria-label="post link to IrisCTF 2025 - misc/cobras-den" href="http://localhost:1313/posts/iris-ctf-2025-misc-cobras-den/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -174,7 +187,7 @@ Overview We are given a binary (white_rabbit) and a remote netcat endpoint. The 
 [d@d-20tk001gus challs]$ checksec --file=white_rabbit RELRO STACK CANARY NX PIE RPATH RUNPATH	Symbols	FORTIFY	Fortified	Fortifiable	FILE Partial RELRO No canary found NX disabled PIE enabled No RPATH No RUNPATH 31 Symbols	No	0	2	white_rabbit NX Disabled: Allows execution of injected shellcode....</p>
   </div>
   <footer class="entry-footer"><span title='2024-12-01 06:52:21 -0500 EST'>December 1, 2024</span></footer>
-  <a class="entry-link" aria-label="post link to World Wide CTF 2024 - pwn/white-rabbit" href="https://dfoudeh.github.io/posts/ww-ctf-2024-pwn-whiterabbit/"></a>
+  <a class="entry-link" aria-label="post link to World Wide CTF 2024 - pwn/white-rabbit" href="http://localhost:1313/posts/ww-ctf-2024-pwn-whiterabbit/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -188,7 +201,7 @@ _ = lambda __ : __import__(&#39;zlib&#39;).decompress(__import__(&#39;base64&#39
 import base64 import zlib import re out = base64.b64decode(b&#39;=43mlr8D&#43;//vPzftuhgcDl3/aVk3oxpv0SZZul34uFyULTRdnYokAKkMZ/3wWYkDRRh/8qQKEBBQ9n1HCCQBRnkVjIJLEAZRGL6861F2qa&#43;JrTdUDib5g&#43;9H3H8K2a9jbNy62YcvIHClbGtH5J4FgnO5jpcfoT2IgGDha2/LSb6rYy6jFRTiWCaTTz58i3Rp4n3TCYYN&#43;yhNGtn&#43;MypKKABrwBnLT5gNw9k3cmfQX0vgTONGLeeHaPUDC7vY8&#43;ynebM2ZuAWMkk/mZRsceApUn8mbSzfU&#43;WgtUVSom4y5zPfDv5qTtkv9M5pMq0JBkzGiodv91ZuQ9LlgfUnUlFwrHfBqVhTqHoSLH2GG4hsFx4hG5/03Nb3yWbBZmqNGjKHQexi8lnKe01H0r4DHjyCJd7OfOXeHfACb901MHSDJZXYeSXUfevKnfUmq9/App6/THKqQBDJEyBHro4hmhm/zUsoP41PB7&#43;1q6fF5sH8nQBN77yz3FP1qlSZ3vc/N9E9evG1QB3AepWuImEo13UMxQi/sQ0nfelcjlSg4pmcvuIb6Z3PsOaSnsLj5SXUeJghqp0OUiAZNLw4copV6ob1k4AtXgL2rh5skHak1yrX3nCjLlaHn/kxHk&#43;ZswMCIA3vxQv7QPlvOOoItco2oGlhBBzDRXZ&#43;dfXkkwzzIrJ4tUX5ZNqO3eEtIv2v4EVdG1Ol05ekn5LswyJ2dwLVSGQd/130MuaFMLvqDdrOuz8G8gZkAtxQkWYSY/BTlgXf6ECL/trMrJwBEqLA7F9&#43;gQ17&#43;09OYKmiTLR5TxnSpbmfx6dlLaYORHQ2zGI3EiCaRAzDSyq&#43;W4wifsB7c6ioHWlSI/8DYi/Ti8kMvXml5Rt8vBUudxTjILfuU6oKT&#43;k1rDpV9Cl5m9MVNcDmylfsef/TAQdDA8CQGU1DTps54fj5TFnWyguwPOufSzltb5t/mcACXu40cNqzAoyXAYf8gfg2zO81BefQR4tzXwFvafM4jrf7yccSKZofYmDaHZmCJ1D64vfJsc&#43;7znX6YYyONjmXa&#43;XpejHa7V7djClz8K60Ym2H2MnMIjFkOC&#43;aq6f5QrntXk&#43;XbwBHp6GQPwFbSuXBletJp/Y07vtd6FuA65HV&#43;aZah9tSog7HE42DGIDO8aleR7mwItlQ0oU8AX3rFXC4DYofryPTBFiMeeFvJp4xbwB/4jczWI7Hj23eYKsHS3bcOltVlc3IA6oSWIKm20Fcg0vGkNJ/3DhbX&#43;/WQlK&#43;OgbfIbmeihCfKy7IyBb5X3HIe2W&#43;RXsyM9AirhNpyz3qHen619PmAteTqyabGQCNDpsFHH0ebmyIWUY83ShqlyK3ouI9XtNcC8TbfeVCeAygCwX1ERx8KtRnfocp&#43;/igOUwpuMsBiKKoK7CN4NL6&#43;X2jhXcyhi93Wn1PyA2jiQumlWKlTBcEXNPWnidZaXaBiGCsOpVkrKKxtqfWxCklgPnUmn7/jHoMdoD5bgn/QRMKCdMmGpVD2aVJjjCBHFoSXwSlSAaHhZBcDzEF3OmL2bKWrWflF8Si96iJ/RGjwmyIsK071RETyG3h3nEtIcAX7WpLdcgKv26YLe5AwYxiQHzeV8iTQn8HBiLDRyW7xlmPTR2fQJcth6lvGooJF5VvFSH8gJbZiXd4bmmJ8R9MlaKaIeuYkTg5dLytwlV/v&#43;19o7/c/mpEPcMejnwKAW5lqpzOqG3fY/kru3iPCrsA/NbdmeZCv5H6RZphPTKF90nnn7RBwvTp&#43;KWTZegYKgAeALcaoSes/C8rpeXT5x278LNocQP/AyML1kAJ0kkR0RBEXQSE/uZ/IKcM3Ckfut9wORKVI&#43;z7qV1zQUrg8332QmgaBXL/xmNJecswawhFw0dh6SMTODc&#43;8SkgDUFoA3d&#43;pHobJ0bFFiLM&#43;/1N/eLDypVQuPEGf43yw7eFnzzEWn/mp8Dz&#43;2ocEfwutlyAIaE1YFof3vcne7ycQBnzA5rfEroueKLehoIVzoDi7mtPUZj&#43;vgSg9btTpvs2dU14HRsb/OJUZHy0KxDXCICP4gYMW9e2Y2RBqu2WkodHNkIhUsbPSlXwoVjWMRMYLNkxkpk4aa&#43;zLqjid/K2n8cog3AR/GUyoEUi1FmA3TnPGfJJ1QXjEYhs1pfvj7QkOZLOmz1VBtS&#43;lS9qgyGvAXuLP&#43;dGEnzU2v1d5vhAuKRPu3zqId4fDBdq7qp4fR1qjlHcMA2ln/qc4/OAI1tlvpYwR5E7&#43;IJEdJ6neyQPPTYEy2EJDzCeFTB46f5JvVPCMYSalhKjU6UZ2ScuckeeeK5bW9okmo5MDLAHDC/pR6QeE99wIct99xVARKDB&#43;gtO4pc8YsfPY5&#43;XffxuBvBkyYbtBVglBfx14bKjlJUFYMX3PYE/1cqyHK94uoqD&#43;wBkisr4NdVdZTJGC/Uk3SqfB2aXDoIkAKm7RyxVNKsM8HE5BfI3k9Wm8ig0YWsMoR4mY1F8qyBytMdedYygRSLtwX4Rm&#43;&#43;5w6tpF30C&#43;jI73EvIYhp0SecdJFsTe2WtXmVJpNZ4bLDav/WUTZXCs9CdOYA9pzS/ogKz3J0XYAVWgZxHlW&#43;eI9qjrpPFoIa0oRWUhaSOTywXcQoGaS8FwGLzFoymbCdLeLDDI5Km01/EcYRA3my09FNNUxLurqGypqslfK846JxsK29tzw5gZ05Q1z7W6DirizCyBaB4zsvbUDIz10LAHHEswcaPkiuiUUCxzjXggzaipTS8XgrTe6LP5HZ1DtxVRg0w2bJgeqRqjyHInA426Sn8cldiAAhZwJD&#43;MxnXRqIwLKXliMIdYnz68Skm7Bw3DnO/z/6v9RTLnhtLTjQMVULsgq3U9uOlqOes&#43;ReuPyRSKv8h7wr/&#43;5ZBAF91xeiBGuSZMtL84Ju0tqmmKVsCEKD4q0SN5Wgcj846sNAKQyXOMgvVRMN&#43;M557hQSI8S&#43;LfUa50cekHalhr14u13vFcBSljSfMRTKkrThYGrpZ8YDentfypoCunb4HhCGzWMhEgrgfcrC5J&#43;nU7r//o62XmN/TUgfDyaRzekJHIX24sI3kbQ&#43;604sU9FKDdWGgf8I2iaLJyYoUElvYM1wzAbLwlUYp4MW0GqMyUQjvuYE7Y5lDSgRMzZe/tAAqr&#43;EzZDz43yGUyJArDE9LfEFzfs7&#43;RSsqeJSNA83nebCfxnmQsW1rmzomV0nFPvnfh1MhpPqDsp5b4SYmYOw9I9hTT/7dq1d/WzozF3gt6NABHNjOWEA1xaLgke4yORTk4Pjy60WBd/6hhu9nNwmMj&#43;BU5mIXZVkPQnY5Wxo/Gm5PXPuttL1yDxgvrbimuZHwYyb51dIrY7r0GL&#43;aL22oBdRjBUpgwiz&#43;ek5zrzs8fvvortVjVOn5KTrNr7srz3uj&#43;Lv995kx7xxpQkTfoKJkXMDTSY8iM4fJdgh&#43;tcN7jsjSxg/6gLvy7q8S&#43;sF49HAbKmloU8BHjrLax4E9gQJuT/6wBrQUy3O9CbjJ8bDpXycPKpSUK&#43;Yw&#43;/Dzn3NAP8i45erPgj1f1gLsfz/PBT9Dz3YPKiG9QL8BVgBsMTCJinsjV7H45aKaiFlEGzepumnoAoB9ekYwsOLJY/gUaJ8qr45pw&#43;LsKz&#43;x/ZejxMgHYz4ouhrT2FtF46zsdjoyZ2yozW9TrKRDze9Cy2Seg3VJ5JjSgIjqlCI54&#43;h6sYKFjYMDhaxSUNuKyCTwImeXRsr5c14sJ1&#43;&#43;0mlQeHVvMMaj3r0cfTCYqMQxBit7ZVqmsWuUcuQ2YOs2LUbThUTu5Cq3Ps/NLxtsTLQKdMf1/fZOTHLuAR5kr2KrfZ3dl8bZB/tNfIhps104ZFgjZBhBh5MX/MGDi&#43;qK7r3Xh31VsOUy0RrpfzfE4v8ONNwIQumLrNaEzqFg9HLvgD0HtCdshUKw1OTLzvcyA40muY6DivRQ6HNMwJqo2NKEgtwPYES5X7gAqylhjvt/I0lcfTmGyNpNVL11T/dSDxTQeVag4gRWz4IaPEVB7lQ/eayiuUPcfeGDwoq7x&#43;60U8umGa7wdWZJuNdwkMoCXUMJhP3U4DVfCXQ65ai/jlppFL/WURABHfOpLFZ0i4QaKhSaY5qrKQzUqPSM9Gm/EWMlSgIWBQFSyRA6vXLJyDwxrWH/n6YR8RA6kQoYVJ7PMqkKHqWt/XANKaHh1yyukWDMUd2o0GvhAzmJBaxfpN/Mx0fTsWNvoe6QMmGooOcQq3Q6E4Y1cSTdeZOIs0Q70pfyra6XCDqIjU1ekyHPaJA&#43;TQbJ6wLVcmEkOBP587/VDYvEn/sFSIxEJpq6P5Jd0QU7OWPX8IrGBdFRf/Wo7PvhY&#43;zTMka1qrkEp4JuQ1a8UJJzHMpE7V0N5hr09NSI938inFKmO8dSCcyDQF6yU06ek5Tee9BLUOHlPnoo4/44Ggp9fA9bKQzH4peh76lBneG2bSvRK1WFYAeP360tvZQniz3l/cNCX1iFbNLcPijfNpTE3qLmJ3/&#43;kgL4rcyurM2JDz78oav/OLNAORwkDIVR&#43;gGuDlUwQRXMH&#43;cwpl98WwDlJ1mc&#43;00hBsHtJCthbO/C6txZOBJdgVzzjQgiPH4M&#43;KFI8dxZz6cWNiriv/22MrssPtoW9z0D3aUZ/hDpQX8ozTk0q6K3/bS/N23U2zzVpqsLBljh3nU7RI/IHfnnAbgP4ZY8ID4BC85deTD2hQPfdJv6usK&#43;cnFgjLKQTRyn9XdL4I94hS8J6vvlpkKVo0crPTPlo8t/V&#43;dlO&#43;PPrZ0T7iv4oSemXrJu05RlvlW/SLQVLIOpZLrUH4UtKWVZFvGx1iobyk6Zo3YLaZzKlgie1KcWFLhJLjS&#43;obwRvbKzilBn&#43;H2y&#43;iHDTkTKMdVS7K7jzWL7IBV9b&#43;pXRhcQkdgzXsZdcaCYYbpCVFpYM814uxGB4vDV0QKcK7QL/Zc68TdNrTJv4NSbTa8DLqxc6wHpPAV6usT4ElUQCwYNq0wVpips/VORYimDKYcnzL2Tmp9YckZAxzsr3s77VfsKG3C/4e6oPE8i&#43;vqzqdoScwJdA5Kc2Ijf0sfUk8eaaiHKsDAzWAJGoVhPamcA9bOchh0&#43;XvUdA2R3iMtOoHWuguMqhTHYsSp1nTNnhiUcOMh6SYBP9V5&#43;GDQ1hnZbQCJbgeu3lIuBANJomWA&#43;aQBFlj1e36Qf0E71aAgQhpEiUoCt4WTbALMDAMEt39foJuJ7vn&#43;cM5YMDm&#43;I37B/p4PgYvGeMJxLJ0iLIL3YQbgCdF81EHbHr1QOaeJFXpzzmmQ6W6px9xvofUfEqw/9f8TEx/ZhJXd4l1REt9TlH0h0O/h7r87V9ZV5sxJfwPRHvYxqD&#43;Td1kR9so/NcyvF9ASp&#43;9h22btfRtbrth75tcX1Sd7aZDUsI7K02n4Yu4g3yvTuh&#43;beKUa5UY30Do2LtU5vSXQuYOUzb2nt3JqUcBDDwXcE956tdGCx1oYhf4Igq5Lu9WdTpZeJsc7V5oyNQGRKPwYsxkJmIZz7gdT0dRdnXsZ3KGzGMyvKgV6O8T6onBPGD1GY07pjG&#43;cqpyEtR4aHVXMlSyp8FiyNSHLc3SPA186n6AQd0olhM5LWrBI3dCk0C20f&#43;Vrt5BICVcoY25l5&#43;p72Jlc3n&#43;sz5PauU08Q2ozPDdkIotdcKy2cQlYxUQLy&#43;8m5XUUPNPHl8b1te4e6W7j7IGWGx66Vzb/mpK2IDJppqwl0ev5dQ1FtAnYFZ8TlCb9XCRCHL/gBjkrU2LPATaLdQHB5WFsJsgWcqswwyuXDAhfrzYcg3HdRb&#43;TDvDjGUiErl/z1X5jX8Gu77LC3mcETeUAWulappBTbRyauWGvZ/hhd5YHPwaPD7Jl70QRJvpdO&#43;e7nCBiC7tMCSZcoynSlZMvnp&#43;w9JN5RYDOYXu5Fu7&#43;sw3O0O&#43;7gDz89osIAuSmVwh19YxzO4R/saqsjOxx1FCarBFmGX4nvF5oHJmAVT&#43;1SU&#43;UDLeOyQYWYthIV&#43;6B7GBBsDSmsDAsRbGFpaYGLMhbvUy3at2w9QgaHx9zBzUFawWUeSPOfF02UPSCOidkvn9jvIBRG8MtBCw7&#43;wCvkVg&#43;Sgt6a2ZI0nfY49vWNJeVtiYqig1hyttkKpDHji3TVfeqpWSWnSECXInyihomJIP3wOkoyrzCZu5Ducs6&#43;0KgXpdhOQij5tTHL6qeJ2TVtDO6kywJoxPFrHDRW0hFAL1moUINU5smtqHLq9XBhvotGG&#43;1JdnMn5ochRZWjODTNKzZYn73XacG7O&#43;GEM5LbM3GDcpx3dUeyIoK2v7ERDSNZRSMpE5rWfCUyAhOLnNzuP1tcoNxBPLXLpCZWQWzHsWWFIL4J9wIteW9ksqHV8/Zxi15cbOByy9TXMPEWFRyIfmgikZ/5fRHDvS7q8foeq&#43;shgwh32N/UyQpOpWCSmtCK9VWG/soTUiJ6mIZ03mmGBIDgO0nhTtRmdbx1o0rmYWT7r150R4NTDs9PPqUorexjmQ9c1JavYUB752pPKEsGywLh2E7oiWIjkBhh1aqq5/eTizn/FfU9P5c8XfBZvEcXhhGB7DH4reA7OiG&#43;qm9HutmBwg2brfZEeqSm4fbn2R9UyXp&#43;r&#43;dlW/4KtcDwtgg0K/F7HUUIItrrLJ71TCyFvtK8LIW7lxs/uhaRjn4n/5mvrg9On9yLC8jRWUont3YS777O8KufmakwgBdG4rmsyt6ObzfZBQifGo9WEp0fwYdxpZWJEMmlG/fY22iVuaXs02Mc&#43;BV6jyGJ6tJWSoze5B/&#43;teyB5pUN01bQaFli5epKEuLJNTaXsS9aaTFgNat56qdsSah1OlT610XAKzxQ3krBtum&#43;4XVjPxX48mAxuIAWP91gSJxMrCjlu2uWB3mg2FpvhPGpNTD8LWpc8VLU11hhUlGcDcF/9mHMBnOLOuh5RX&#43;lR0ldbKHzjNlKHO6aURB2Bl413hjRFzRsp9GZ3hwe/4QCfiy5A5Ywix7V7cOBiTvp1itd43INfYEF4&#43;FMTZhcdWos2Rtt3xWWsZZDS&#43;NC6PmfiI1TOnq&#43;aekzOjrvXBLrlNzyuhKRioVWW7XHjBStYyK&#43;q8aJdHmv27lLn0EMgBfBTbuQuF2kYm31phu06f0XGBvavGRYP4NPkIvzhaZIoex1zdCJJ5JSszndtVZXi&#43;IJtLp4nbeyW3kzAq7c0tFk6Omxq2JJaD1I8esltUOhZEUvHcedCcOfJRVqNSQC0bhNA9K&#43;c5/XBtNN40tKbod4iIfPhDV28C0ZvLqg0&#43;TTVq5Gprvw85yuonj4j4kFkAo6NS3BTQ7G/VSXEqSDWlPZxhJDY57h3sEAIMyBcCQrF8PTabsjwUFLGAl5ru9&#43;cbWI3&#43;S7me6Pz93tkXFivpOLExACHoAKKtyWKj5FOsCU2AU3faHYhA5K4RK0CeCKoKK&#43;9xTaJ3zmzpK8Y0RbWFgL0FnQe&#43;YEwzmDkIICRI4Gyu&#43;A&#43;n8//9988/v5TV&#43;WqqkkMIwzPva2ZiJ5eemxmZYmBOu7TeJRNgYx2W0lVwJe&#39;[::-1]) out = zlib.decompress(out) while True: out = out[11:-3] #print(out) out = base64.b64decode(out[::-1]) out = zlib.decompress(out) print(out) And we get some python code:...</p>
   </div>
   <footer class="entry-footer"><span title='2024-11-17 23:00:52 -0500 EST'>November 17, 2024</span></footer>
-  <a class="entry-link" aria-label="post link to PwnSec CTF 2024 -  rev/tiny" href="https://dfoudeh.github.io/posts/pwnsec-ctf-2024-tiny/"></a>
+  <a class="entry-link" aria-label="post link to PwnSec CTF 2024 -  rev/tiny" href="http://localhost:1313/posts/pwnsec-ctf-2024-tiny/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -201,7 +214,7 @@ import base64 import zlib import re out = base64.b64decode(b&#39;=43mlr8D&#43;//
 #include &lt;fcntl.h&gt; #include &lt;stdio.h&gt; #include &lt;stdint.h&gt; #include &lt;stdlib.h&gt; #include &lt;unistd.h&gt; void print_flag() { uint8_t flag_buffer[256] = {0}; int fd = open(&#34;flag.txt&#34;, O_RDONLY); read(fd, flag_buffer, sizeof(flag_buffer)); puts(flag_buffer); close(fd); } void do_echo() { uint8_t echo_buffer[256] = {0}; gets(echo_buffer); printf(echo_buffer); fflush(stdout); } int main(void) { while(1) { do_echo(); } return 0; } There is a buffer overflow and printf vulnerability in do_echo()....</p>
   </div>
   <footer class="entry-footer"><span title='2024-11-11 20:52:37 -0500 EST'>November 11, 2024</span></footer>
-  <a class="entry-link" aria-label="post link to BlockCTF 2024 - pwn/echo2" href="https://dfoudeh.github.io/posts/block-ctf-2024-echo2/"></a>
+  <a class="entry-link" aria-label="post link to BlockCTF 2024 - pwn/echo2" href="http://localhost:1313/posts/block-ctf-2024-echo2/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -214,7 +227,7 @@ import base64 import zlib import re out = base64.b64decode(b&#39;=43mlr8D&#43;//
 [d@d-20tk001gus yaw]$ pwn checksec --file=yawa [*] &#39;/home/d/Downloads/DUCTF24/yaw/yawa&#39; Arch: amd64-64-little RELRO: Full RELRO Stack: Canary found NX: NX enabled PIE: PIE enabled RUNPATH: b&#39;.&#39; #include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; #include &lt;unistd.h&gt; void init() { setvbuf(stdin, 0, 2, 0); setvbuf(stdout, 0, 2, 0); } int menu() { int choice; puts(&#34;1. Tell me your name&#34;); puts(&#34;2. Get a personalised greeting&#34;); printf(&#34;&gt; &#34;); scanf(&#34;%d&#34;, &amp;choice); return choice; } int main() { init(); char name[88]; int choice; while(1) { choice = menu(); if(choice == 1) { read(0, name, 0x88); } else if(choice == 2) { printf(&#34;Hello, %s\n&#34;, name); } else { break; } } } First, we need to leak out the canary....</p>
   </div>
   <footer class="entry-footer"><span title='2024-07-07 10:47:36 -0400 EDT'>July 7, 2024</span></footer>
-  <a class="entry-link" aria-label="post link to DownUnderCTF 2024 - pwn/yawa" href="https://dfoudeh.github.io/posts/du-ctf-2024-yawa/"></a>
+  <a class="entry-link" aria-label="post link to DownUnderCTF 2024 - pwn/yawa" href="http://localhost:1313/posts/du-ctf-2024-yawa/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -228,58 +241,18 @@ Initial Analysis We are given a binary ‘syscalls’ and a Dockerfile. First, w
 [d@d-20tk001gus syscall]$ file syscalls syscalls: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=19b78a52059d384f1b4def02d5838b625773369d, for GNU/Linux 3.2.0, stripped Next we use checksec to see what protections are on....</p>
   </div>
   <footer class="entry-footer"><span title='2024-07-02 01:07:17 -0400 EDT'>July 2, 2024</span></footer>
-  <a class="entry-link" aria-label="post link to UIUCTF 2024 - pwn/syscalls" href="https://dfoudeh.github.io/posts/uiuc-ctf-2024-syscalls/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">JerseyCTF 2024 - pwn/stage-left
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>This challenge is very similar to the last challenge Running on Prayers, except instead of an unbounded gets into a buffer, we read in 0x40 bytes using fgets. Because space is limited, we have to inject our shellcode in stages, as the name suggets.
-undefined8 vuln(void) { char local_28 [32]; printf(&#34;Cramped...&#34;); fgets(local_28,0x40,stdin); return 0; } Again we can use jmp rsp, but this time we will use somthing like sub rsp, 0x20 jmp rsp after rsp....</p>
-  </div>
-  <footer class="entry-footer"><span title='2024-03-24 18:52:00 -0400 EDT'>March 24, 2024</span></footer>
-  <a class="entry-link" aria-label="post link to JerseyCTF 2024 - pwn/stage-left" href="https://dfoudeh.github.io/posts/jersey-ctf-2024-stage-left/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">JerseyCTF 2024 - pwn/running-on-prayers
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>We are given an executable and a netcat port. The name of the challenge suggests that this is a ROP challenge. Looking at the binary, all protections are off and the stack is executable, so we can inject shellcode.
-checksec --file RunningOnPrayers [*] &#39;/home/df00/Desktop/RunningOnPrayers&#39; Arch: amd64-64-little RELRO: Partial RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x400000) RWX: Has RWX segments The binary itself is very minimal, There is a main function that calls a vuln function....</p>
-  </div>
-  <footer class="entry-footer"><span title='2024-03-24 18:51:51 -0400 EDT'>March 24, 2024</span></footer>
-  <a class="entry-link" aria-label="post link to JerseyCTF 2024 - pwn/running-on-prayers" href="https://dfoudeh.github.io/posts/jersey-ctf-2024-running-on-prayers/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">WolvCTF 2024 - pwn/shelleater
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>This was a fun challenge involving shellcode. I solved it the hard way by writing my own shellcode, but I saw two simpler ways to solve it after the CTF were over so I will briefly discuss those at the end.
-We are given a file and a netcat port. Taking a look at the file, all protections are off.
-checksec --file=shelleater [*] &#39;/home/df00/Desktop/shelleater&#39; Arch: amd64-64-little RELRO: No RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x400000) RWX: Has RWX segments Looking at the dissambly, the binary will exectute your shellcode, but not if it contains 0x80 or 0x050f....</p>
-  </div>
-  <footer class="entry-footer"><span title='2024-03-18 15:34:02 -0400 EDT'>March 18, 2024</span></footer>
-  <a class="entry-link" aria-label="post link to WolvCTF 2024 - pwn/shelleater" href="https://dfoudeh.github.io/posts/wolv-ctf-2024-shelleater/"></a>
+  <a class="entry-link" aria-label="post link to UIUCTF 2024 - pwn/syscalls" href="http://localhost:1313/posts/uiuc-ctf-2024-syscalls/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
-    <a class="next" href="https://dfoudeh.github.io/posts/page/2/">Next&nbsp;&nbsp;»
+    <a class="next" href="http://localhost:1313/posts/page/2/">Next&nbsp;&nbsp;»
     </a>
   </nav>
 </footer>
     </main>
     
 <footer class="footer">
-    <span>&copy; 2025 <a href="https://dfoudeh.github.io/">CTF Writeups</a></span>
+    <span>&copy; 2025 <a href="http://localhost:1313/">CTF Writeups</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

