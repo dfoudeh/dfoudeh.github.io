@@ -111,6 +111,21 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">smileyCTF 2025 - misc/ti-1983
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>We’re presented with a Flask web application that appears to be a calculator service.
+The calculor endpoint:
+def execute_code(): code = request.values.get(&#39;code&#39;) output_tmpl = request.values.get(&#39;tmpl&#39;) if len(code) &gt; 3 and any(c in code for c in &#34;0123456789&#43;*-/&#34;): return render_error(&#34;This is a ~~Wendys~~ TI-84.&#34;) Input code must be ≤3 characters or code cannot contain digits (0-9) or math operators (&#43;*-/) if longer than 3 characters
+User-provided code is inserted into code_tmpl.py. The code is executed in a sandboxed Python environment The application uses os....</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-06-17 00:55:31 -0400 EDT'>June 17, 2025</span></footer>
+  <a class="entry-link" aria-label="post link to smileyCTF 2025 - misc/ti-1983" href="http://localhost:1313/posts/smiley-ctf-2025-ti-1983/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">smileyCTF 2025 - web/dry-ice-n-co
     </h2>
   </header>
@@ -231,19 +246,6 @@ Initial Analysis We are given a binary ‘syscalls’ and a Dockerfile. First, w
   </div>
   <footer class="entry-footer"><span title='2024-07-02 01:07:17 -0400 EDT'>July 2, 2024</span></footer>
   <a class="entry-link" aria-label="post link to UIUCTF 2024 - pwn/syscalls" href="http://localhost:1313/posts/uiuc-ctf-2024-syscalls/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">JerseyCTF 2024 - pwn/stage-left
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>This challenge is very similar to the last challenge Running on Prayers, except instead of an unbounded gets into a buffer, we read in 0x40 bytes using fgets. Because space is limited, we have to inject our shellcode in stages, as the name suggets.
-undefined8 vuln(void) { char local_28 [32]; printf(&#34;Cramped...&#34;); fgets(local_28,0x40,stdin); return 0; } Again we can use jmp rsp, but this time we will use somthing like sub rsp, 0x20 jmp rsp after rsp....</p>
-  </div>
-  <footer class="entry-footer"><span title='2024-03-24 18:52:00 -0400 EDT'>March 24, 2024</span></footer>
-  <a class="entry-link" aria-label="post link to JerseyCTF 2024 - pwn/stage-left" href="http://localhost:1313/posts/jersey-ctf-2024-stage-left/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

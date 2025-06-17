@@ -3,10 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2025-06-16T20:18:36-04:00</lastmod>
+    <lastmod>2025-06-17T00:55:31-04:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2025-06-16T20:18:36-04:00</lastmod>
+    <lastmod>2025-06-17T00:55:31-04:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/smiley-ctf-2025-ti-1983/</loc>
+    <lastmod>2025-06-17T00:55:31-04:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/smiley-ctf-2025-dry-ice-n-co/</loc>
     <lastmod>2025-06-16T20:18:36-04:00</lastmod>

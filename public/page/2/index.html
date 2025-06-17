@@ -107,6 +107,19 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">JerseyCTF 2024 - pwn/stage-left
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>This challenge is very similar to the last challenge Running on Prayers, except instead of an unbounded gets into a buffer, we read in 0x40 bytes using fgets. Because space is limited, we have to inject our shellcode in stages, as the name suggets.
+undefined8 vuln(void) { char local_28 [32]; printf(&#34;Cramped...&#34;); fgets(local_28,0x40,stdin); return 0; } Again we can use jmp rsp, but this time we will use somthing like sub rsp, 0x20 jmp rsp after rsp....</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-03-24 18:52:00 -0400 EDT'>March 24, 2024</span></footer>
+  <a class="entry-link" aria-label="post link to JerseyCTF 2024 - pwn/stage-left" href="http://localhost:1313/posts/jersey-ctf-2024-stage-left/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">JerseyCTF 2024 - pwn/running-on-prayers
     </h2>
   </header>

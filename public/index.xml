@@ -6,8 +6,18 @@
     <description>Recent content on CTF Writeups</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 16 Jun 2025 20:18:36 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 17 Jun 2025 00:55:31 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>smileyCTF 2025 - misc/ti-1983</title>
+      <link>http://localhost:1313/posts/smiley-ctf-2025-ti-1983/</link>
+      <pubDate>Tue, 17 Jun 2025 00:55:31 -0400</pubDate>
+      <guid>http://localhost:1313/posts/smiley-ctf-2025-ti-1983/</guid>
+      <description>We&amp;rsquo;re presented with a Flask web application that appears to be a calculator service.
+The calculor endpoint:
+def execute_code(): code = request.values.get(&amp;#39;code&amp;#39;) output_tmpl = request.values.get(&amp;#39;tmpl&amp;#39;) if len(code) &amp;gt; 3 and any(c in code for c in &amp;#34;0123456789+*-/&amp;#34;): return render_error(&amp;#34;This is a ~~Wendys~~ TI-84.&amp;#34;) Input code must be ≤3 characters or code cannot contain digits (0-9) or math operators (+*-/) if longer than 3 characters
+User-provided code is inserted into code_tmpl.py. The code is executed in a sandboxed Python environment The application uses os.</description>
+    </item>
     <item>
       <title>smileyCTF 2025 - web/dry-ice-n-co</title>
       <link>http://localhost:1313/posts/smiley-ctf-2025-dry-ice-n-co/</link>
