@@ -36,6 +36,16 @@ if ((user.admin = true) &amp;amp;&amp;amp; user != null &amp;amp;&amp;amp; name 
 #!/usr/local/bin/python from re import match from sys import exit from time import sleep from countle_puzzle import generateSolvablePuzzle def format(s): return (s.replace(&amp;#39;~E&amp;#39;,&amp;#34;\033[0m&amp;#34;).replace(&amp;#39;~R&amp;#39;,&amp;#34;\033[0;1;31m&amp;#34;).replace(&amp;#39;~N&amp;#39;,&amp;#34;\033[0;1;7;31m&amp;#34;) .replace(&amp;#39;~w&amp;#39;,&amp;#34;\033[7;37m&amp;#34;).replace(&amp;#39;~u&amp;#39;,&amp;#34;\33[4;31m&amp;#34;).replace(&amp;#39;~Gr&amp;#39;,&amp;#34;\33[0;90m&amp;#34;).replace(&amp;#39;~r&amp;#39;,&amp;#34;\33[0;31m&amp;#34;) .replace(&amp;#39;~G&amp;#39;,&amp;#34;\033[0;1;32m&amp;#34;).replace(&amp;#39;~B&amp;#39;,&amp;#34;\033[1;34m&amp;#34;)).replace(&amp;#39;~W&amp;#39;,&amp;#34;\033[1;4;37m&amp;#34;) def banner(): return format(r&amp;#34;&amp;#34;&amp;#34; ~R( * ) ( )\ ` )\ /( )\ (((_) ( )(_))(((_) )\\~E___ ~R(~E_~R(~E_~R()) )\\~E___ ~R((~w/ __|~E ~w|_ _|~R((~w/ __|~E ~w| (~E__ ~w| |~E ~w| (~E ~w\___|~E ~w|_|~E ~w\___|~E ~RWelcome to the~E ~NCountle Training Centre!</description>
     </item>
     <item>
+      <title>HTB Global Cyber Skills Benchmark 2025 - web/volnaya-forums</title>
+      <link>http://localhost:1313/posts/htb-global-cyber-skills-benchmark-2025-volnaya-forums/</link>
+      <pubDate>Tue, 27 May 2025 21:44:01 -0400</pubDate>
+      <guid>http://localhost:1313/posts/htb-global-cyber-skills-benchmark-2025-volnaya-forums/</guid>
+      <description>Volnaya Forums is a Next.js web application simulating a forum platform. The goal was to obtain the flag, which is only accessible to the admin user via the /api/auth endpoint.
+We are first presented with a login page, where we can create a new user and login
+The forum is filled with posts, and we are not allowed to post but we can report posts.
+Also, we have a user profile:</description>
+    </item>
+    <item>
       <title>UMDCTF 2025 - web/steve-le-poisson</title>
       <link>http://localhost:1313/posts/umd-ctf-2025-web-steve-le-poisson/</link>
       <pubDate>Mon, 28 Apr 2025 12:42:38 -0400</pubDate>

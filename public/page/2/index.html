@@ -107,6 +107,20 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">UIUCTF 2024 - pwn/syscalls
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>‘syscalls’ was a very neat shellcode with seccomp challenge.
+Initial Analysis We are given a binary ‘syscalls’ and a Dockerfile. First, we take a look at the binary with the file command, and see that it is a stripped 64 bit ELF.
+[d@d-20tk001gus syscall]$ file syscalls syscalls: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=19b78a52059d384f1b4def02d5838b625773369d, for GNU/Linux 3.2.0, stripped Next we use checksec to see what protections are on....</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-07-02 01:07:17 -0400 EDT'>July 2, 2024</span></footer>
+  <a class="entry-link" aria-label="post link to UIUCTF 2024 - pwn/syscalls" href="http://localhost:1313/posts/uiuc-ctf-2024-syscalls/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">JerseyCTF 2024 - pwn/stage-left
     </h2>
   </header>
