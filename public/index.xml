@@ -6,8 +6,16 @@
     <description>Recent content on CTF Writeups</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Jun 2025 19:02:16 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 16 Jun 2025 20:18:36 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>smileyCTF 2025 - web/dry-ice-n-co</title>
+      <link>http://localhost:1313/posts/smiley-ctf-2025-dry-ice-n-co/</link>
+      <pubDate>Mon, 16 Jun 2025 20:18:36 -0400</pubDate>
+      <guid>http://localhost:1313/posts/smiley-ctf-2025-dry-ice-n-co/</guid>
+      <description>We are given a Java Spring Boot web application. The website sells dry ice - we can purchase a flag that costs $1,000,000 but we only start with $100. The first vulnerabilty is with the admin check:
+if ((user.admin = true) &amp;amp;&amp;amp; user != null &amp;amp;&amp;amp; name != &amp;#34;flag&amp;#34;) { availableProducts.add(new DryIceProduct(name, price, description)); } This uses assignement = instead of comparison == so user.admin is set to true for any user making a request.</description>
+    </item>
     <item>
       <title>Grey Cat the Flag 2025 - misc/countle-training-centre</title>
       <link>http://localhost:1313/posts/grey-cat-the-flag-2025-countle-training-centre/</link>

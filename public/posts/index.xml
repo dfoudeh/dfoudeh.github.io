@@ -6,8 +6,16 @@
     <description>Recent content in Posts on CTF Writeups</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Jun 2025 19:02:16 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 16 Jun 2025 20:18:36 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>smileyCTF 2025 - web/dry-ice-n-co</title>
+      <link>http://localhost:1313/posts/smiley-ctf-2025-dry-ice-n-co/</link>
+      <pubDate>Mon, 16 Jun 2025 20:18:36 -0400</pubDate>
+      <guid>http://localhost:1313/posts/smiley-ctf-2025-dry-ice-n-co/</guid>
+      <description>We are given a Java Spring Boot web application. The website sells dry ice - we can purchase a flag that costs $1,000,000 but we only start with $100. The first vulnerabilty is with the admin check:
+if ((user.admin = true) &amp;amp;&amp;amp; user != null &amp;amp;&amp;amp; name != &amp;#34;flag&amp;#34;) { availableProducts.add(new DryIceProduct(name, price, description)); } This uses assignement = instead of comparison == so user.admin is set to true for any user making a request.</description>
+    </item>
     <item>
       <title>Grey Cat the Flag 2025 - misc/countle-training-centre</title>
       <link>http://localhost:1313/posts/grey-cat-the-flag-2025-countle-training-centre/</link>
@@ -16,20 +24,6 @@
       <description>The challenge presents a math game where we have to solve expressions to reach target numbers 1,1,000,000.
 ╔════════════════╗ ║ Puzzle #1 ║ ╚════════════════╝ Target: 234 Nums: 25 6 2 4 3 4 The actual challenge is escaping a python sandbox. Looking at the source:
 #!/usr/local/bin/python from re import match from sys import exit from time import sleep from countle_puzzle import generateSolvablePuzzle def format(s): return (s.replace(&amp;#39;~E&amp;#39;,&amp;#34;\033[0m&amp;#34;).replace(&amp;#39;~R&amp;#39;,&amp;#34;\033[0;1;31m&amp;#34;).replace(&amp;#39;~N&amp;#39;,&amp;#34;\033[0;1;7;31m&amp;#34;) .replace(&amp;#39;~w&amp;#39;,&amp;#34;\033[7;37m&amp;#34;).replace(&amp;#39;~u&amp;#39;,&amp;#34;\33[4;31m&amp;#34;).replace(&amp;#39;~Gr&amp;#39;,&amp;#34;\33[0;90m&amp;#34;).replace(&amp;#39;~r&amp;#39;,&amp;#34;\33[0;31m&amp;#34;) .replace(&amp;#39;~G&amp;#39;,&amp;#34;\033[0;1;32m&amp;#34;).replace(&amp;#39;~B&amp;#39;,&amp;#34;\033[1;34m&amp;#34;)).replace(&amp;#39;~W&amp;#39;,&amp;#34;\033[1;4;37m&amp;#34;) def banner(): return format(r&amp;#34;&amp;#34;&amp;#34; ~R( * ) ( )\ ` )\ /( )\ (((_) ( )(_))(((_) )\\~E___ ~R(~E_~R(~E_~R()) )\\~E___ ~R((~w/ __|~E ~w|_ _|~R((~w/ __|~E ~w| (~E__ ~w| |~E ~w| (~E ~w\___|~E ~w|_|~E ~w\___|~E ~RWelcome to the~E ~NCountle Training Centre!</description>
-    </item>
-    <item>
-      <title>HTB Global Cyber Skills Benchmark 2025 - blockchain-enlistment</title>
-      <link>http://localhost:1313/posts/htb-global-cyber-skills-benchmark-2025-enlistment/</link>
-      <pubDate>Tue, 27 May 2025 22:24:30 -0400</pubDate>
-      <guid>http://localhost:1313/posts/htb-global-cyber-skills-benchmark-2025-enlistment/</guid>
-      <description>Test, fill this out!</description>
-    </item>
-    <item>
-      <title>HTB Global Cyber Skills Benchmark 2025 - pwn/power-greed</title>
-      <link>http://localhost:1313/posts/htb-global-cyber-skills-benchmark-2025-power-greed/</link>
-      <pubDate>Tue, 27 May 2025 22:23:00 -0400</pubDate>
-      <guid>http://localhost:1313/posts/htb-global-cyber-skills-benchmark-2025-power-greed/</guid>
-      <description></description>
     </item>
     <item>
       <title>UMDCTF 2025 - web/steve-le-poisson</title>

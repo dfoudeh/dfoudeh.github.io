@@ -137,6 +137,19 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">smileyCTF 2025 - web/dry-ice-n-co
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>We are given a Java Spring Boot web application. The website sells dry ice - we can purchase a flag that costs $1,000,000 but we only start with $100. The first vulnerabilty is with the admin check:
+if ((user.admin = true) &amp;&amp; user != null &amp;&amp; name != &#34;flag&#34;) { availableProducts.add(new DryIceProduct(name, price, description)); } This uses assignement = instead of comparison == so user.admin is set to true for any user making a request....</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-06-16 20:18:36 -0400 EDT'>June 16, 2025</span></footer>
+  <a class="entry-link" aria-label="post link to smileyCTF 2025 - web/dry-ice-n-co" href="http://localhost:1313/posts/smiley-ctf-2025-dry-ice-n-co/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Grey Cat the Flag 2025 - misc/countle-training-centre
     </h2>
   </header>
@@ -257,19 +270,6 @@ undefined8 vuln(void) { char local_28 [32]; printf(&#34;Cramped...&#34;); fgets(
   </div>
   <footer class="entry-footer"><span title='2024-03-24 18:52:00 -0400 EDT'>March 24, 2024</span></footer>
   <a class="entry-link" aria-label="post link to JerseyCTF 2024 - pwn/stage-left" href="http://localhost:1313/posts/jersey-ctf-2024-stage-left/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">JerseyCTF 2024 - pwn/running-on-prayers
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>We are given an executable and a netcat port. The name of the challenge suggests that this is a ROP challenge. Looking at the binary, all protections are off and the stack is executable, so we can inject shellcode.
-checksec --file RunningOnPrayers [*] &#39;/home/df00/Desktop/RunningOnPrayers&#39; Arch: amd64-64-little RELRO: Partial RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x400000) RWX: Has RWX segments The binary itself is very minimal, There is a main function that calls a vuln function....</p>
-  </div>
-  <footer class="entry-footer"><span title='2024-03-24 18:51:51 -0400 EDT'>March 24, 2024</span></footer>
-  <a class="entry-link" aria-label="post link to JerseyCTF 2024 - pwn/running-on-prayers" href="http://localhost:1313/posts/jersey-ctf-2024-running-on-prayers/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

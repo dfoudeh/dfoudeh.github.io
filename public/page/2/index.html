@@ -107,6 +107,19 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">JerseyCTF 2024 - pwn/running-on-prayers
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>We are given an executable and a netcat port. The name of the challenge suggests that this is a ROP challenge. Looking at the binary, all protections are off and the stack is executable, so we can inject shellcode.
+checksec --file RunningOnPrayers [*] &#39;/home/df00/Desktop/RunningOnPrayers&#39; Arch: amd64-64-little RELRO: Partial RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x400000) RWX: Has RWX segments The binary itself is very minimal, There is a main function that calls a vuln function....</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-03-24 18:51:51 -0400 EDT'>March 24, 2024</span></footer>
+  <a class="entry-link" aria-label="post link to JerseyCTF 2024 - pwn/running-on-prayers" href="http://localhost:1313/posts/jersey-ctf-2024-running-on-prayers/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">WolvCTF 2024 - pwn/shelleater
     </h2>
   </header>

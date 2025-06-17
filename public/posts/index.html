@@ -111,6 +111,19 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">smileyCTF 2025 - web/dry-ice-n-co
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>We are given a Java Spring Boot web application. The website sells dry ice - we can purchase a flag that costs $1,000,000 but we only start with $100. The first vulnerabilty is with the admin check:
+if ((user.admin = true) &amp;&amp; user != null &amp;&amp; name != &#34;flag&#34;) { availableProducts.add(new DryIceProduct(name, price, description)); } This uses assignement = instead of comparison == so user.admin is set to true for any user making a request....</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-06-16 20:18:36 -0400 EDT'>June 16, 2025</span></footer>
+  <a class="entry-link" aria-label="post link to smileyCTF 2025 - web/dry-ice-n-co" href="http://localhost:1313/posts/smiley-ctf-2025-dry-ice-n-co/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Grey Cat the Flag 2025 - misc/countle-training-centre
     </h2>
   </header>
@@ -121,30 +134,6 @@
   </div>
   <footer class="entry-footer"><span title='2025-06-01 19:02:16 -0400 EDT'>June 1, 2025</span></footer>
   <a class="entry-link" aria-label="post link to Grey Cat the Flag 2025 - misc/countle-training-centre" href="http://localhost:1313/posts/grey-cat-the-flag-2025-countle-training-centre/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">HTB Global Cyber Skills Benchmark 2025 - blockchain-enlistment
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Test, fill this out!</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-05-27 22:24:30 -0400 EDT'>May 27, 2025</span></footer>
-  <a class="entry-link" aria-label="post link to HTB Global Cyber Skills Benchmark 2025 - blockchain-enlistment" href="http://localhost:1313/posts/htb-global-cyber-skills-benchmark-2025-enlistment/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">HTB Global Cyber Skills Benchmark 2025 - pwn/power-greed
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p></p>
-  </div>
-  <footer class="entry-footer"><span title='2025-05-27 22:23:00 -0400 EDT'>May 27, 2025</span></footer>
-  <a class="entry-link" aria-label="post link to HTB Global Cyber Skills Benchmark 2025 - pwn/power-greed" href="http://localhost:1313/posts/htb-global-cyber-skills-benchmark-2025-power-greed/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -242,6 +231,19 @@ Initial Analysis We are given a binary ‘syscalls’ and a Dockerfile. First, w
   </div>
   <footer class="entry-footer"><span title='2024-07-02 01:07:17 -0400 EDT'>July 2, 2024</span></footer>
   <a class="entry-link" aria-label="post link to UIUCTF 2024 - pwn/syscalls" href="http://localhost:1313/posts/uiuc-ctf-2024-syscalls/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">JerseyCTF 2024 - pwn/stage-left
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>This challenge is very similar to the last challenge Running on Prayers, except instead of an unbounded gets into a buffer, we read in 0x40 bytes using fgets. Because space is limited, we have to inject our shellcode in stages, as the name suggets.
+undefined8 vuln(void) { char local_28 [32]; printf(&#34;Cramped...&#34;); fgets(local_28,0x40,stdin); return 0; } Again we can use jmp rsp, but this time we will use somthing like sub rsp, 0x20 jmp rsp after rsp....</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-03-24 18:52:00 -0400 EDT'>March 24, 2024</span></footer>
+  <a class="entry-link" aria-label="post link to JerseyCTF 2024 - pwn/stage-left" href="http://localhost:1313/posts/jersey-ctf-2024-stage-left/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

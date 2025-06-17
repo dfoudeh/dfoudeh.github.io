@@ -3,19 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2025-06-01T19:02:16-04:00</lastmod>
+    <lastmod>2025-06-16T20:18:36-04:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2025-06-16T20:18:36-04:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/smiley-ctf-2025-dry-ice-n-co/</loc>
+    <lastmod>2025-06-16T20:18:36-04:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/grey-cat-the-flag-2025-countle-training-centre/</loc>
     <lastmod>2025-06-01T19:02:16-04:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2025-06-01T19:02:16-04:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/htb-global-cyber-skills-benchmark-2025-enlistment/</loc>
-    <lastmod>2025-05-27T22:24:30-04:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/htb-global-cyber-skills-benchmark-2025-power-greed/</loc>
-    <lastmod>2025-05-27T22:23:00-04:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/umd-ctf-2025-web-steve-le-poisson/</loc>
     <lastmod>2025-04-28T12:42:38-04:00</lastmod>
