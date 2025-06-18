@@ -36,6 +36,14 @@ if ((user.admin = true) &amp;amp;&amp;amp; user != null &amp;amp;&amp;amp; name 
 #!/usr/local/bin/python from re import match from sys import exit from time import sleep from countle_puzzle import generateSolvablePuzzle def format(s): return (s.replace(&amp;#39;~E&amp;#39;,&amp;#34;\033[0m&amp;#34;).replace(&amp;#39;~R&amp;#39;,&amp;#34;\033[0;1;31m&amp;#34;).replace(&amp;#39;~N&amp;#39;,&amp;#34;\033[0;1;7;31m&amp;#34;) .replace(&amp;#39;~w&amp;#39;,&amp;#34;\033[7;37m&amp;#34;).replace(&amp;#39;~u&amp;#39;,&amp;#34;\33[4;31m&amp;#34;).replace(&amp;#39;~Gr&amp;#39;,&amp;#34;\33[0;90m&amp;#34;).replace(&amp;#39;~r&amp;#39;,&amp;#34;\33[0;31m&amp;#34;) .replace(&amp;#39;~G&amp;#39;,&amp;#34;\033[0;1;32m&amp;#34;).replace(&amp;#39;~B&amp;#39;,&amp;#34;\033[1;34m&amp;#34;)).replace(&amp;#39;~W&amp;#39;,&amp;#34;\033[1;4;37m&amp;#34;) def banner(): return format(r&amp;#34;&amp;#34;&amp;#34; ~R( * ) ( )\ ` )\ /( )\ (((_) ( )(_))(((_) )\\~E___ ~R(~E_~R(~E_~R()) )\\~E___ ~R((~w/ __|~E ~w|_ _|~R((~w/ __|~E ~w| (~E__ ~w| |~E ~w| (~E ~w\___|~E ~w|_|~E ~w\___|~E ~RWelcome to the~E ~NCountle Training Centre!</description>
     </item>
     <item>
+      <title>HTB Global Cyber Skills Benchmark 2025 - pwn/power-greed</title>
+      <link>http://localhost:1313/posts/htb-global-cyber-skills-benchmark-2025-power-greed/</link>
+      <pubDate>Tue, 27 May 2025 22:23:00 -0400</pubDate>
+      <guid>http://localhost:1313/posts/htb-global-cyber-skills-benchmark-2025-power-greed/</guid>
+      <description>Starting with file and checksec commnads, we see that we have a statically linked binary with all protections except PIE turned on.
+[d@d-20xxx10100 challenge]$ file power_greed power_greed: ELF 64-bit LSB executable, x86-64, version 1 (GNU/Linux), statically linked, BuildID[sha1]=0b1f10b9e9720538e9c4a290c03cb9fe87a03401, for GNU/Linux 3.2.0, not stripped [d@d-20xxx10100 challenge]$ pwn checksec --file=./power_greed [*] &amp;#39;/home/d/Downloads/htb25/challenge/power_greed&amp;#39; Arch: amd64-64-little RELRO: Partial RELRO Stack: Canary found NX: NX enabled PIE: No PIE (0x400000) SHSTK: Enabled IBT: Enabled Stripped: No We can trigger a buffer overflow, and it looks like there is no canary.</description>
+    </item>
+    <item>
       <title>HTB Global Cyber Skills Benchmark 2025 - web/volnaya-forums</title>
       <link>http://localhost:1313/posts/htb-global-cyber-skills-benchmark-2025-volnaya-forums/</link>
       <pubDate>Tue, 27 May 2025 21:44:01 -0400</pubDate>
