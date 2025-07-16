@@ -111,6 +111,19 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">BlockCTF 2024 - pwn/echo2
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>We are given a binary with all protectoins turned on and c source code.
+#include &lt;fcntl.h&gt; #include &lt;stdio.h&gt; #include &lt;stdint.h&gt; #include &lt;stdlib.h&gt; #include &lt;unistd.h&gt; void print_flag() { uint8_t flag_buffer[256] = {0}; int fd = open(&#34;flag.txt&#34;, O_RDONLY); read(fd, flag_buffer, sizeof(flag_buffer)); puts(flag_buffer); close(fd); } void do_echo() { uint8_t echo_buffer[256] = {0}; gets(echo_buffer); printf(echo_buffer); fflush(stdout); } int main(void) { while(1) { do_echo(); } return 0; } There is a buffer overflow and printf vulnerability in do_echo()....</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-11-11 20:52:37 -0500 EST'>November 11, 2024</span></footer>
+  <a class="entry-link" aria-label="post link to BlockCTF 2024 - pwn/echo2" href="http://localhost:1313/posts/block-ctf-2024-echo2/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">DownUnderCTF 2024 - pwn/yawa
     </h2>
   </header>

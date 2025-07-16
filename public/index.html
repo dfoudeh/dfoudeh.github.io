@@ -137,6 +137,19 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">L3akCTF 2025 - hash-cracking/cat-whisperer
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>L3ak ctf had a very fun hash cracking category this year. I was working on this challenge at the very end and had a working script with a few minutes to go, but unfortunetly the script was slow and didn’t complete in time :(
+import os import base64 import random import string import tempfile import subprocess def main(): flag = open(&#34;flag.txt&#34;, &#34;r&#34;).read().rstrip() assert len(flag) == 42 b64_data = input(&#34;Enter your base64-encoded rule file: &#34;) try: rule_data = base64....</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-07-15 21:40:01 -0400 EDT'>July 15, 2025</span></footer>
+  <a class="entry-link" aria-label="post link to L3akCTF 2025 - hash-cracking/cat-whisperer" href="http://localhost:1313/posts/l3ak-ctf-2025-cat-whisperer/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">smileyCTF 2025 - misc/ti-1983
     </h2>
   </header>
@@ -260,19 +273,6 @@ import base64 import zlib import re out = base64.b64decode(b&#39;=43mlr8D&#43;//
   </div>
   <footer class="entry-footer"><span title='2024-11-17 23:00:52 -0500 EST'>November 17, 2024</span></footer>
   <a class="entry-link" aria-label="post link to PwnSec CTF 2024 -  rev/tiny" href="http://localhost:1313/posts/pwnsec-ctf-2024-tiny/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">BlockCTF 2024 - pwn/echo2
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>We are given a binary with all protectoins turned on and c source code.
-#include &lt;fcntl.h&gt; #include &lt;stdio.h&gt; #include &lt;stdint.h&gt; #include &lt;stdlib.h&gt; #include &lt;unistd.h&gt; void print_flag() { uint8_t flag_buffer[256] = {0}; int fd = open(&#34;flag.txt&#34;, O_RDONLY); read(fd, flag_buffer, sizeof(flag_buffer)); puts(flag_buffer); close(fd); } void do_echo() { uint8_t echo_buffer[256] = {0}; gets(echo_buffer); printf(echo_buffer); fflush(stdout); } int main(void) { while(1) { do_echo(); } return 0; } There is a buffer overflow and printf vulnerability in do_echo()....</p>
-  </div>
-  <footer class="entry-footer"><span title='2024-11-11 20:52:37 -0500 EST'>November 11, 2024</span></footer>
-  <a class="entry-link" aria-label="post link to BlockCTF 2024 - pwn/echo2" href="http://localhost:1313/posts/block-ctf-2024-echo2/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

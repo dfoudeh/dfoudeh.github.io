@@ -6,8 +6,16 @@
     <description>Recent content in Posts on CTF Writeups</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Jun 2025 00:55:31 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 15 Jul 2025 21:40:01 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>L3akCTF 2025 - hash-cracking/cat-whisperer</title>
+      <link>http://localhost:1313/posts/l3ak-ctf-2025-cat-whisperer/</link>
+      <pubDate>Tue, 15 Jul 2025 21:40:01 -0400</pubDate>
+      <guid>http://localhost:1313/posts/l3ak-ctf-2025-cat-whisperer/</guid>
+      <description>L3ak ctf had a very fun hash cracking category this year. I was working on this challenge at the very end and had a working script with a few minutes to go, but unfortunetly the script was slow and didn&amp;rsquo;t complete in time :(
+import os import base64 import random import string import tempfile import subprocess def main(): flag = open(&amp;#34;flag.txt&amp;#34;, &amp;#34;r&amp;#34;).read().rstrip() assert len(flag) == 42 b64_data = input(&amp;#34;Enter your base64-encoded rule file: &amp;#34;) try: rule_data = base64.</description>
+    </item>
     <item>
       <title>smileyCTF 2025 - misc/ti-1983</title>
       <link>http://localhost:1313/posts/smiley-ctf-2025-ti-1983/</link>
